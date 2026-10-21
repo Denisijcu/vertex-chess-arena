@@ -1,0 +1,27 @@
+vertexqwen (W) vs vertexgemma (B): 1-0 plies=89 outcome=Outcome(termination=<Termination.CHECKMATE: 1>, winner=True)
+  stats [clean, fallback, top1]: {'vertexqwen': [31, 14, 25], 'vertexgemma': [44, 0, 11]}
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "vertexqwen"]
+[Black "vertexgemma"]
+[Result "1-0"]
+
+1. e4 e5 2. Bc4 Nc6 3. f3 g5 4. d3 h5 5. Bd5 b5 6. c4 Bb4+ 7. Bd2 Nge7 8. Bxb4 Nxd5 9. exd5 Nxb4 10. Qb3 bxc4 11. Qxb4 cxd3 12. Qc3 d6 13. Qxd3 a5 14. Qb5+ Ke7 15. Qc6 Ra6 16. Qc3 Bf5 17. Qc4 Ra7 18. Nc3 g4 19. fxg4 hxg4 20. Ne4 Rb7 21. Ng3 Bc8 22. Rc1 f6 23. Ne4 Bd7 24. Qc3 Bf5 25. Ng3 Bh7 26. Qxa5 e4 27. Rc6 Re8 28. Qc3 Rh8 29. Rc4 c5 30. Nxe4 f5 31. Qg7+ Ke8 32. Qxh8+ Ke7 33. Qxh7+ Ke8 34. Nxd6+ Qxd6 35. Qxb7 g3 36. Qc6+ Qxc6 37. dxc6 gxh2 38. Nh3 Ke7 39. Rxc5 Ke8 40. c7 Ke7 41. Nf4 Kf6 42. Nd5+ Kg5 43. c8=Q Kg6 44. Qg8+ Kh5 45. Rxh2# 1-0
+
+
+vertexgemma (W) vs vertexqwen (B): 0-1 plies=156 outcome=Outcome(termination=<Termination.CHECKMATE: 1>, winner=False)
+  stats [clean, fallback, top1]: {'vertexgemma': [77, 1, 19], 'vertexqwen': [62, 16, 25]}
+[Event "?"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "vertexgemma"]
+[Black "vertexqwen"]
+[Result "0-1"]
+
+1. d4 f6 2. f3 d5 3. e4 e6 4. g4 Bb4+ 5. Nc3 Qd6 6. exd5 Bxc3+ 7. bxc3 Qxd5 8. Be3 h5 9. gxh5 c6 10. h4 Ne7 11. Bd3 Qa5 12. Kf2 Qxc3 13. Be4 Nf5 14. Bf4 Qxd4+ 15. Kg2 Ne3+ 16. Bxe3 Qxe3 17. Qd6 f5 18. Bd3 Qd2+ 19. Ne2 Rxh5 20. c3 g5 21. hxg5 Rxg5+ 22. Kh3 Rg7 23. Ng3 Rh7+ 24. Nh5 Qxc3 25. Kh4 Qf6+ 26. Kg3 Rxh5 27. Kg2 Qg6+ 28. Qg3 Qf6 29. Rxh5 Qb2+ 30. Kh3 Qxa1 31. Qg8+ Kd7 32. Rh7+ Kd6 33. Qxc8 Qh1+ 34. Kg3 Qxh7 35. Qf8+ Kd5 36. Kg2 Qg6+ 37. Kh3 Qh5+ 38. Kg3 Kd4 39. Qa3 b5 40. Kg2 Qg6+ 41. Kh3 Qh7+ 42. Kg3 f4+ 43. Kg4 Qxd3 44. Qxd3+ Kxd3 45. Kh5 Nd7 46. Kh6 Ke2 47. Kh7 Nf8+ 48. Kh8 Nd7+ 49. Kg7 Nf8 50. Kh8 Nd7+ 51. Kg7 Nf8 52. Kh8 Nd7+ 53. Kg7 Nf8 54. Kh8 Nd7+ 55. Kg7 Kxf3 56. Kh7 Ne5 57. Kg7 a6 58. Kh7 Ra7+ 59. Kh8 Ra8+ 60. Kh7 Ra7+ 61. Kh8 Ra8+ 62. Kh7 Ra7+ 63. Kh8 Ra8+ 64. Kg7 Ra7+ 65. Kh8 Ra8+ 66. Kg7 Re8 67. Kh6 Rh8+ 68. Kg5 Rg8+ 69. Kh5 Rh8+ 70. Kg5 Rg8+ 71. Kh5 Rh8+ 72. Kg5 Rg8+ 73. Kh5 Rh8+ 74. Kg5 Rg8+ 75. Kh5 Rf8 76. Kh6 Rf6+ 77. Kh5 Nf7 78. a3 Rh6# 0-1
+
+
+DONE

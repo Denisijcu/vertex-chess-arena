@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertex Chess Arena — Architecture Duel (Qwen vs. Gemma)</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- jQuery + Chessboard.js + Chess.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+  <style>
+    body {
+      background-color: #090d16;
+      color: #e2e8f0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    .cyber-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 25px rgba(14, 165, 233, 0.08);
+    }
+    .white-1e1d7 { background-color: #cbd5e1 !important; color: #0f172a !important; }
+    .black-3c85d { background-color: #334155 !important; color: #f8fafc !important; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-6">
+
+  <!-- HEADER -->
+  <header class="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between border-b border-slate-800 pb-4 mb-6">
+    <div class="flex items-center space-x-3">
+      <div class="w-3 h-8 bg-cyan-400 rounded-sm shadow-[0_0_12px_#22d3ee]"></div>
+      <div>
+        <h1 class="text-2xl font-bold tracking-wider text-white uppercase">
+          Vertex Chess Arena <span class="text-xs bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded ml-2">QLoRA Lab</span>
+        </h1>
+        <p class="text-xs text-slate-400">Vertex Coders LLC — Fine-Tuned LLM Architecture Duel (Qwen 2.5 vs. Gemma 2)</p>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-3 mt-4 md:mt-0">
+      <span id="api-badge" class="px-3 py-1 text-xs font-mono rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+        API: Checking...
+      </span>
+      <span id="turn-badge" class="px-3 py-1 text-xs font-mono rounded-full bg-slate-800 text-cyan-400 border border-slate-700">
+        Turn: WHITE
+      </span>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <main class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+    <!-- COLUMNA IZQUIERDA: CONTROLES Y TELEMETRÍA -->
+    <section class="lg:col-span-4 cyber-card rounded-xl p-5 space-y-5">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2">
+        1. Combat Configuration
+      </h2>
+
+      <div class="space-y-3">
+        <label class="block text-xs text-slate-400 uppercase font-mono">Select Arena Mode</label>
+        <select id="game-mode" onchange="onModeChange()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
+          <option value="ai_vs_ai_qwen_white">AI vs AI: Qwen (White) vs Gemma (Black)</option>
+          <option value="ai_vs_ai_gemma_white">AI vs AI: Gemma (White) vs Qwen (Black)</option>
+          <option value="human_vs_qwen">Human (White) vs Vertex-Qwen (Black)</option>
+          <option value="human_vs_gemma">Human (White) vs Vertex-Gemma (Black)</option>
+        </select>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <button id="btn-start" onclick="startNewGame()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-sm transition shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+          New Match / Reset
+        </button>
+        <button id="btn-ai-loop" onclick="toggleAutoDuel()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-sm transition">
+          Start AI vs AI Duel
+        </button>
+      </div>
+
+      <button id="btn-step" onclick="triggerSingleAIMove()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 font-semibold py-2 px-4 rounded-lg text-xs transition">
+        Force Single AI Step (Manual Trigger)
+      </button>
+
+      <!-- TELEMETRÍA DE CONTENDIENTES -->
+      <div class="pt-3 border-t border-slate-800 space-y-3">
+        <h3 class="text-xs font-mono uppercase text-slate-400">Architecture Precision Telemetry</h3>
+
+        <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-cyan-300">QWEN 2.5 (3B QLoRA)</span>
+            <span id="qwen-rate" class="text-xs font-mono text-emerald-400">100% Legal</span>
+          </div>
+          <div class="text-xs font-mono text-slate-400 flex justify-between">
+            <span>Clean SAN Hits: <strong id="qwen-clean" class="text-white">0</strong></span>
+            <span>Fallbacks: <strong id="qwen-fallback" class="text-rose-400">0</strong></span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-purple-300">GEMMA 2 (2B QLoRA)</span>
+            <span id="gemma-rate" class="text-xs font-mono text-emerald-400">100% Legal</span>
+          </div>
+          <div class="text-xs font-mono text-slate-400 flex justify-between">
+            <span>Clean SAN Hits: <strong id="gemma-clean" class="text-white">0</strong></span>
+            <span>Fallbacks: <strong id="gemma-fallback" class="text-rose-400">0</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESTADO FEN -->
+      <div class="pt-2">
+        <label class="block text-[11px] font-mono text-slate-400 uppercase mb-1">Live Board FEN</label>
+        <input id="fen-box" type="text" readonly class="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-[11px] font-mono text-cyan-300" />
+      </div>
+    </section>
+
+    <!-- COLUMNA CENTRAL: TABLERO INTERACTIVO -->
+    <section class="lg:col-span-5 cyber-card rounded-xl p-5 flex flex-col items-center justify-center">
+      <div id="board" class="w-full max-w-[440px] shadow-2xl rounded-lg overflow-hidden border-2 border-slate-700"></div>
+      <div id="status-banner" class="mt-4 w-full text-center py-2 px-3 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300">
+        Ready. Select mode and make a move or start the AI duel.
+      </div>
+    </section>
+
+    <!-- COLUMNA DERECHA: HISTORIAL DE JUGADAS Y CONSOLA LLM -->
+    <section class="lg:col-span-3 cyber-card rounded-xl p-5 flex flex-col h-[540px]">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-2 mb-3">
+        2. Arbiter & LLM Output Log
+      </h2>
+
+      <div id="move-log" class="flex-1 overflow-y-auto space-y-2 pr-1 font-mono text-xs">
+        <div class="text-slate-500">Waiting for first move...</div>
+      </div>
+
+      <div class="mt-3 pt-3 border-t border-slate-800">
+        <label class="block text-[11px] font-mono text-slate-400 uppercase mb-1">PGN Match Record</label>
+        <textarea id="pgn-box" rows="3" readonly class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-[11px] font-mono text-slate-300 resize-none"></textarea>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-7xl w-full mx-auto text-center text-xs text-slate-600 pt-6 mt-6 border-t border-slate-900">
+    Engineered by Denis Sanchez Leyva — CEO, Vertex Coders LLC (Miami, FL)
+  </footer>
+
+  <script>
+    const API_BASE = "http://127.0.0.1:8000";
+    let board = null;
+    let game = new Chess();
+    let autoDuelRunning = false;
+    let isThinking = false;
+
+    const stats = {
+      vertexqwen: { clean: 0, fallback: 0 },
+      vertexgemma: { clean: 0, fallback: 0 }
+    };
+
+    function isHumanMode() {
+      const mode = document.getElementById("game-mode").value;
+      return mode === "human_vs_qwen" || mode === "human_vs_gemma";
+    }
+
+    async function checkApiHealth() {
+      const badge = document.getElementById("api-badge");
+      try {
+        const res = await fetch(`${API_BASE}/health`);
+        if (res.ok) {
+          badge.textContent = "API: ONLINE (FastAPI + Ollama)";
+          badge.className = "px-3 py-1 text-xs font-mono rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
+        }
+      } catch (e) {
+        badge.textContent = "API: OFFLINE (Run api_server.py)";
+        badge.className = "px-3 py-1 text-xs font-mono rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40";
+      }
+    }
+
+    function updateTelemetryUI() {
+      ["vertexqwen", "vertexgemma"].forEach(model => {
+        const prefix = model === "vertexqwen" ? "qwen" : "gemma";
+        const c = stats[model].clean;
+        const f = stats[model].fallback;
+        const total = c + f;
+        const pct = total === 0 ? 100 : Math.round((c / total) * 100);
+
+        document.getElementById(`${prefix}-clean`).textContent = c;
+        document.getElementById(`${prefix}-fallback`).textContent = f;
+        document.getElementById(`${prefix}-rate`).textContent = `${pct}% Clean SAN`;
+      });
+    }
+
+    function appendLog(speaker, moveSan, moveUci, cleanHit, rawOutput) {
+      const logBox = document.getElementById("move-log");
+      if (logBox.innerHTML.includes("Waiting for first move") || logBox.innerHTML.includes("New match initialized")) {
+        logBox.innerHTML = "";
+      }
+      const badge = cleanHit
+        ? `<span class="text-emerald-400">[CLEAN]</span>`
+        : `<span class="text-rose-400">[FALLBACK]</span>`;
+
+      const item = document.createElement("div");
+      item.className = "p-2 rounded bg-slate-900/90 border border-slate-800";
+      item.innerHTML = `
+        <div class="flex justify-between">
+          <strong class="text-cyan-300">${speaker}</strong>
+          ${badge}
+        </div>
+        <div class="text-white mt-0.5">Played: <b>${moveSan}</b> (${moveUci})</div>
+        ${rawOutput ? `<div class="text-[10px] text-slate-400 mt-1 truncate" title="${rawOutput}">Raw: ${rawOutput}</div>` : ""}
+      `;
+      logBox.prepend(item);
+    }
+
+    function updateBoardMeta() {
+      document.getElementById("fen-box").value = game.fen();
+      document.getElementById("pgn-box").value = game.pgn();
+      const turnText = game.turn() === "w" ? "WHITE" : "BLACK";
+      document.getElementById("turn-badge").textContent = `Turn: ${turnText}`;
+
+      const banner = document.getElementById("status-banner");
+      if (game.game_over()) {
+        autoDuelRunning = false;
+        document.getElementById("btn-ai-loop").textContent = "Start AI vs AI Duel";
+        let reason = "Game Over";
+        if (game.in_checkmate()) reason = `CHECKMATE! Winner: ${game.turn() === 'w' ? 'BLACK' : 'WHITE'}`;
+        else if (game.in_draw()) reason = "DRAW!";
+        banner.textContent = reason;
+        banner.className = "mt-4 w-full text-center py-2 px-3 rounded-lg bg-amber-500/20 border border-amber-400 text-xs font-mono text-amber-200 font-bold";
+      }
+    }
+
+    function getActiveModelForCurrentTurn() {
+      const mode = document.getElementById("game-mode").value;
+      const turn = game.turn(); // 'w' or 'b'
+      if (mode === "ai_vs_ai_qwen_white") {
+        return turn === "w" ? "vertexqwen" : "vertexgemma";
+      }
+      if (mode === "ai_vs_ai_gemma_white") {
+        return turn === "w" ? "vertexgemma" : "vertexqwen";
+      }
+      if (mode === "human_vs_qwen") return "vertexqwen";
+      if (mode === "human_vs_gemma") return "vertexgemma";
+      return "vertexqwen";
+    }
+
+    // Cambio de modo: detiene cualquier duelo IA vs IA y prepara el tablero
+    function onModeChange() {
+      startNewGame();
+      const btnLoop = document.getElementById("btn-ai-loop");
+      const banner = document.getElementById("status-banner");
+      if (isHumanMode()) {
+        btnLoop.disabled = true;
+        btnLoop.className = "bg-slate-800 text-slate-500 font-bold py-2.5 px-4 rounded-lg text-sm cursor-not-allowed";
+        banner.textContent = "HUMAN vs AI Mode: Drag a WHITE piece on the board to make your move!";
+      } else {
+        btnLoop.disabled = false;
+        btnLoop.className = "bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 px-4 rounded-lg text-sm transition";
+        banner.textContent = "AI vs AI Mode: Click 'Start AI vs AI Duel' to begin.";
+      }
+    }
+
+    // Drag & Drop estricto para modo Humano (Blancas) vs IA (Negras)
+    function onDragStart(source, piece) {
+      if (game.game_over() || isThinking || autoDuelRunning) return false;
+      if (!isHumanMode()) return false;
+      if (game.turn() !== "w" || piece.search(/^b/) !== -1) return false;
+      return true;
+    }
+
+    // IMPORTANTE: onDrop DEBE ser síncrono en Chessboard.js v1.0.0
+    function onDrop(source, target) {
+      if (!isHumanMode() || isThinking) return "snapback";
+
+      const moveObj = game.move({ from: source, to: target, promotion: "q" });
+      if (moveObj === null) return "snapback";
+
+      updateBoardMeta();
+      appendLog("HUMAN (White)", moveObj.san, source + target, true, "Manual board move");
+
+      if (!game.game_over()) {
+        setTimeout(() => {
+          triggerSingleAIMove();
+        }, 250);
+      }
+    }
+
+    async function triggerSingleAIMove() {
+      if (game.game_over() || isThinking) return;
+
+      // Si estamos en modo Humano y es turno de las Blancas, la IA NO debe mover por el humano
+      if (isHumanMode() && game.turn() === "w") {
+        document.getElementById("status-banner").textContent = "It is YOUR turn (White)! Drag a piece on the board.";
+        return;
+      }
+
+      isThinking = true;
+      const modelName = getActiveModelForCurrentTurn();
+      const banner = document.getElementById("status-banner");
+      banner.textContent = `${modelName.toUpperCase()} is calculating tactical move...`;
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/ai-move`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fen: game.fen(), model_name: modelName })
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.detail || "API Error");
+
+        if (!data.game_over || data.played_san) {
+          game.move(data.played_san);
+          board.position(game.fen());
+
+          if (data.clean_hit) stats[modelName].clean++;
+          else stats[modelName].fallback++;
+
+          updateTelemetryUI();
+          appendLog(modelName.toUpperCase(), data.played_san, data.played_uci, data.clean_hit, data.raw_output);
+          banner.textContent = `${modelName.toUpperCase()} played ${data.played_san}`;
+        }
+        updateBoardMeta();
+      } catch (err) {
+        banner.textContent = `Error: ${err.message}`;
+        autoDuelRunning = false;
+      } finally {
+        isThinking = false;
+      }
+    }
+
+    async function toggleAutoDuel() {
+      if (isHumanMode()) {
+        document.getElementById("status-banner").textContent = "Auto-Duel is only for AI vs AI. Drag a White piece to play!";
+        return;
+      }
+
+      const btn = document.getElementById("btn-ai-loop");
+      if (autoDuelRunning) {
+        autoDuelRunning = false;
+        btn.textContent = "Start AI vs AI Duel";
+        return;
+      }
+      autoDuelRunning = true;
+      btn.textContent = "Stop AI Duel";
+
+      while (autoDuelRunning && !game.game_over()) {
+        await triggerSingleAIMove();
+        await new Promise(r => setTimeout(r, 600));
+      }
+      autoDuelRunning = false;
+      btn.textContent = "Start AI vs AI Duel";
+    }
+
+    function startNewGame() {
+      autoDuelRunning = false;
+      isThinking = false;
+      document.getElementById("btn-ai-loop").textContent = "Start AI vs AI Duel";
+      game.reset();
+      board.start();
+      document.getElementById("move-log").innerHTML = `<div class="text-slate-500">New match initialized.</div>`;
+      document.getElementById("status-banner").className = "mt-4 w-full text-center py-2 px-3 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300";
+      document.getElementById("status-banner").textContent = isHumanMode()
+        ? "Human Mode Ready: Drag a WHITE piece to start."
+        : "AI Mode Ready: Click 'Start AI vs AI Duel'.";
+      updateBoardMeta();
+    }
+
+    window.onload = () => {
+      board = Chessboard("board", {
+        draggable: true,
+        position: "start",
+        pieceTheme: "https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png",
+        onDragStart: onDragStart,
+        onDrop: onDrop,
+        onSnapEnd: () => board.position(game.fen())
+      });
+      onModeChange();
+      checkApiHealth();
+    };
+  </script>
+</body>
+</html>

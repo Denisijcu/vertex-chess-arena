@@ -1,0 +1,26 @@
+>>> Partida 1/10: vertexqwen-v3 (B) vs vertexgemma (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 9 plies) | marcador {'vertexqwen-v3': 0.5, 'vertexgemma': 0.5}
+>>> Partida 2/10: vertexgemma (B) vs vertexqwen-v3 (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 91 plies) | marcador {'vertexqwen-v3': 1.0, 'vertexgemma': 1.0}
+>>> Partida 3/10: vertexqwen-v3 (B) vs vertexgemma (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 81 plies) | marcador {'vertexqwen-v3': 1.5, 'vertexgemma': 1.5}
+>>> Partida 4/10: vertexgemma (B) vs vertexqwen-v3 (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 68 plies) | marcador {'vertexqwen-v3': 2.0, 'vertexgemma': 2.0}
+>>> Partida 5/10: vertexqwen-v3 (B) vs vertexgemma (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 9 plies) | marcador {'vertexqwen-v3': 2.5, 'vertexgemma': 2.5}
+>>> Partida 6/10: vertexgemma (B) vs vertexqwen-v3 (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 21 plies) | marcador {'vertexqwen-v3': 3.0, 'vertexgemma': 3.0}
+>>> Partida 7/10: vertexqwen-v3 (B) vs vertexgemma (N) | modo pure
+    0-1 (CHECKMATE, 56 plies) | marcador {'vertexqwen-v3': 3.0, 'vertexgemma': 4.0}
+>>> Partida 8/10: vertexgemma (B) vs vertexqwen-v3 (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 27 plies) | marcador {'vertexqwen-v3': 3.5, 'vertexgemma': 4.5}
+>>> Partida 9/10: vertexqwen-v3 (B) vs vertexgemma (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 9 plies) | marcador {'vertexqwen-v3': 4.0, 'vertexgemma': 5.0}
+>>> Partida 10/10: vertexgemma (B) vs vertexqwen-v3 (N) | modo pure
+    1/2-1/2 (THREEFOLD_REPETITION, 116 plies) | marcador {'vertexqwen-v3': 4.5, 'vertexgemma': 5.5}
+
+=================================================================
+RESULTADO FINAL (10 partidas, modo pure)
+  vertexqwen-v3    puntos  4.5 | jugadas válidas 233/244 (95.5%)
+  vertexgemma      puntos  5.5 | jugadas válidas 241/243 (99.2%)
+=================================================================

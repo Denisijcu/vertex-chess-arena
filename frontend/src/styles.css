@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Design system Vertex Coders — dark, glass, cian → violeta
+   ========================================================================== */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --color-ink: #09090b;
+  --color-panel: rgb(24 24 27 / 0.72);
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-qwen: #22d3ee;
+  --color-gemma: #a78bfa;
+  --color-engine: #fbbf24;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-ink);
+  color: #e4e4e7;
+  font-family: var(--font-sans);
+  min-height: 100%;
+}
+
+body {
+  background-image:
+    radial-gradient(60rem 40rem at 10% -10%, rgb(34 211 238 / 0.10), transparent 60%),
+    radial-gradient(50rem 40rem at 110% 10%, rgb(139 92 246 / 0.12), transparent 60%);
+  background-attachment: fixed;
+}
+
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.glass {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.65rem;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 0 24px rgb(34 211 238 / 0.25);
+}
+.btn-primary:not(:disabled):hover {
+  box-shadow: 0 0 32px rgb(139 92 246 / 0.45);
+}
+.btn-ghost {
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--color-line);
+  color: #e4e4e7;
+}
+.btn-ghost:not(:disabled):hover {
+  background: rgb(255 255 255 / 0.09);
+}
+.btn-danger {
+  background: rgb(244 63 94 / 0.12);
+  border: 1px solid rgb(244 63 94 / 0.35);
+  color: #fda4af;
+}
+.btn-danger:not(:disabled):hover {
+  background: rgb(244 63 94 / 0.22);
+}
+
+.field {
+  width: 100%;
+  background: rgb(9 9 11 / 0.8);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #f4f4f5;
+}
+.field:focus {
+  outline: none;
+  border-color: #22d3ee;
+}
+
+.label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  margin-bottom: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid var(--color-line);
+  background: rgb(255 255 255 / 0.05);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.04));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 0.6rem;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ==========================================================================
+   Tablero (cm-chessboard) — tema "vertex"
+   ========================================================================== */
+.cm-chessboard.vertex .board .square.white {
+  fill: #dbe3ee;
+}
+.cm-chessboard.vertex .board .square.black {
+  fill: #6b7fa3;
+}
+.cm-chessboard.vertex.border-type-none .board .border {
+  stroke-width: 0;
+  fill: #6b7fa3;
+}
+.cm-chessboard.vertex .coordinates .coordinate {
+  font-size: 6.5px;
+  font-weight: 600;
+  user-select: none;
+}
+.cm-chessboard.vertex .coordinates .coordinate.white {
+  fill: #6b7fa3;
+}
+.cm-chessboard.vertex .coordinates .coordinate.black {
+  fill: #dbe3ee;
+}
+.cm-chessboard .markers .marker.marker-last-move {
+  fill: #22d3ee;
+  opacity: 0.32;
+}
+.cm-chessboard .markers .marker.marker-check {
+  fill: #f43f5e;
+  opacity: 0.55;
+}
+.cm-chessboard .markers .marker.marker-legal {
+  fill: #0f172a;
+  opacity: 0.28;
+}
+.cm-chessboard .markers .marker.marker-selected {
+  fill: #a78bfa;
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

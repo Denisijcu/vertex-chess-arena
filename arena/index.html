@@ -70,6 +70,18 @@
           <option value="human_vs_qwen">Human (White) vs Vertex-Qwen (Black)</option>
           <option value="human_vs_gemma">Human (White) vs Vertex-Gemma (Black)</option>
         </select>
+
+        <label class="block text-xs text-slate-400 uppercase font-mono pt-1">Engine Mode</label>
+        <select id="engine-mode" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
+          <option value="pure">Pure LLM — the model chooses among ALL legal moves (fair duel)</option>
+          <option value="arbiter">Arbiter — engine pre-filters top-4 candidates (hybrid)</option>
+        </select>
+
+        <label class="block text-xs text-slate-400 uppercase font-mono pt-1">Qwen Version</label>
+        <select id="qwen-version" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
+          <option value="vertexqwen-v3">vertexqwen-v3 (mirror training of Gemma)</option>
+          <option value="vertexqwen">vertexqwen (legacy 80 steps)</option>
+        </select>
       </div>
 
       <!-- BOTONES DE ACCIÓN -->
@@ -236,18 +248,23 @@
       }
     }
 
+    function statsKey(modelName) {
+      return modelName.includes("gemma") ? "vertexgemma" : "vertexqwen";
+    }
+
     function getActiveModelForCurrentTurn() {
       const mode = document.getElementById("game-mode").value;
+      const qwen = document.getElementById("qwen-version").value;
       const turn = game.turn(); // 'w' or 'b'
       if (mode === "ai_vs_ai_qwen_white") {
-        return turn === "w" ? "vertexqwen" : "vertexgemma";
+        return turn === "w" ? qwen : "vertexgemma";
       }
       if (mode === "ai_vs_ai_gemma_white") {
-        return turn === "w" ? "vertexgemma" : "vertexqwen";
+        return turn === "w" ? "vertexgemma" : qwen;
       }
-      if (mode === "human_vs_qwen") return "vertexqwen";
+      if (mode === "human_vs_qwen") return qwen;
       if (mode === "human_vs_gemma") return "vertexgemma";
-      return "vertexqwen";
+      return qwen;
     }
 
     // Cambio de modo: detiene cualquier duelo IA vs IA y prepara el tablero
@@ -309,7 +326,11 @@
         const resp = await fetch(`${API_BASE}/api/ai-move`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fen: game.fen(), model_name: modelName })
+          body: JSON.stringify({
+            fen: game.fen(),
+            model_name: modelName,
+            mode: document.getElementById("engine-mode").value
+          })
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error(data.detail || "API Error");
@@ -318,8 +339,8 @@
           game.move(data.played_san);
           board.position(game.fen());
 
-          if (data.clean_hit) stats[modelName].clean++;
-          else stats[modelName].fallback++;
+          if (data.clean_hit) stats[statsKey(modelName)].clean++;
+          else stats[statsKey(modelName)].fallback++;
 
           updateTelemetryUI();
           appendLog(modelName.toUpperCase(), data.played_san, data.played_uci, data.clean_hit, data.raw_output);

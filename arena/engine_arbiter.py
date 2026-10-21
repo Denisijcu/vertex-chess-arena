@@ -1,14 +1,35 @@
 import re
 import json
+import random
 import urllib.request
 from collections import deque
 import chess
 
+# V3 (2026-10-20): la arena usa EXACTAMENTE el system prompt y el formato de usuario del
+# dataset de entrenamiento (dataset/processed/train_chess_elite.jsonl). Antes la arena usaba
+# otro system prompt, una línea extra "Side to move" y solo 4 candidatas, y eso sacaba a los
+# modelos de la distribución que aprendieron.
 SYSTEM_PROMPT = (
+    "You are an elite chess grandmaster engine created by Vertex Coders. Analyze the FEN board "
+    "state and the list of legal moves, then output the single strongest tactical move in both "
+    "SAN and UCI formats."
+)
+LEGACY_SYSTEM_PROMPT = (
     "You are Vertex-Chess, a Grandmaster-level chess engine developed by Vertex Coders LLC. "
     "Given the current board state in FEN notation, the side to move, and the list of legal moves, "
     "select the strongest winning move. Respond strictly with the chosen move in SAN and UCI format."
 )
+
+# Modos de juego:
+#   "arbiter" -> el motor (alpha-beta prof. 2 + quiescencia) filtra hasta 4 candidatas y el LLM elige.
+#                Mide al sistema híbrido motor+LLM.
+#   "pure"    -> el LLM recibe TODAS las jugadas legales, igual que en el entrenamiento.
+#                Mide al modelo. Es el modo justo para el duelo de arquitecturas.
+MODES = ("arbiter", "pure")
+# Fallback cuando la respuesta no se puede validar:
+#   "random" -> jugada aleatoria entre las opciones ofrecidas (fallar NO se premia)
+#   "engine" -> la mejor del motor (comportamiento viejo: fallar = jugar como el motor)
+FALLBACKS = ("random", "engine")
 
 PIECE_VALUES = {
     chess.PAWN: 100,
@@ -46,8 +67,21 @@ CORNER_CASTLED_KING = {
 
 
 class ChessArbiter:
-    def __init__(self, ollama_url: str = "http://127.0.0.1:11434"):
+    def __init__(
+        self,
+        ollama_url: str = "http://127.0.0.1:11434",
+        mode: str = "arbiter",
+        fallback: str = "random",
+        seed: int | None = None,
+    ):
+        if mode not in MODES:
+            raise ValueError(f"mode debe ser uno de {MODES}")
+        if fallback not in FALLBACKS:
+            raise ValueError(f"fallback debe ser uno de {FALLBACKS}")
         self.ollama_url = ollama_url
+        self.mode = mode
+        self.fallback = fallback
+        self.rng = random.Random(seed)
         self.recent_positions: deque[str] = deque(maxlen=80)
         self.last_piece_squares: dict[bool, deque[int]] = {
             chess.WHITE: deque(maxlen=4),
@@ -800,24 +834,48 @@ class ChessArbiter:
         best_search = search_scores[0][0]
         # Conservamos hasta 4 candidatas cercanas a la mejor puntuación táctica.
         # El LLM decide entre opciones razonables, pero no entre jugadas claramente inferiores.
-        search_candidates = [
-            move for score, move in search_scores
-            if score >= best_search - 180
-        ][:4]
+        acceptable = [move for score, move in search_scores if score >= best_search - 180]
+
+        # V3: en finales ganados (mop-up) la búsqueda de profundidad 2 no ve el plan de mate,
+        # así que ordenamos las jugadas aceptables con _evaluate_move (caja de la Dama, marcha
+        # del Rey, mate en 2, anti-ahogado). Antes _evaluate_move no se llamaba en ningún sitio.
+        if self._is_mop_up_mode(board, board.turn):
+            acceptable.sort(key=lambda m: self._evaluate_move(board, m), reverse=True)
+
+        # V3: anti-bucles. Si hay alternativas, descartamos jugadas que repiten una posición
+        # reciente (evita series tipo Ra7+ Ra8+ Ra7+ ... o Nf8+ Nd7+ ...).
+        fresh = [m for m in acceptable if not self._repeats_recent(board, m)]
+        search_candidates = (fresh or acceptable)[:4]
 
         # Si la búsqueda detecta que todas las opciones pierden material, no recortamos
         # a una sola jugada por heurísticas ruidosas: mantenemos varias defensas.
         return search_candidates or [search_scores[0][1]]
 
+    def _repeats_recent(self, board: chess.Board, mv: chess.Move) -> bool:
+        board.push(mv)
+        key = self._pos_key(board)
+        board.pop()
+        return key in self.recent_positions
+
+    def get_options(self, board: chess.Board, mode: str | None = None) -> list[chess.Move]:
+        """Jugadas que se le ofrecen al LLM según el modo."""
+        mode = mode or self.mode
+        if mode == "pure":
+            return list(board.legal_moves)
+        return self._get_candidate_moves(board)
+
     def build_prompt(self, board: chess.Board, candidate_moves: list[chess.Move]) -> str:
+        """Formato idéntico al del dataset de entrenamiento."""
         legal_san = [board.san(m) for m in candidate_moves]
-        side_str = "White" if board.turn == chess.WHITE else "Black"
         return (
             f"Position FEN: {board.fen()}\n"
-            f"Side to move: {side_str}\n"
-            f"Legal moves (SAN): {', '.join(legal_san)}\n\n"
+            f"Legal moves (SAN): {', '.join(legal_san)}\n"
             f"Select the best move."
         )
+
+    @staticmethod
+    def _norm_san(san: str) -> str:
+        return san.strip().rstrip(".,;:)").replace("0", "O").replace("+", "").replace("#", "").replace("!", "").replace("?", "")
 
     def parse_llm_move(
         self,
@@ -825,47 +883,46 @@ class ChessArbiter:
         raw_response: str,
         candidate_moves: list[chess.Move],
     ) -> tuple[chess.Move, bool]:
-        clean_text = raw_response.replace("*", "").strip()
+        """Parser ESTRICTO (V3).
+
+        Solo cuenta como acierto limpio si el modelo nombra una de las opciones ofrecidas:
+          1. "Best move: <SAN>"  con el SAN exacto (se ignoran +, #, !, ?), o
+          2. "UCI: <uci>" exacto, o
+          3. la respuesta completa es un SAN exacto (p. ej. "Kxe2").
+        Ya no se usa board.parse_san() (aceptaba "Bxf7" sin captura) ni se escanea la prosa
+        buscando cualquier cosa con forma de jugada.
+        """
+        clean_text = raw_response.replace("*", "").replace("`", "").strip()
+        san_map = {self._norm_san(board.san(m)): m for m in candidate_moves}
         candidate_set = set(candidate_moves)
 
-        san_match = re.search(
-            r"Best\s+move\s*:\s*([O0]-[O0](?:-[O0])?|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?)",
-            clean_text,
-            re.IGNORECASE,
-        )
-        if san_match:
-            cand_str = san_match.group(1).strip().replace("0", "O")
+        best = re.search(r"Best\s+move\s*:\s*(\S+)", clean_text, re.IGNORECASE)
+        if best:
+            mv = san_map.get(self._norm_san(best.group(1)))
+            if mv is not None:
+                return mv, True
+
+        uci = re.search(r"UCI\s*:\s*([a-h][1-8][a-h][1-8][qrbn]?)\b", clean_text, re.IGNORECASE)
+        if uci:
             try:
-                move = board.parse_san(cand_str)
-                if move in candidate_set:
-                    return move, True
+                mv = chess.Move.from_uci(uci.group(1).lower())
+                if mv in candidate_set:
+                    return mv, True
             except ValueError:
                 pass
 
-        uci_match = re.search(r"UCI\s*:\s*([a-h][1-8][a-h][1-8][qrbn]?)", clean_text, re.IGNORECASE)
-        if uci_match:
-            try:
-                move = chess.Move.from_uci(uci_match.group(1).lower())
-                if move in candidate_set:
-                    return move, True
-            except ValueError:
-                pass
+        mv = san_map.get(self._norm_san(clean_text))
+        if mv is not None:
+            return mv, True
 
-        tokens = re.findall(r"(?:[O0]-[O0](?:-[O0])?|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?)", clean_text)
-        for tok in tokens:
-            cand = tok.replace("0", "O")
-            try:
-                move = board.parse_san(cand)
-                if move in candidate_set:
-                    return move, True
-            except ValueError:
-                continue
+        return self._fallback_move(candidate_moves), False
 
-        # La respuesta no se pudo validar: devolvemos un movimiento legal de respaldo,
-        # pero NO fingimos que Gemma acertó.
-        return candidate_moves[0], False
+    def _fallback_move(self, candidate_moves: list[chess.Move]) -> chess.Move:
+        if self.fallback == "engine" or len(candidate_moves) == 1:
+            return candidate_moves[0]
+        return self.rng.choice(candidate_moves)
 
-    def request_model_move(self, model_name: str, board: chess.Board) -> dict:
+    def request_model_move(self, model_name: str, board: chess.Board, mode: str | None = None) -> dict:
         if board.fen().startswith("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"):
             self.recent_positions.clear()
             self.last_piece_squares[chess.WHITE].clear()
@@ -875,7 +932,8 @@ class ChessArbiter:
 
         turn = board.turn
         self.recent_positions.append(self._pos_key(board))
-        candidate_moves = self._get_candidate_moves(board)
+        mode = mode or self.mode
+        candidate_moves = self.get_options(board, mode)
         user_prompt = self.build_prompt(board, candidate_moves)
 
         if "gemma" in model_name.lower():
@@ -895,6 +953,7 @@ class ChessArbiter:
                 "top_p": 0.9,
                 "repeat_penalty": 1.15,
                 "num_predict": 48,
+                "num_ctx": 1024,  # V3: en modo "pure" la lista completa de legales es más larga
             },
         }
 
@@ -932,4 +991,7 @@ class ChessArbiter:
             "raw_output": raw_text.strip(),
             "clean_hit": is_valid_llm,
             "move_obj": move,
+            "mode": mode,
+            "options": [board.san(m) for m in candidate_moves][:40],
+            "picked_first_option": move == candidate_moves[0],
         }

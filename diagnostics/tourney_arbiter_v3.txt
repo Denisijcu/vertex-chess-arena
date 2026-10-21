@@ -1,0 +1,14 @@
+>>> Partida 1/4: vertexqwen-v3 (B) vs vertexgemma (N) | modo arbiter
+    1-0 (CHECKMATE, 177 plies) | marcador {'vertexqwen-v3': 1.0, 'vertexgemma': 0.0}
+>>> Partida 2/4: vertexgemma (B) vs vertexqwen-v3 (N) | modo arbiter
+    1-0 (CHECKMATE, 151 plies) | marcador {'vertexqwen-v3': 1.0, 'vertexgemma': 1.0}
+>>> Partida 3/4: vertexqwen-v3 (B) vs vertexgemma (N) | modo arbiter
+    1-0 (CHECKMATE, 31 plies) | marcador {'vertexqwen-v3': 2.0, 'vertexgemma': 1.0}
+>>> Partida 4/4: vertexgemma (B) vs vertexqwen-v3 (N) | modo arbiter
+    1/2-1/2 (THREEFOLD_REPETITION, 182 plies) | marcador {'vertexqwen-v3': 2.5, 'vertexgemma': 1.5}
+
+=================================================================
+RESULTADO FINAL (4 partidas, modo arbiter)
+  vertexqwen-v3    puntos  2.5 | jugadas válidas 255/271 (94.1%)
+  vertexgemma      puntos  1.5 | jugadas válidas 269/270 (99.6%)
+=================================================================

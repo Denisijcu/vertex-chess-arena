@@ -1,0 +1,43 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+
+=================================================================
+>>> EXPORTANDO qwen_chess_adapter_v3 A GGUF (q4_k_m)...
+=================================================================
+==((====))==  Unsloth 2026.10.6: Fast Qwen2 patching. Transformers: 5.17.0.
+   \\   /|    NVIDIA GeForce GTX 1660 Ti. Num GPUs = 1. Max memory: 6.0 GB. Platform: Windows.
+O^O/ \_/ \    Torch: 2.14.1+cu126. CUDA: 7.5. CUDA Toolkit: 12.6. Triton: 3.8.0
+\        /    Bfloat16 = FALSE. FA [Xformers = 0.0.35. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Merging model weights to 16-bit format...
+Found HuggingFace hub cache directory: E:\vertex-chess-arena\.cache\huggingface\hub
+Checking cache directory for required files...
+Successfully copied all 2 files from cache to `E:\vertex-chess-arena\models\tmp_qwen_chess_adapter_v3`
+Checking cache directory for required files...
+Cache check failed: tokenizer.model not found in local cache.
+Not all required files found in cache. Will proceed with downloading.
+Unsloth: Merge process complete. Saved to `E:\vertex-chess-arena\models\tmp_qwen_chess_adapter_v3`
+Unsloth: Converting to GGUF format...
+==((====))==  Unsloth: Conversion from HF to GGUF information
+   \\   /|    [0] Installing llama.cpp might take 3 minutes.
+O^O/ \_/ \    [1] Converting HF to GGUF f16 might take 3 minutes.
+\        /    [2] Converting GGUF f16 to ['q4_k_m'] might take 10 minutes each.
+ "-____-"     In total, you will have to wait at least 16 minutes.
+
+Unsloth: llama.cpp found in the system. Skipping installation.
+Unsloth: Preparing converter script...
+Unsloth: [1] Converting model into f16 GGUF format.
+This might take 3 minutes...
+Unsloth: Initial conversion completed! Files: ['E:\\vertex-chess-arena\\models\\tmp_qwen_chess_adapter_v3_gguf\\Qwen2.5-3B-Instruct.F16.gguf']
+Unsloth: [2] Converting GGUF f16 into q4_k_m. This might take 10 minutes...
+Unsloth: Model files cleanup...
+Unsloth: All GGUF conversions completed successfully!
+Generated files: ['E:\\vertex-chess-arena\\models\\tmp_qwen_chess_adapter_v3_gguf\\Qwen2.5-3B-Instruct.Q4_K_M.gguf']
+Unsloth: example usage for text only LLMs: C:\Users\denis\.unsloth\llama.cpp\build\bin\Release\llama-cli.exe --model E:\vertex-chess-arena\models\tmp_qwen_chess_adapter_v3_gguf\Qwen2.5-3B-Instruct.Q4_K_M.gguf -p "why is the sky blue?"
+Unsloth: Saved Ollama Modelfile to E:\vertex-chess-arena\models\tmp_qwen_chess_adapter_v3_gguf\Modelfile
+Unsloth: convert model to ollama format by running - ollama create model_name -f E:\vertex-chess-arena\models\tmp_qwen_chess_adapter_v3_gguf\Modelfile
+>>> [OK] Binario GGUF listo en: E:\vertex-chess-arena\models\gguf\vertex-chess-qwen-v3-q4_k_m.gguf
+
+>>> Modelfiles generados. Para registrar en Ollama (desde E:\vertex-chess-arena\models\gguf):
+    ollama create vertexqwen-v3 -f Modelfile.qwen-v3
+    (vertexgemma ya está registrado; Modelfile.gemma queda como referencia)

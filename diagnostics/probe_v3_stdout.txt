@@ -1,0 +1,46 @@
+0 Kxe2 | Best move: Kxe2 (UCI: f2e2) | Best move: Kxe2 (UCI: f2e2) | The strongest tactical move in this posi
+1 Bxb3 | Best move: Kf6 (UCI: g6f6) | Best move: Kg7 (UCI: g6g7) | The strongest tactical move in this posi
+2 Bd2 | Best move: bxc3 (UCI: b4c3) | Best move: bxc3 (UCI: b4c3) | The strongest tactical move in this posi
+3 Qe7 | Best move: Qe6 (UCI: e5e6) | Best move: Qe8+ (UCI: e5e8) | The strongest tactical move in this posi
+4 Qe4 | Best move: Qxc6 (UCI: g2c6) | Best move: Qxh3 (UCI: g2h3) | The strongest tactical move in this posi
+5 Rg1 | Best move: Kf5 (UCI: f4f5) | Best move: Kf5 (UCI: f4f5) | The strongest tactical move in this posi
+6 h5 | Best move: Rh8 (UCI: d8h8) | Best move: Rd1 (UCI: d8d1) | The strongest tactical move in this posi
+7 Rb8 | Best move: Rh8 (UCI: d8h8) | Best move: Rh8 (UCI: d8h8) | The strongest tactical move in this posi
+8 Qxf2# | Best move: Qxf4 (UCI: h4f4) | Best move: Qxf2# (UCI: h7f2) | The strongest tactical move in this posi
+9 a8=Q+ | Best move: Nxf3 (UCI: d4f3) | Best move: a8=Q+ (UCI: a7a8q) | The strongest tactical move in this posi
+10 Rf8+ | Best move: Rxb7 (UCI: f7b7) | Best move: Rxb7 (UCI: f7b7) | The strongest tactical move in this posi
+11 exd5 | Best move: Ne8 (UCI: f6e8) | Best move: Qe8 (UCI: f6e8) | The strongest tactical move in this posi
+12 Bxf3+ | Best move: Rxd8 (UCI: g8d8) | Best move: Nxd8 (UCI: c6d8) | The strongest tactical move in this posi
+13 Bh6# | Best move: Bh6# (UCI: g5h6) | Best move: Bh6# (UCI: g5h6) | The strongest tactical move in this posi
+14 Rxf8 | Best move: Re8 (UCI: a8e8) | Best move: Rxf8 (UCI: a8f8) | The strongest tactical move in this posi
+15 Qxh7# | Best move: Qxh7# (UCI: g4h7) | Best move: Qxh7# (UCI: g2h7) | The strongest tactical move in this posi
+16 Nd8+ | Best move: Ng7 (UCI: e8g7) | Best move: Ng7 (UCI: e6g7) | The strongest tactical move in this posi
+17 Qe6 | Best move: Qc8+ (UCI: g8c8) | Best move: Qc8+ (UCI: g7c8) | The strongest tactical move in this posi
+18 Nbd7 | Best move: Bf8# (UCI: g5f8) | Best move: Bg7 (UCI: f8g7) | The strongest tactical move in this posi
+19 Nc5 | Best move: exf5 (UCI: e4f5) | Best move: exf5 (UCI: e4f5) | The strongest tactical move in this posi
+20 Qf6 | Best move: Qe7 (UCI: d8e7) | Best move: Be7 (UCI: e8e7) | The strongest tactical move in this posi
+21 Qxf1+ | Best move: Bb7 (UCI: d8b7) | Best move: Nxc3 (UCI: d5c3) | The strongest tactical move in this posi
+22 Bd7 | Best move: Bxf5 (UCI: c8f5) | Best move: b4 (UCI: b2b4) | The strongest tactical move in this posi
+23 Rh2+ | Best move: Qh8 (UCI: f8h8) | Best move: Qe8 (UCI: e7e8) | The strongest tactical move in this posi
+24 Re2 | Best move: Rf8 (UCI: e8f8) | Best move: Rg8 (UCI: e8g8) | The strongest tactical move in this posi
+25 Rc7 | Best move: Qxb5 (UCI: d8b5) | Best move: Qxe6 (UCI: d7e6) | The strongest tactical move in this posi
+26 Bxd1 | Best move: Rg8 (UCI: f8g8) | Best move: Nd7 (UCI: f6d7) | The strongest tactical move in this posi
+27 Rxf2 | Best move: Rd1+ (UCI: d8d1) | Best move: Rd1+ (UCI: d8d1) | The strongest tactical move in this posi
+28 Bxb5 | Best move: Bd3 (UCI: c2d3) | Best move: Bxb5 (UCI: c1b5) | The strongest tactical move in this posi
+29 Bc2 | Best move: Qb3 (UCI: c1b3) | Best move: Qe2 (UCI: c1e2) | The strongest tactical move in this posi
+30 f6 | Best move: Kxe4 (UCI: e5e4) | Best move: Kxe4 (UCI: e5e4) | The strongest tactical move in this posi
+31 Rh8+ | Best Move: Rh8+ (UCI: d8h8) | Best move: Rh8+ (UCI: f7h8) | The strongest tactical move in this posi
+32 a5 | Best move: Kh7 (UCI: h8h7) | Best move: g5+ (UCI: g6g5) | The strongest tactical move in this posi
+33 Rxe5 | Best move: Qxf7+ (UCI: f6f7) | Best move: Qxf7+ (UCI: g7f7) | The strongest tactical move in this posi
+34 Rxd3 | Best move: Rxg2+ (UCI: g8g2) | Best move: Nf7 (UCI: d6f7) | The strongest tactical move in this posi
+35 Bxg2+ | Best move: Ra8 (UCI: e8a8) | Best move: Bxg2+ (UCI: e4g2) | The strongest tactical move in this posi
+36 Rb1 | Best move: Qh5 (UCI: c1h5) | Best move: Nb5 (UCI: c3b5) | The strongest tactical move in this posi
+37 Kg8 | Best move: Kf6 (UCI: f7f6) | Best move: Kg6 (UCI: f7g6) | The strongest tactical move in this posi
+38 Rg7 | Best move: Qd5 (UCI: d8d5) | Best move: Qd7 (UCI: d8d7) | The strongest tactical move in this posi
+39 Nf4 | Best move: Rxf3 (UCI: f8f3) | Best move: Rxf3 (UCI: f8f3) | The strongest tactical move in this posi
+
+RESUMEN (posiciones del dataset de entrenamiento)
+  vertexqwen-v3    formato 'Best move:' 39/40 | acierta la jugada del dataset 4/40
+  vertexgemma      formato 'Best move:' 40/40 | acierta la jugada del dataset 9/40
+  vertexqwen       formato 'Best move:' 0/40 | acierta la jugada del dataset 0/40
+DONE
