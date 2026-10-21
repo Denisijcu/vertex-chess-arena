@@ -73,7 +73,7 @@ export class ApiService {
       }
       const m = /^([A-Z_]{3,}):\s*(.*)$/s.exec(msg);
       if (m) throw new ApiError(m[1], m[2], 400);
-      throw new ApiError('NETWORK', 'No hay conexión con el servidor de la arena en Hugging Face. Puede estar arrancando: prueba en un minuto.');
+      throw new ApiError('NETWORK', `No hay conexión con el servidor de la arena en Hugging Face. Puede estar arrancando: prueba en un minuto. (Detalle: ${msg.slice(0, 160)})`);
     } finally {
       clearTimeout(timer);
     }
