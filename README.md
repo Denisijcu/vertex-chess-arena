@@ -3,6 +3,12 @@
 **Director & CEO:** Denis Sanchez Leyva (Vertex Coders LLC — Miami, FL)
 **Entorno:** laboratorio aislado en `E:\vertex-chess-arena` (NVIDIA GeForce GTX 1660 Ti, 6 GB VRAM)
 
+## Modelos, video y libro
+
+- **Modelos (GGUF para Ollama):** [Denisijcu/vertexqwen](https://huggingface.co/Denisijcu/vertexqwen) · [Denisijcu/vertexgemma](https://huggingface.co/Denisijcu/vertexgemma)
+- **Video:** [Afiné dos IAs para jugar ajedrez… y el árbitro jugaba por ellas](https://youtu.be/2_t0ijTg1_M)
+- **Libro:** *Jaque al modelo: afiné dos IAs para jugar ajedrez y descubrí que el árbitro jugaba por ellas* — próximamente en Amazon <!-- AMAZON -->
+
 ## Qué es
 
 Dos modelos abiertos afinados con QLoRA sobre **el mismo dataset** de ajedrez (5,000 posiciones:

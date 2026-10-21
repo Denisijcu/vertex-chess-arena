@@ -1,0 +1,4 @@
+FROM ./vertex-chess-qwen-q4_k_m.gguf
+PARAMETER temperature 0.1
+PARAMETER repeat_penalty 1.15
+PARAMETER num_ctx 512

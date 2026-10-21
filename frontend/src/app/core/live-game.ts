@@ -344,6 +344,7 @@ export class LiveGame {
       ['Black', this.black.label],
       ['Result', result],
       ['TimeControl', tcPgn(this.timeControl)],
+      ['ClockMode', ChessClock.MODE],
       ['Termination', this.termination() ?? 'unterminated'],
       ['WhiteMode', this.white.kind === 'human' ? 'human' : (this.white.mode ?? 'pure')],
       ['BlackMode', this.black.kind === 'human' ? 'human' : (this.black.mode ?? 'pure')],

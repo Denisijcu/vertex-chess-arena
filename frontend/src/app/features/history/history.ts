@@ -71,11 +71,15 @@ export function parseReplay(record: SavedGameRecord): Replay | null {
   host: { '(document:keydown)': 'onKey($event)' },
   template: `
     <h1 class="text-3xl font-extrabold tracking-tight">Historial</h1>
-    <p class="text-zinc-400 mt-2">Todas las partidas terminadas (también quedan en <span class="font-mono text-zinc-300">logs/matches_history.pgn</span>).</p>
+    @if (api.isPublic) {
+      <p class="text-zinc-400 mt-2">Tus partidas se guardan en este navegador. Las de la Copa Vertex Verano 2026 vienen incluidas.</p>
+    } @else {
+      <p class="text-zinc-400 mt-2">Todas las partidas terminadas (también quedan en <span class="font-mono text-zinc-300">logs/matches_history.pgn</span>).</p>
+    }
 
     @if (replay(); as r) {
       <section class="mt-6 grid lg:grid-cols-[minmax(0,560px)_1fr] gap-6 items-start" aria-label="Visor de partida">
-        <div class="glass p-3 md:p-4">
+        <div class="glass p-2 sm:p-3 md:p-4 min-w-0">
           <div class="flex items-center justify-between px-1 pb-2 text-sm">
             <span class="truncate flex gap-1.5"><b>{{ r.record.white }}</b><span class="text-zinc-500">vs</span><b>{{ r.record.black }}</b></span>
             <button type="button" class="btn btn-ghost !p-1.5" (click)="close()" aria-label="Cerrar visor"><svg lucideX class="size-4"></svg></button>
@@ -90,7 +94,7 @@ export function parseReplay(record: SavedGameRecord): Replay | null {
           </div>
           <p class="text-center text-xs text-zinc-500 mt-2">Usa ← y → para moverte por la partida.</p>
         </div>
-        <div class="glass">
+        <div class="glass min-w-0">
           <div class="px-4 pt-4 pb-2 text-sm">
             <p class="font-mono text-xl font-bold">{{ r.record.result }}</p>
             <p class="text-zinc-400">{{ term(r.record.termination) }} · <span class="font-mono">{{ tc(r.record.time_control) }}</span> · {{ r.record.plies }} medias jugadas</p>
@@ -139,7 +143,7 @@ export function parseReplay(record: SavedGameRecord): Replay | null {
   `,
 })
 export class HistoryPage implements OnInit {
-  private readonly api = inject(ApiService);
+  readonly api = inject(ApiService);
   readonly games = signal<SavedGameRecord[]>([]);
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);

@@ -172,3 +172,78 @@ El fine-tune de Qwen ahora sí funciona (formato correcto). Aun así, Gemma acie
    - Algo de temperatura en las respuestas.
    - Datos de finales y mates.
    - Más pasos o un modelo más grande.
+
+#### [20-10-2026 20:55] Reloj al estilo de los torneos + video promo
+- **Pedido de Denis:** el reloj debe bajar como en un torneo normal y, si llega a 0, se pierde y se cierra la partida (de referencia, una partida de "3 min" en chess.com).
+- **Cambio:** el reloj pasó de Fischer (suma fija por jugada; con la IA respondiendo en ~1.5 s el reloj subía) a **Bronstein** (devuelve lo pensado hasta el tope; **nunca sube**). PGN con `[ClockMode "Bronstein"]`.
+- Ritmo por defecto del lobby: **3+0**, solo baja. Al caer la bandera aparece un cartel sobre el tablero, como en chess.com ("Ganan las negras · Tiempo agotado", Nueva / Revancha).
+- 19 tests del frontend en la HP Omen, uno nuevo: con Bronstein el reloj no sube en 50 jugadas rápidas.
+- **Video promo:** `F:\vertex-videos\chess_arena.py`, escena `ChessArenaPromo`, ~61 s, con todas las cifras medidas. Render 1080p en `F:\vertex-videos\media\videos\chess_arena\1080p60\ChessArenaPromo.mp4`. El link de Hugging Face del cierre (`huggingface.co/Denisijcu`) está pendiente de confirmar cuando suba los modelos.
+
+## 2026-10-20 — Copa Vertex Verano 2026, ronda 1 (todos contra todos, 7 jugadores, 2+1 Bronstein)
+
+- Motor del árbitro 1-0 Qwen V3 + árbitro (mate, 109 medias jugadas).
+- Gemma 2B puro 0-1 **Qwen legacy + árbitro** (mate, 38 medias jugadas).
+- Qwen legacy puro 0-1 **Gemma 2B + árbitro** (mate, 44 medias jugadas).
+- Dato para el libro: el Qwen **legacy** (0 % de jugadas válidas con árbitro; el adaptador viejo de 80 pasos) ganó por mate. No eligió ni una jugada: jugaron los candidatos del árbitro. Es la tesis del libro en una sola partida.
+- Los tres que jugaron con árbitro ganaron o perdieron solo contra el motor; los dos "puros" perdieron los dos.
+- Ronda 2 en curso: Qwen V3 puro vs Motor. Qwen V3 repite Rg1/Rh1 mientras la dama negra se come el flanco de rey. Relojes en 1:59 (Bronstein: con respuestas de ~0,6 s el reloj casi no se mueve, como debe ser).
+
+## 2026-10-20 — Copa Vertex Verano 2026: resultado final (torneo 4bwm13pspa)
+
+- 7 jugadores, todos contra todos, 21 partidas, 2+1 Bronstein. Duró 41,5 min (01:16→01:57 UTC). 18 mates, 3 tablas por triple repetición; blancas 11, negras 7. Ninguna caída de bandera.
+- Corte a las 21:44: Ollama se cayó (WinError 10054/10061); Denis lo levantó y el torneo siguió desde la ronda 6 sin perder nada.
+- **Clasificación:** Motor 6/6 · Qwen V3 + árbitro 4 · Gemma + árbitro 4 · Qwen legacy + árbitro 4 · Gemma puro 1 · Qwen V3 puro 1 · Qwen legacy puro 1.
+- **Con árbitro vs sin árbitro: 9-0.** Todo jugador con árbitro le ganó a todo jugador puro.
+- **Entre los tres con árbitro, un ciclo perfecto:** legacy le ganó a Gemma, Gemma a V3, V3 a legacy. Empate a 4.
+- **Entre los puros:** las 3 partidas fueron tablas por triple repetición.
+- **Jugadas válidas:** Gemma + árbitro 99,5 %, Qwen V3 + árbitro 95,3 %, Gemma puro 97,8 %, Qwen V3 puro 97,8 %, Qwen legacy puro 3,2 %, **Qwen legacy + árbitro 0,5 % (1 de 193)**.
+- Conclusión para el libro: el legacy + árbitro sacó los mismos puntos que los modelos entrenados eligiendo 1 jugada de 193. Lo que da los puntos es el árbitro (el filtro de candidatos), no el modelo.
+
+## 2026-10-20 — Libro "Jaque al modelo": manuscrito completo (borrador 1)
+
+- `libro/manuscrito/`: 5 front, 13 capítulos, apéndices A (comandos con directorio), B (hiperparámetros) y C (3 partidas clave), conclusión y sobre el autor. ~12.200 palabras.
+- Licencias verificadas en el Hub: Qwen2.5-3B-Instruct = **Qwen Research License (no comercial)**, requiere aviso y "Built with Qwen"; Gemma 2 2B = Gemma Terms of Use.
+- ZeroGPU (docs HF): solo SDK Gradio + PyTorch (Ollama no corre ahí); la cuota la gasta el visitante (2 min sin cuenta, 5 gratis, 40 PRO).
+- Pendiente: maquetar (build_pdf.py 6x9 / build_epub.py desde F:\vertex-lab\docs), portada, ficha KDP; tiempo de entrenamiento de Gemma (no hay log en disco).
+- Dato de Denis: el entrenamiento de Gemma (625 pasos) tardó unas 11 h. Añadido al cap. 4 y al apéndice B. "Sobre el autor" aprobado tal cual.
+
+## 2026-10-20 — Modelos publicados en Hugging Face
+
+- `Denisijcu/vertexqwen`: GGUF legacy + V3, Modelfiles, LICENSE (Qwen Research, no comercial), NOTICE, ficha corregida (antes decía apache-2.0 y 150 pasos).
+- `Denisijcu/vertexgemma`: GGUF (export del 18-oct, el de 625 pasos; mismo tamaño que el local), Modelfile, NOTICE (Gemma Terms of Use), ficha corregida (antes decía 80 pasos y "Unsloth QLoRA"). Commit 94401347.
+- Fichas fuente en `hf_upload/`, scripts `upload_vertexqwen_card.py` y `upload_vertexgemma_card.py` (solo suben texto).
+- El cierre del video (`huggingface.co/Denisijcu`) queda confirmado: el perfil lista los dos modelos.
+
+## 2026-10-20 — Libro maquetado (borrador 1)
+
+- Video subido a YouTube: https://youtu.be/2_t0ijTg1_M (enlazado en "Sobre el autor").
+- `libro/Jaque-al-modelo-interior-6x9.pdf`: 57 páginas (KDP cuenta 58), pandoc + XeLaTeX, Source Serif 4 / Source Sans 3. Sin avisos de fuentes; un desborde de 0,15 pt.
+- `libro/Jaque-al-modelo.epub`: EPUB 3 reflowable con portada.
+- `libro/portada/`: arte generado por código (`make_art.py`: tablero en perspectiva, rey Staunton dibujado a mano, 4 casillas candidatas en ámbar), portada envolvente 12,381 × 9,25 in (lomo 0,131 in, sin texto: KDP lo exige desde 79 páginas) y portada eBook 1600×2560.
+- `libro/kdp-ficha.md`: título, descripción HTML, 7 palabras clave, categorías, ficha técnica, precio sugerido (eBook 9,99 / paperback 19,99), checklist.
+- Cap. 13 actualizado: modelos ya publicados en HF y la corrección de sus fichas.
+
+## 2026-10-20 — Libro ampliado con el código completo (146 páginas)
+
+- Pedido de Denis: 57 páginas era poco para 19,99. Se añaden los apéndices D–J con el código completo y una guía de lectura por archivo: datos (01, 01b), entrenamientos (03 Gemma, 02 Qwen V3, comparados), exportación (05), árbitro (engine_arbiter.py), arena y diagnósticos (match_runner, probe_bias, duel_both_colors), API (api_server.py) y reloj/torneos (chess-clock.ts, tournament-logic.ts). ~3.000 líneas con números de línea.
+- Interior: 146 páginas. Portada regenerada: 12,579 × 9,25 in, lomo 0,329 in, ahora con texto en el lomo.
+- Corrección encontrada al revisar el código: Gemma entrenó **sin checkpoints** (`save_strategy="no"`); solo Qwen V3 guarda cada 125 pasos. Arreglado en el cap. 4 y el apéndice A.
+- `libro/gen_apendices_codigo.py` regenera los apéndices desde el código real si cambia algo.
+
+## 2026-10-20 — Portada v2 (aprobada por Denis)
+
+- Idea de Denis: cartel de gran pelea. Rey blanco (Qwen, luz cian) vs rey negro (Gemma, luz violeta), "QWEN 2.5 VS GEMMA 2", focos y público; detrás, la sombra gigante del árbitro en ámbar y sus 4 casillas candidatas. Título dorado en Anton, subtítulo y autor en Oswald (OFL).
+- `libro/portada/make_cover_front.py` genera `frente.png`; `build_cover.py 146` arma paperback y eBook. EPUB regenerado con la portada nueva.
+
+## 2026-10-20 — Libro enviado a KDP
+
+- Kindle eBook (12,99 USD) y paperback (19,99 USD, Expanded Distribution activada) en revisión el 21-oct. Portada v2 en los dos.
+- Pendiente: cuando salga el enlace de Amazon, correr `libro\publicar_enlace_amazon.py <url>` y hacer push del README.
+
+## 2026-10-21 — Deploy público: Space de HF (ZeroGPU) + Netlify (preparado)
+
+- `arena/engine_arbiter.py` V4: `request_model_move(..., chat_fn=None)`; Ollama queda como `_chat_ollama` por defecto y `build_messages` es estático. +2 tests (16 en total).
+- `deploy/space/`: app Gradio 6.27 con `@spaces.GPU(duration=20)`; Qwen2.5-3B-Instruct + adaptadores v3 y legacy (PEFT, uno activo por jugada), unsloth/gemma-2-2b-it + adaptador; bf16, greedy, 48 tokens, repetition_penalty 1.15. Endpoints `/health`, `/players`, `/ai_move` (el motor no usa GPU). Probado en el contenedor con modelos simulados: endpoints, errores `CODIGO: mensaje` y partida completa desde la app.
+- `deploy/publicar_space.py`: sube los adaptadores (`adapter-v3`, `adapter-legacy`, `adapter`), las fichas y el Space, y pide ZeroGPU.
+- Frontend: configuración `netlify` (`npm run build:netlify`) que usa `@gradio/client` 2.7.1 contra el Space y guarda partidas y torneos en el navegador; la Copa Vertex Verano 2026 viene incluida (`public/showcase.json`, solo lectura). Avisos de cuota de GPU. `netlify.toml` en la raíz. 19 tests del frontend pasan; builds local y netlify OK.

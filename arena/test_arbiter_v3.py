@@ -120,5 +120,29 @@ class PromptAndModeTests(unittest.TestCase):
         self.assertTrue(b.is_checkmate(), f"No hubo mate: {b.fen()} {b.outcome(claim_draw=True)}")
 
 
+class ChatInjectionTests(unittest.TestCase):
+    """V4: el Space de Hugging Face inyecta su propio generador en lugar de Ollama."""
+
+    def test_chat_fn_is_used_and_gets_training_messages(self):
+        seen = {}
+
+        def fake_chat(model_name, messages):
+            seen["model"], seen["messages"] = model_name, messages
+            return "Best move: e4 (UCI: e2e4)"
+
+        arb = ChessArbiter(fallback="random", seed=1)
+        res = arb.request_model_move("vertexqwen-v3", chess.Board(), mode="pure", chat_fn=fake_chat)
+        self.assertEqual(res["move_san"], "e4")
+        self.assertTrue(res["clean_hit"])
+        self.assertEqual(seen["messages"][0]["role"], "system")
+        self.assertIn("Legal moves (SAN):", seen["messages"][1]["content"])
+
+    def test_gemma_gets_system_text_inside_user_turn(self):
+        msgs = ChessArbiter.build_messages("vertexgemma", "Position FEN: x")
+        self.assertEqual(len(msgs), 1)
+        self.assertEqual(msgs[0]["role"], "user")
+        self.assertTrue(msgs[0]["content"].endswith("Position FEN: x"))
+
+
 if __name__ == "__main__":
     unittest.main()

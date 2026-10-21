@@ -922,7 +922,46 @@ class ChessArbiter:
             return candidate_moves[0]
         return self.rng.choice(candidate_moves)
 
-    def request_model_move(self, model_name: str, board: chess.Board, mode: str | None = None) -> dict:
+    def _chat_ollama(self, model_name: str, messages: list[dict]) -> str:
+        """Pide la respuesta a Ollama. Devuelve el texto, o 'ERROR_OLLAMA: ...' si falla."""
+        payload = {
+            "model": model_name,
+            "messages": messages,
+            "stream": False,
+            "options": {
+                "temperature": 0.05,
+                "top_p": 0.9,
+                "repeat_penalty": 1.15,
+                "num_predict": 48,
+                "num_ctx": 1024,  # V3: en modo "pure" la lista completa de legales es más larga
+            },
+        }
+        req = urllib.request.Request(
+            f"{self.ollama_url}/api/chat",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                return data.get("message", {}).get("content", "")
+        except Exception as e:
+            return f"ERROR_OLLAMA: {e}"
+
+    @staticmethod
+    def build_messages(model_name: str, user_prompt: str) -> list[dict]:
+        """Mensajes en el formato del entrenamiento. Gemma no tiene rol de sistema."""
+        if "gemma" in model_name.lower():
+            return [{"role": "user", "content": f"{SYSTEM_PROMPT}\n\n{user_prompt}"}]
+        return [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt},
+        ]
+
+    def request_model_move(self, model_name: str, board: chess.Board, mode: str | None = None,
+                           chat_fn=None) -> dict:
+        """chat_fn(model_name, messages) -> texto. Por defecto, Ollama (V4: inyectable para el Space de HF)."""
         if board.fen().startswith("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"):
             self.recent_positions.clear()
             self.last_piece_squares[chess.WHITE].clear()
@@ -936,40 +975,8 @@ class ChessArbiter:
         candidate_moves = self.get_options(board, mode)
         user_prompt = self.build_prompt(board, candidate_moves)
 
-        if "gemma" in model_name.lower():
-            messages = [{"role": "user", "content": f"{SYSTEM_PROMPT}\n\n{user_prompt}"}]
-        else:
-            messages = [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_prompt},
-            ]
-
-        payload = {
-            "model": model_name,
-            "messages": messages,
-            "stream": False,
-            "options": {
-                "temperature": 0.05,
-                "top_p": 0.9,
-                "repeat_penalty": 1.15,
-                "num_predict": 48,
-                "num_ctx": 1024,  # V3: en modo "pure" la lista completa de legales es más larga
-            },
-        }
-
-        req = urllib.request.Request(
-            f"{self.ollama_url}/api/chat",
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-
-        try:
-            with urllib.request.urlopen(req, timeout=45) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                raw_text = data.get("message", {}).get("content", "")
-        except Exception as e:
-            raw_text = f"ERROR_OLLAMA: {e}"
+        messages = self.build_messages(model_name, user_prompt)
+        raw_text = (chat_fn or self._chat_ollama)(model_name, messages)
 
         move, is_valid_llm = self.parse_llm_move(board, raw_text, candidate_moves)
         san_played = board.san(move)

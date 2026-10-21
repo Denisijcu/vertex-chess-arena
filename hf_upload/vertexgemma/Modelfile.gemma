@@ -1,0 +1,20 @@
+FROM ./vertex-chess-gemma-q4_k_m.gguf
+TEMPLATE """{{- $system := "" }}
+{{- range .Messages }}
+{{- if eq .Role "system" }}{{ $system = .Content }}{{ continue }}
+{{- else if eq .Role "user" }}<start_of_turn>user
+{{- if $system }}
+{{ $system }}
+
+{{- $system = "" }}
+{{- end }}
+{{- else if eq .Role "assistant" }}<start_of_turn>model
+{{- end }}
+{{ .Content }}<end_of_turn>
+{{ end }}<start_of_turn>model
+"""
+PARAMETER stop "<end_of_turn>"
+PARAMETER stop "<start_of_turn>"
+PARAMETER temperature 0.1
+PARAMETER repeat_penalty 1.15
+PARAMETER num_ctx 1024

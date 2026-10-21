@@ -1,0 +1,120 @@
+{
+ "id": "gb2a3uofoy",
+ "name": "Copa Vertex 2026",
+ "format": "round-robin",
+ "timeControl": {
+  "baseMs": 180000,
+  "incMs": 2000
+ },
+ "participants": [
+  {
+   "id": "vertexqwen-v3:pure",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM puro"
+  },
+  {
+   "id": "vertexqwen-v3:arbiter",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "arbiter",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM + árbitro"
+  },
+  {
+   "id": "vertexgemma:pure",
+   "kind": "ai",
+   "model": "vertexgemma",
+   "mode": "pure",
+   "family": "gemma",
+   "label": "Gemma 2 · 2B · LLM puro"
+  },
+  {
+   "id": "vertexqwen:pure",
+   "kind": "ai",
+   "model": "vertexqwen",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · legacy · LLM puro"
+  },
+  {
+   "id": "vertex-engine:engine",
+   "kind": "ai",
+   "model": "vertex-engine",
+   "mode": "engine",
+   "family": "engine",
+   "label": "Motor del árbitro"
+  }
+ ],
+ "pairings": [
+  {
+   "id": "kex4zokz",
+   "round": 1,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen-v3:arbiter"
+  },
+  {
+   "id": "d8ceckqy",
+   "round": 1,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen:pure"
+  },
+  {
+   "id": "84p4idlc",
+   "round": 2,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertex-engine:engine"
+  },
+  {
+   "id": "i4r15ycr",
+   "round": 2,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexgemma:pure"
+  },
+  {
+   "id": "f81jjbaq",
+   "round": 3,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen-v3:pure"
+  },
+  {
+   "id": "5latgvbt",
+   "round": 3,
+   "white": "vertexgemma:pure",
+   "black": "vertex-engine:engine"
+  },
+  {
+   "id": "u5uetpr9",
+   "round": 4,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexgemma:pure"
+  },
+  {
+   "id": "06xa8skf",
+   "round": 4,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen-v3:arbiter"
+  },
+  {
+   "id": "c1c4x79g",
+   "round": 5,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen-v3:pure"
+  },
+  {
+   "id": "c22ej46c",
+   "round": 5,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen:pure"
+  }
+ ],
+ "status": "pending",
+ "createdAt": "2026-10-21T01:09:24.755Z",
+ "settings": {
+  "maxPlies": 300,
+  "moveDelayMs": 300,
+  "matchGames": 6
+ }
+}

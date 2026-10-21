@@ -51,6 +51,7 @@ import { CATEGORY_LABEL, TIME_PRESETS, categoryOf, tcLabel } from '../core/time-
     <p class="mt-3 text-sm text-zinc-400">
       Ritmo: <span class="font-mono text-white">{{ label() }}</span> · <span class="text-cyan-300">{{ category() }}</span>
     </p>
+    <p class="mt-1 text-xs text-zinc-500">{{ explain() }}</p>
   `,
 })
 export class TimeControlPickerComponent {
@@ -62,6 +63,13 @@ export class TimeControlPickerComponent {
 
   readonly label = computed(() => tcLabel(this.value()));
   readonly category = computed(() => CATEGORY_LABEL[categoryOf(this.value())]);
+  readonly explain = computed(() => {
+    const v = this.value();
+    const min = tcLabel({ baseMs: v.baseMs, incMs: 0 }).replace('+0', '');
+    return v.incMs > 0
+      ? `${min} min por jugador. Reloj Bronstein: cada jugada te devuelve lo que pensaste, hasta ${v.incMs / 1000} s; el reloj nunca sube. A 0:00 pierdes.`
+      : `${min} min por jugador, sin devolución: el reloj solo baja. A 0:00 pierdes.`;
+  });
 
   categoryName(tc: TimeControl): string {
     return CATEGORY_LABEL[categoryOf(tc)];

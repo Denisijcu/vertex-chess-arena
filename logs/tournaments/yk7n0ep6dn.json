@@ -1,0 +1,202 @@
+{
+ "id": "yk7n0ep6dn",
+ "name": "Copa Vertex 2026",
+ "format": "round-robin",
+ "timeControl": {
+  "baseMs": 180000,
+  "incMs": 2000
+ },
+ "participants": [
+  {
+   "id": "vertexqwen-v3:pure",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM puro"
+  },
+  {
+   "id": "vertexqwen-v3:arbiter",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "arbiter",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM + árbitro"
+  },
+  {
+   "id": "vertexgemma:pure",
+   "kind": "ai",
+   "model": "vertexgemma",
+   "mode": "pure",
+   "family": "gemma",
+   "label": "Gemma 2 · 2B · LLM puro"
+  },
+  {
+   "id": "vertexgemma:arbiter",
+   "kind": "ai",
+   "model": "vertexgemma",
+   "mode": "arbiter",
+   "family": "gemma",
+   "label": "Gemma 2 · 2B · LLM + árbitro"
+  },
+  {
+   "id": "vertexqwen:pure",
+   "kind": "ai",
+   "model": "vertexqwen",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · legacy · LLM puro"
+  },
+  {
+   "id": "vertexqwen:arbiter",
+   "kind": "ai",
+   "model": "vertexqwen",
+   "mode": "arbiter",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · legacy · LLM + árbitro"
+  },
+  {
+   "id": "vertex-engine:engine",
+   "kind": "ai",
+   "model": "vertex-engine",
+   "mode": "engine",
+   "family": "engine",
+   "label": "Motor del árbitro"
+  }
+ ],
+ "pairings": [
+  {
+   "id": "3bj6dokz",
+   "round": 1,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen-v3:arbiter"
+  },
+  {
+   "id": "g8uef9ks",
+   "round": 1,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen:arbiter"
+  },
+  {
+   "id": "lacrrcus",
+   "round": 1,
+   "white": "vertexqwen:pure",
+   "black": "vertexgemma:arbiter"
+  },
+  {
+   "id": "p8l91unv",
+   "round": 2,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertex-engine:engine"
+  },
+  {
+   "id": "dpn28908",
+   "round": 2,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen:pure"
+  },
+  {
+   "id": "83erl7qs",
+   "round": 2,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexgemma:pure"
+  },
+  {
+   "id": "z3x0nx2h",
+   "round": 3,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexqwen-v3:pure"
+  },
+  {
+   "id": "up8ct38y",
+   "round": 3,
+   "white": "vertexqwen:pure",
+   "black": "vertex-engine:engine"
+  },
+  {
+   "id": "e9s1b3g6",
+   "round": 3,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen-v3:arbiter"
+  },
+  {
+   "id": "x9qtqd2s",
+   "round": 4,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexqwen:pure"
+  },
+  {
+   "id": "6rzwy50n",
+   "round": 4,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexgemma:arbiter"
+  },
+  {
+   "id": "w0tz4j1y",
+   "round": 4,
+   "white": "vertex-engine:engine",
+   "black": "vertexgemma:pure"
+  },
+  {
+   "id": "z24n8esb",
+   "round": 5,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen-v3:pure"
+  },
+  {
+   "id": "1q9fcs59",
+   "round": 5,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen:pure"
+  },
+  {
+   "id": "7s74hof5",
+   "round": 5,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen:arbiter"
+  },
+  {
+   "id": "7jpqsglh",
+   "round": 6,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexgemma:pure"
+  },
+  {
+   "id": "bixz46xz",
+   "round": 6,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen-v3:arbiter"
+  },
+  {
+   "id": "jcknkfpr",
+   "round": 6,
+   "white": "vertexqwen:arbiter",
+   "black": "vertex-engine:engine"
+  },
+  {
+   "id": "rxsm3291",
+   "round": 7,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen-v3:pure"
+  },
+  {
+   "id": "hnv62k6u",
+   "round": 7,
+   "white": "vertex-engine:engine",
+   "black": "vertexgemma:arbiter"
+  },
+  {
+   "id": "tx0w7wj7",
+   "round": 7,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen:arbiter"
+  }
+ ],
+ "status": "pending",
+ "createdAt": "2026-10-21T01:11:57.722Z",
+ "settings": {
+  "maxPlies": 300,
+  "moveDelayMs": 0,
+  "matchGames": 4
+ }
+}

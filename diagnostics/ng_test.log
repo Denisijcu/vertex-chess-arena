@@ -5,30 +5,30 @@
 [33m>[39m Building...
 [32m√[39m Building...
 [1mInitial chunk files[22m              [2m | [22m[1mNames[22m                         [2m | [22m [1mRaw size[22m
-[32mstyles.css[39m                       [2m | [22m[2mstyles[22m                        [2m | [22m [36m58.17 kB[39m[2m | [22m
-[32mchunk-7RJBTVYC.js[39m                [2m | [22m[2m-[22m                             [2m | [22m [36m15.82 kB[39m[2m | [22m
+[32mstyles.css[39m                       [2m | [22m[2mstyles[22m                        [2m | [22m [36m59.24 kB[39m[2m | [22m
+[32mchunk-HSVNDRWN.js[39m                [2m | [22m[2m-[22m                             [2m | [22m [36m15.85 kB[39m[2m | [22m
 [32mspec-app-core-tournament-logic.js[39m[2m | [22m[2mspec-app-core-tournament-logic[22m[2m | [22m  [36m7.49 kB[39m[2m | [22m
 [32mchunk-RSTWSNOR.js[39m                [2m | [22m[2m-[22m                             [2m | [22m  [36m4.75 kB[39m[2m | [22m
-[32mchunk-GLZJNY3R.js[39m                [2m | [22m[2m-[22m                             [2m | [22m  [36m3.56 kB[39m[2m | [22m
+[32mchunk-5SGNUQNI.js[39m                [2m | [22m[2m-[22m                             [2m | [22m  [36m3.65 kB[39m[2m | [22m
 [32mspec-app-core-live-game.js[39m       [2m | [22m[2mspec-app-core-live-game[22m       [2m | [22m  [36m2.47 kB[39m[2m | [22m
-[32mspec-app-core-chess-clock.js[39m     [2m | [22m[2mspec-app-core-chess-clock[22m     [2m | [22m  [36m1.50 kB[39m[2m | [22m
+[32mspec-app-core-chess-clock.js[39m     [2m | [22m[2mspec-app-core-chess-clock[22m     [2m | [22m  [36m1.94 kB[39m[2m | [22m
 [32minit-testbed.js[39m                  [2m | [22m[2minit-testbed[22m                  [2m | [22m  [36m1.21 kB[39m[2m | [22m
 [32mvitest-mock-patch.js[39m             [2m | [22m[2mvitest-mock-patch[22m             [2m | [22m[36m974 bytes[39m[2m | [22m
 
-[1m [22m                                [2m | [22m[1mInitial total[22m                 [2m | [22m [1m95.94 kB[22m
+[1m [22m                                [2m | [22m[1mInitial total[22m                 [2m | [22m [1m97.58 kB[22m
 
-Application bundle generation complete. [1.660 seconds] - 2026-10-20T08:05:00.174Z
+Application bundle generation complete. [1.977 seconds] - 2026-10-21T00:54:52.680Z
 
 
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90mE:/vertex-chess-arena/frontend[39m
 
+ [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/chess-clock.spec.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 7[2mms[22m[39m
 Sourcemap for "E:/vertex-chess-arena/frontend/node_modules/chess.js/dist/esm/chess.js" points to missing source files
- [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/chess-clock.spec.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
- [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/tournament-logic.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 21[2mms[22m[39m
- [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/live-game.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 79[2mms[22m[39m
+ [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/tournament-logic.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m [30m[42m vertex-chess-arena [49m[39m src/app/core/live-game.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 80[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
-[2m      Tests [22m [1m[32m18 passed[39m[22m[90m (18)[39m
-[2m   Start at [22m 04:05:01
-[2m   Duration [22m 14.00s[2m (transform 385ms, setup 1.16s, import 344ms, tests 107ms, environment 38.37s)[22m
+[2m      Tests [22m [1m[32m19 passed[39m[22m[90m (19)[39m
+[2m   Start at [22m 20:54:53
+[2m   Duration [22m 10.27s[2m (transform 905ms, setup 1.81s, import 404ms, tests 107ms, environment 26.82s)[22m
 

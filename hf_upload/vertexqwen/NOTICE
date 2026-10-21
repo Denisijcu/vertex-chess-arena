@@ -1,0 +1,7 @@
+Qwen is licensed under the Qwen RESEARCH LICENSE AGREEMENT, Copyright (c) Alibaba Cloud. All Rights Reserved.
+
+Built with Qwen.
+
+The files in this repository are derivative works of Qwen/Qwen2.5-3B-Instruct, modified by
+Vertex Coders LLC (Denis Sanchez Leyva): QLoRA fine-tuning for chess move selection, merged
+and quantized to GGUF q4_k_m.

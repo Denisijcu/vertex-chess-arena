@@ -1,3 +1,4 @@
+import { BACKEND } from '../../core/backend-config';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
@@ -39,8 +40,8 @@ import { PlayerStripComponent } from '../../shared/player-strip';
   host: { '(document:keydown)': 'onKey($event)' },
   template: `
     @if (game(); as g) {
-      <div class="grid lg:grid-cols-[minmax(0,640px)_1fr] gap-6 items-start">
-        <section aria-label="Tablero" class="glass p-3 md:p-4">
+      <div class="grid lg:grid-cols-[minmax(0,640px)_1fr] gap-4 sm:gap-6 items-start">
+        <section aria-label="Tablero" class="glass p-2 sm:p-3 md:p-4 min-w-0">
           <vx-player-strip
             [contender]="g.contender(topSide())" [side]="topSide()" [timeMs]="g.clock.time()[topSide()]"
             [baseMs]="g.timeControl.baseMs" [active]="g.clock.active() === topSide()"
@@ -51,6 +52,22 @@ import { PlayerStripComponent } from '../../shared/player-strip';
               [lastMove]="g.lastMove()" [checkSquare]="checkSquare()"
               [legalTargets]="legalTargets" [isPromotion]="isPromotion" [tryMove]="tryMove"
               [ariaLabel]="'Tablero. Turno de ' + (g.turn() === 'w' ? 'blancas' : 'negras')" />
+            @if (g.status() === 'finished' && !hideResult()) {
+              <div class="absolute inset-0 grid place-items-center bg-black/45 rounded-lg" role="dialog" aria-modal="true" aria-label="Fin de la partida">
+                <div class="glass !bg-zinc-900/95 w-72 p-6 text-center shadow-2xl relative">
+                  <button type="button" class="absolute top-2 right-2 btn btn-ghost !p-1.5" (click)="hideResult.set(true)" aria-label="Cerrar">
+                    <svg lucideX class="size-4"></svg>
+                  </button>
+                  <p class="text-2xl font-extrabold">{{ headline() }}</p>
+                  <p class="text-sm text-zinc-400 mt-1">{{ terminationText() }}</p>
+                  <p class="font-mono text-3xl font-bold mt-3">{{ g.result() }}</p>
+                  <div class="grid grid-cols-2 gap-2 mt-5">
+                    <a routerLink="/" class="btn btn-ghost">Nueva</a>
+                    <button type="button" class="btn btn-primary" (click)="rematch()">Revancha</button>
+                  </div>
+                </div>
+              </div>
+            }
             @if (g.status() === 'ready') {
               <div class="absolute inset-0 grid place-items-center bg-black/55 backdrop-blur-[2px] rounded-lg">
                 <div class="text-center px-6">
@@ -69,7 +86,7 @@ import { PlayerStripComponent } from '../../shared/player-strip';
             [thinking]="g.thinking() === bottomSide()" [stats]="g.stats()[bottomSide()]" />
         </section>
 
-        <aside class="space-y-4">
+        <aside class="space-y-4 min-w-0">
           @if (g.status() === 'finished') {
             <div class="glass p-5 border-cyan-400/30" role="status">
               <p class="text-xs uppercase tracking-widest text-zinc-400">Resultado</p>
@@ -107,7 +124,7 @@ import { PlayerStripComponent } from '../../shared/player-strip';
               @if (g.status() !== 'finished') {
                 <button type="button" class="btn btn-ghost" (click)="g.abort()"><svg lucideX class="size-4"></svg> Anular</button>
               } @else {
-                <button type="button" class="btn btn-primary" (click)="session.rematch()"><svg lucideRefreshCcw class="size-4"></svg> Revancha</button>
+                <button type="button" class="btn btn-primary" (click)="rematch()"><svg lucideRefreshCcw class="size-4"></svg> Revancha</button>
                 <a routerLink="/" class="btn btn-ghost">Nueva partida</a>
               }
             </div>
@@ -160,6 +177,7 @@ export class PlayPage {
   readonly flipped = signal(false);
   readonly confirmResign = signal(false);
   readonly copied = signal(false);
+  readonly hideResult = signal(false);
 
   readonly humanSide = computed<Side | null>(() => {
     const g = this.game();
@@ -193,6 +211,13 @@ export class PlayPage {
     if (r === '1/2-1/2') return 'Tablas';
     return `Gana ${r === '1-0' ? g.white.label : g.black.label}`;
   });
+  /** Titular del cartel final, al estilo de chess.com: "Ganan las negras". */
+  readonly headline = computed(() => {
+    const r = this.game()?.result();
+    if (!r) return '';
+    if (r === '1/2-1/2') return 'Tablas';
+    return r === '1-0' ? 'Ganan las blancas' : 'Ganan las negras';
+  });
   readonly terminationText = computed(() => {
     const t = this.game()?.termination();
     return t ? TERMINATION_LABEL[t] : '';
@@ -202,7 +227,7 @@ export class PlayPage {
       ({
         idle: '',
         saving: 'Guardando en el historial…',
-        saved: 'Guardada en el historial y en logs/matches_history.pgn',
+        saved: BACKEND.kind === 'space' ? 'Guardada en el historial de este navegador' : 'Guardada en el historial y en logs/matches_history.pgn',
         error: `No se pudo guardar: ${this.session.saveError() ?? ''}`,
       })[this.session.saveState()],
   );
@@ -212,6 +237,11 @@ export class PlayPage {
   readonly legalTargets = (sq: string) => this.game()?.legalTargets(sq) ?? [];
   readonly isPromotion = (from: string, to: string) => this.game()?.isPromotion(from, to) ?? false;
   readonly tryMove = (m: BoardMove) => this.game()?.humanMove(m.from, m.to, m.promotion) ?? false;
+
+  rematch(): void {
+    this.hideResult.set(false);
+    this.session.rematch();
+  }
 
   resign(): void {
     const side = this.humanSide();

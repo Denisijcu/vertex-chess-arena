@@ -1,0 +1,22 @@
+# Vertex Chess Arena — versión pública (frontend). El backend es el Space de Hugging Face.
+[build]
+  base = "frontend"
+  command = "npm ci && npm run build:netlify"
+  publish = "dist/vertex-chess-arena/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_VERSION = "11"
+
+# SPA: todas las rutas sirven index.html (las rutas reales las resuelve Angular)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"

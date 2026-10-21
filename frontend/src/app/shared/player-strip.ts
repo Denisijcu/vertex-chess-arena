@@ -11,8 +11,8 @@ import { ClockComponent } from './clock';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ClockComponent, DecimalPipe, LucideBot, LucideCpu, LucideUser],
   template: `
-    <div class="flex items-center gap-3 py-2">
-      <div class="size-11 shrink-0 rounded-xl grid place-items-center border" [class]="avatarTone()">
+    <div class="flex items-center gap-2 sm:gap-3 py-2">
+      <div class="size-9 sm:size-11 shrink-0 rounded-xl grid place-items-center border" [class]="avatarTone()">
         @switch (avatarKind()) {
           @case ('human') { <svg lucideUser class="size-5"></svg> }
           @case ('engine') { <svg lucideCpu class="size-5"></svg> }
@@ -22,14 +22,14 @@ import { ClockComponent } from './clock';
       <div class="min-w-0 flex-1">
         <div class="flex items-center gap-2 min-w-0">
           <span class="size-3 rounded-full border border-white/30 shrink-0" [class]="side() === 'w' ? 'bg-zinc-100' : 'bg-zinc-900'" [attr.aria-label]="side() === 'w' ? 'Blancas' : 'Negras'"></span>
-          <span class="font-semibold truncate">{{ contender().label }}</span>
+          <span class="font-semibold truncate text-sm sm:text-base">{{ contender().label }}</span>
           @if (thinking()) {
-            <span class="chip text-cyan-300 border-cyan-400/30">
-              <span class="size-1.5 rounded-full bg-cyan-300 animate-ping"></span> pensando
+            <span class="chip shrink-0 text-cyan-300 border-cyan-400/30" aria-label="pensando">
+              <span class="size-1.5 rounded-full bg-cyan-300 animate-ping"></span><span class="hidden sm:inline">pensando</span>
             </span>
           }
         </div>
-        <div class="text-xs text-zinc-400 mt-0.5 flex flex-wrap gap-x-3">
+        <div class="text-[11px] sm:text-xs text-zinc-400 mt-0.5 flex flex-wrap gap-x-3">
           @if (contender().kind === 'ai') {
             <span>{{ modeLabel() }}</span>
             @if (stats().moves > 0) {

@@ -10,7 +10,7 @@ function fakeClock(baseMs: number, incMs: number) {
 }
 
 describe('ChessClock', () => {
-  it('descuenta el tiempo pensado y suma el incremento (Fischer)', () => {
+  it('Bronstein: si piensa más que la demora, recupera solo la demora', () => {
     const { clock, advance } = fakeClock(60_000, 2_000);
     clock.start('w');
     advance(5_000);
@@ -21,6 +21,21 @@ describe('ChessClock', () => {
     advance(1_000);
     clock.tick();
     expect(clock.time().b).toBe(59_000);
+    clock.destroy();
+  });
+
+  it('Bronstein: el reloj nunca sube aunque se juegue rápido', () => {
+    const { clock, advance } = fakeClock(180_000, 2_000);
+    clock.start('w');
+    for (let i = 0; i < 50; i++) {
+      advance(1_000); // la IA responde en 1 s, menos que la demora de 2 s
+      const r = clock.press('w');
+      expect(r.remainingMs).toBe(180_000);
+      advance(500);
+      clock.press('b');
+    }
+    expect(clock.time().w).toBe(180_000);
+    expect(clock.time().b).toBe(180_000);
     clock.destroy();
   });
 

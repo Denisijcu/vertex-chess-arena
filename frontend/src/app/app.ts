@@ -11,8 +11,8 @@ import { TournamentRunner } from './core/tournament-runner.service';
   template: `
     <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 btn btn-primary">Saltar al contenido</a>
     <header class="sticky top-0 z-30 border-b border-white/10 bg-black/70 backdrop-blur-md">
-      <nav class="mx-auto max-w-7xl px-4 h-16 flex items-center gap-6" aria-label="Principal">
-        <a routerLink="/" class="flex items-center gap-2.5 font-extrabold tracking-tight text-lg shrink-0">
+      <nav class="mx-auto max-w-7xl px-4 h-14 sm:h-16 flex items-center gap-3 sm:gap-6" aria-label="Principal">
+        <a routerLink="/" class="flex items-center gap-2 sm:gap-2.5 font-extrabold tracking-tight text-base sm:text-lg shrink-0">
           <img src="favicon.svg" alt="" width="30" height="30" class="rounded-lg" />
           <span>Vertex <span class="bg-gradient-to-r from-cyan-300 to-violet-400 bg-clip-text text-transparent">Chess Arena</span></span>
         </a>
@@ -36,9 +36,9 @@ import { TournamentRunner } from './core/tournament-runner.service';
               <span class="size-1.5 rounded-full bg-amber-300 animate-pulse"></span> Torneo en curso
             </a>
           }
-          <span class="chip" [class]="ollamaTone()" role="status">
+          <span class="chip whitespace-nowrap" [class]="ollamaTone()" role="status" [attr.aria-label]="label + ' ' + ollamaText()">
             <span class="size-1.5 rounded-full" [class]="ollamaDot()"></span>
-            Ollama {{ ollamaText() }}
+            <span class="hidden sm:inline">{{ label }} {{ ollamaText() }}</span><span class="sm:hidden">{{ label }}</span>
           </span>
         </div>
       </nav>
@@ -69,6 +69,7 @@ export class App implements OnInit {
   readonly runner = inject(TournamentRunner);
   private readonly destroyRef = inject(DestroyRef);
   readonly year = new Date().getFullYear();
+  readonly label = this.api.backendLabel;
 
   readonly links = [
     { path: '/', label: 'Arena', icon: 'zap' },
@@ -93,7 +94,8 @@ export class App implements OnInit {
   ngOnInit(): void {
     const poll = () => void this.api.health().catch(() => undefined);
     poll();
-    const id = setInterval(poll, 15_000);
+    // En la versión pública /health no gasta GPU, pero no hace falta preguntar tan seguido.
+    const id = setInterval(poll, this.api.isPublic ? 60_000 : 15_000);
     this.destroyRef.onDestroy(() => clearInterval(id));
   }
 }

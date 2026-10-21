@@ -12,6 +12,7 @@ import {
 } from '@lucide/angular';
 import { GameSession } from '../../core/game-session.service';
 import { Contender, EngineMode, TimeControl } from '../../core/models';
+import { ApiService } from '../../core/api.service';
 import { HUMAN, MODE_HINT, MODE_LABEL, PlayersStore } from '../../core/players.store';
 import { TimeControlPickerComponent } from '../../shared/time-control-picker';
 
@@ -113,7 +114,18 @@ type Kind = 'human-ai' | 'ai-ai';
 
         @if (options().length === 0 && !players.loading()) {
           <p class="text-sm text-amber-200 rounded-xl border border-amber-400/30 bg-amber-400/10 p-3">
-            No hay modelos disponibles. Arranca Ollama y crea los modelos (ver README); el motor del árbitro siempre está disponible si la API corre.
+            @if (api.isPublic) {
+              El servidor de los modelos en Hugging Face está arrancando. Espera un minuto y recarga la página.
+            } @else {
+              No hay modelos disponibles. Arranca Ollama y crea los modelos (ver README); el motor del árbitro siempre está disponible si la API corre.
+            }
+          </p>
+        }
+        @if (api.isPublic) {
+          <p class="text-xs text-zinc-400 rounded-xl border border-white/10 p-3">
+            Los modelos corren en una GPU compartida de Hugging Face con una cuota diaria por visitante
+            (unos 2 minutos sin cuenta). Una partida contra una IA cabe de sobra; una entre dos IA gasta el doble.
+            El <strong>Motor del árbitro</strong> no usa GPU.
           </p>
         }
 
@@ -193,6 +205,7 @@ type Kind = 'human-ai' | 'ai-ai';
 })
 export class LobbyPage implements OnInit {
   readonly players = inject(PlayersStore);
+  readonly api = inject(ApiService);
   private readonly session = inject(GameSession);
   private readonly router = inject(Router);
 
@@ -212,7 +225,8 @@ export class LobbyPage implements OnInit {
   readonly color = signal<'w' | 'b' | 'random'>('w');
   readonly maxPlies = signal(300);
   readonly delay = signal(400);
-  readonly timeControl = signal<TimeControl>({ baseMs: 180_000, incMs: 2_000 });
+  // 3 minutos sin incremento: el reloj solo baja (como "3 min" en chess.com).
+  readonly timeControl = signal<TimeControl>({ baseMs: 180_000, incMs: 0 });
 
   readonly options = computed(() => this.players.contenderOptions());
   readonly canStart = computed(() => {

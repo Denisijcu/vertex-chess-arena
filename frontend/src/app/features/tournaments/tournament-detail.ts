@@ -98,7 +98,7 @@ import { PlayerStripComponent } from '../../shared/player-strip';
       <div [class]="showLive() ? 'mt-6 grid gap-6 items-start xl:grid-cols-[minmax(0,520px)_1fr]' : 'mt-6 grid gap-6 items-start'">
         <!-- Partida en vivo -->
         @if (showLive()) {
-        <section class="glass p-3 md:p-4" aria-label="Partida en vivo">
+        <section class="glass p-2 sm:p-3 md:p-4 min-w-0" aria-label="Partida en vivo">
           @if (runner.live(); as g) {
             <p class="text-xs text-zinc-400 px-1 pb-1">Ronda {{ livePairing()?.round }} · en vivo</p>
             <vx-player-strip [contender]="g.black" side="b" [timeMs]="g.clock.time().b" [baseMs]="g.timeControl.baseMs"
@@ -138,12 +138,12 @@ import { PlayerStripComponent } from '../../shared/player-strip';
               <thead class="text-xs text-zinc-400 text-left">
                 <tr class="border-b border-white/10">
                   <th class="px-4 py-2 w-10">#</th><th class="py-2">Jugador</th>
-                  <th class="py-2 text-right">Pts</th><th class="py-2 text-right">J</th>
-                  <th class="py-2 text-right">G</th><th class="py-2 text-right">T</th><th class="py-2 text-right">P</th>
-                  <th class="py-2 text-right" title="Sonneborn-Berger">SB</th>
-                  <th class="py-2 text-right" title="Respuestas válidas del modelo">Válidas</th>
-                  <th class="py-2 text-right" title="Tiempo medio por jugada">t/jug</th>
-                  <th class="px-4 py-2 text-right" title="Derrotas por tiempo">⏱</th>
+                  <th class="py-2 text-right">Pts</th><th class="hidden sm:table-cell py-2 text-right">J</th>
+                  <th class="py-2 text-right px-1">G</th><th class="py-2 text-right px-1">T</th><th class="py-2 text-right pl-1 pr-4 sm:pr-1">P</th>
+                  <th class="hidden sm:table-cell py-2 text-right" title="Sonneborn-Berger">SB</th>
+                  <th class="hidden sm:table-cell py-2 text-right" title="Respuestas válidas del modelo">Válidas</th>
+                  <th class="hidden sm:table-cell py-2 text-right" title="Tiempo medio por jugada">t/jug</th>
+                  <th class="hidden sm:table-cell px-4 py-2 text-right" title="Derrotas por tiempo">⏱</th>
                 </tr>
               </thead>
               <tbody>
@@ -151,15 +151,15 @@ import { PlayerStripComponent } from '../../shared/player-strip';
                   <tr class="border-b border-white/5 last:border-0">
                     <td class="px-4 py-2 font-mono text-zinc-400">{{ r.rank }}</td>
                     <td class="py-2 font-medium">{{ r.contender.label }}</td>
-                    <td class="py-2 text-right font-mono font-bold text-white">{{ r.points | number: '1.0-1' }}</td>
-                    <td class="py-2 text-right font-mono">{{ r.played }}</td>
-                    <td class="py-2 text-right font-mono text-emerald-300">{{ r.wins }}</td>
-                    <td class="py-2 text-right font-mono">{{ r.draws }}</td>
-                    <td class="py-2 text-right font-mono text-rose-300">{{ r.losses }}</td>
-                    <td class="py-2 text-right font-mono">{{ r.sonnebornBerger | number: '1.0-2' }}</td>
-                    <td class="py-2 text-right font-mono">{{ r.validMovePct === null ? '—' : (r.validMovePct | number: '1.0-0') + '%' }}</td>
-                    <td class="py-2 text-right font-mono">{{ r.avgThinkMs === null ? '—' : (r.avgThinkMs / 1000 | number: '1.1-1') + ' s' }}</td>
-                    <td class="px-4 py-2 text-right font-mono">{{ r.timeLosses }}</td>
+                    <td class="py-2 px-2 text-right font-mono font-bold text-white">{{ r.points | number: '1.0-1' }}</td>
+                    <td class="hidden sm:table-cell py-2 text-right font-mono">{{ r.played }}</td>
+                    <td class="py-2 px-1 text-right font-mono text-emerald-300">{{ r.wins }}</td>
+                    <td class="py-2 px-1 text-right font-mono">{{ r.draws }}</td>
+                    <td class="py-2 pl-1 pr-4 sm:pr-1 text-right font-mono text-rose-300">{{ r.losses }}</td>
+                    <td class="hidden sm:table-cell py-2 text-right font-mono">{{ r.sonnebornBerger | number: '1.0-2' }}</td>
+                    <td class="hidden sm:table-cell py-2 text-right font-mono">{{ r.validMovePct === null ? '—' : (r.validMovePct | number: '1.0-0') + '%' }}</td>
+                    <td class="hidden sm:table-cell py-2 text-right font-mono whitespace-nowrap">{{ r.avgThinkMs === null ? '—' : (r.avgThinkMs / 1000 | number: '1.1-1') + ' s' }}</td>
+                    <td class="hidden sm:table-cell px-4 py-2 text-right font-mono">{{ r.timeLosses }}</td>
                   </tr>
                 }
               </tbody>
@@ -199,14 +199,14 @@ import { PlayerStripComponent } from '../../shared/player-strip';
             <ul class="divide-y divide-white/5">
               @for (p of t.pairings; track p.id) {
                 <li class="px-4 py-2.5 flex items-center gap-3 text-sm">
-                  <span class="w-14 text-xs text-zinc-500">R{{ p.round }}</span>
-                  <span class="flex-1 min-w-0 truncate">
-                    <span class="inline-block size-2.5 rounded-full bg-zinc-100 mr-1 align-middle"></span>{{ name(p.white) }}
-                    <span class="text-zinc-500 mx-1">vs</span>
-                    <span class="inline-block size-2.5 rounded-full bg-zinc-900 border border-white/30 mr-1 align-middle"></span>{{ name(p.black) }}
+                  <span class="w-8 sm:w-14 shrink-0 text-xs text-zinc-500">R{{ p.round }}</span>
+                  <span class="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                    <span class="truncate"><span class="inline-block size-2.5 rounded-full bg-zinc-100 mr-1 align-middle"></span>{{ name(p.white) }}</span>
+                    <span class="hidden sm:inline text-zinc-500 mx-1">vs</span>
+                    <span class="truncate"><span class="inline-block size-2.5 rounded-full bg-zinc-900 border border-white/30 mr-1 align-middle"></span>{{ name(p.black) }}</span>
                   </span>
                   @if (p.result) {
-                    <span class="font-mono font-bold w-16 text-right" [class]="resultTone(p.result)">{{ p.result }}</span>
+                    <span class="font-mono font-bold w-16 shrink-0 text-right" [class]="resultTone(p.result)">{{ p.result }}</span>
                     <span class="hidden sm:inline w-40 text-xs text-zinc-400 truncate">{{ termLabel(p.termination) }} · {{ p.plies }} pl</span>
                     <button type="button" class="btn btn-ghost !p-1.5" (click)="downloadOne(p)" aria-label="Descargar PGN de la partida">
                       <svg lucideDownload class="size-3.5"></svg>

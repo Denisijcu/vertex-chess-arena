@@ -15,9 +15,9 @@
 7. **El árbitro:** alpha-beta, quiescencia, SEE, mop-up… y por qué un LLM necesita niñera en ajedrez.
 8. **"Qwen siempre gana":** la auditoría. El fallback que premiaba fallar, el adaptador equivocado, el código muerto y el parser indulgente.
 9. **Un duelo justo:** el entrenamiento espejo, el modo puro y el fallback aleatorio.
-10. **La arena profesional:** Angular, relojes Fischer, reglas FIDE, torneos con Berger y Sonneborn-Berger.
-11. **La verdad del tablero:** Qwen V3 contra Gemma en modo puro. *(Pendiente: se escribe con los resultados reales.)*
+10. **La arena profesional:** Angular, relojes Bronstein, reglas FIDE, torneos con Berger y Sonneborn-Berger.
+11. **La verdad del tablero:** el duelo puro (Gemma 5,5–4,5) y la Copa Vertex Verano 2026: con árbitro 9–0 contra los puros, y un modelo con 1 jugada válida de 193 empatado arriba.
 12. **Lecciones para quien afina modelos:** medir al modelo y no al sistema.
 13. **Publicarlo sin gastar:** Hugging Face con ZeroGPU y Netlify.
 
-**Apéndices:** comandos con su directorio, hiperparámetros de ambos modelos y PGN de las partidas clave.
+**Apéndices:** A comandos con su directorio · B hiperparámetros · C partidas clave en PGN · D–J el código completo (datos, entrenamientos, exportación, árbitro, arena y diagnósticos, API, reloj y torneos), cada archivo con su guía de lectura.

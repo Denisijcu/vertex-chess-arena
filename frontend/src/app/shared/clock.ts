@@ -6,7 +6,7 @@ import { formatClock } from '../core/time-controls';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
-      class="font-mono tabular-nums font-bold rounded-xl px-4 py-2 text-3xl md:text-4xl transition-colors border"
+      class="font-mono tabular-nums font-bold rounded-xl px-2.5 py-1.5 sm:px-4 sm:py-2 text-2xl sm:text-3xl md:text-4xl transition-colors border whitespace-nowrap"
       [class]="tone()"
       role="timer"
       [attr.aria-label]="'Reloj de ' + sideName() + ': ' + text()"

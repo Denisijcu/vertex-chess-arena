@@ -64,6 +64,35 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "netlify": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "900kB",
+                  "maximumError": "1.5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kB",
+                  "maximumError": "12kB"
+                }
+              ],
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": false
+              },
+              "fileReplacements": [
+                {
+                  "replace": "src/app/core/backend-config.ts",
+                  "with": "src/app/core/backend-config.netlify.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

@@ -2,13 +2,19 @@ import { computed, signal } from '@angular/core';
 import { Side, TimeControl } from './models';
 
 /**
- * Reloj de ajedrez Fischer (base + incremento por jugada).
+ * Reloj de ajedrez con demora Bronstein (la de los torneos de la US Chess).
+ *
+ * Ritmo "3+2" = 3 minutos por jugador y hasta 2 s de devolución por jugada: al terminar
+ * una jugada se le devuelve al jugador lo que pensó, con un tope de 2 s. Por eso el reloj
+ * NUNCA sube por encima de lo que tenía al empezar su turno, y si llega a 0:00 pierde.
+ * (Con Fischer, el sistema de la FIDE, se suman siempre los 2 s y el reloj puede subir si
+ * se juega rápido; con modelos que responden en ~1.5 s eso confundía.)
  *
  * - El tiempo se mide con un reloj monotónico (performance.now) y se refresca cada 100 ms;
  *   el valor exacto se calcula siempre a partir de la marca de inicio, así el redondeo del
  *   intervalo nunca acumula error.
- * - press(side): el jugador `side` terminó su jugada → se le descuenta lo que pensó, se le suma
- *   el incremento y empieza a correr el reloj del rival.
+ * - press(side): el jugador `side` terminó su jugada → se le descuenta lo que pensó, se le
+ *   devuelve hasta `incMs` de ese tiempo y empieza a correr el reloj del rival.
  * - pause()/resume() congelan el reloj (pausas visuales del modo IA vs IA, errores de red).
  */
 export class ChessClock {
@@ -18,6 +24,8 @@ export class ChessClock {
   private startedAt = 0;
   private timer: ReturnType<typeof setInterval> | null = null;
   private flagged = false;
+
+  static readonly MODE = 'Bronstein';
 
   /** Tiempo restante en vivo de cada lado. */
   readonly time = computed<Record<Side, number>>(() => {
@@ -50,7 +58,7 @@ export class ChessClock {
 
   /**
    * `side` completó su jugada. Devuelve el tiempo que pensó y el reloj que le queda
-   * (ya con el incremento).
+   * (ya con la devolución Bronstein: min(lo pensado, demora)).
    */
   press(side: Side): { thinkMs: number; remainingMs: number } {
     const t = this.clockFn();
@@ -60,7 +68,7 @@ export class ChessClock {
       thinkMs = t - this.startedAt;
       rem[side] = Math.max(0, rem[side] - thinkMs);
     }
-    rem[side] += this.control.incMs;
+    rem[side] += Math.min(thinkMs, this.control.incMs);
     this.remaining.set(rem);
     const other: Side = side === 'w' ? 'b' : 'w';
     this.startedAt = t;

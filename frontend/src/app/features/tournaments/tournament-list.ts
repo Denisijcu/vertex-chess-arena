@@ -123,6 +123,13 @@ type Summary = Pick<Tournament, 'id' | 'name' | 'format' | 'status' | 'createdAt
         </div>
 
         <p class="text-sm text-zinc-400">{{ summary() }}</p>
+        @if (api.isPublic) {
+          <p class="text-xs text-amber-200/90">
+            Cada partida entre modelos gasta tu cuota diaria de GPU en Hugging Face (unos 2 minutos sin cuenta):
+            un torneo largo no cabe en un día. Para verlos completos, abre la Copa Vertex Verano 2026 de la lista,
+            que ya está jugada. Con el Motor del árbitro no se gasta GPU.
+          </p>
+        }
         @if (createError()) { <p class="text-sm text-rose-300" role="alert">{{ createError() }}</p> }
         <button type="submit" class="btn btn-primary w-full !py-3" [disabled]="!valid() || creating()">
           {{ creating() ? 'Creando…' : 'Crear torneo' }}
@@ -132,7 +139,7 @@ type Summary = Pick<Tournament, 'id' | 'name' | 'format' | 'status' | 'createdAt
   `,
 })
 export class TournamentListPage implements OnInit {
-  private readonly api = inject(ApiService);
+  readonly api = inject(ApiService);
   private readonly runner = inject(TournamentRunner);
   private readonly router = inject(Router);
   readonly players = inject(PlayersStore);
@@ -208,9 +215,10 @@ export class TournamentListPage implements OnInit {
     if (!this.valid()) return;
     this.creating.set(true);
     this.createError.set(null);
+    let created: { id: string } | null = null;
     try {
       const participants = this.options().filter((o) => this.selected().has(o.id));
-      const t = await this.runner.create({
+      created = await this.runner.create({
         name: this.name(),
         format: this.format(),
         participants,
@@ -219,11 +227,16 @@ export class TournamentListPage implements OnInit {
         moveDelayMs: this.delay(),
         matchGames: this.matchGames(),
       });
-      await this.router.navigate(['/torneos', t.id]);
     } catch (e) {
-      this.createError.set(e instanceof ApiError ? e.message : 'No se pudo crear el torneo.');
+      this.createError.set(
+        e instanceof ApiError ? e.message : `No se pudo crear el torneo: ${e instanceof Error ? e.message : String(e)}`,
+      );
     } finally {
       this.creating.set(false);
     }
+    if (!created) return;
+    // El torneo ya está guardado: un fallo al cambiar de pantalla no es un fallo al crearlo.
+    const ok = await this.router.navigate(['/torneos', created.id]).catch(() => false);
+    if (!ok) window.location.assign(`/torneos/${created.id}`);
   }
 }

@@ -5,27 +5,27 @@
 [33m>[39m Building...
 [32m√[39m Building...
 [1mInitial chunk files[22m[2m | [22m[1mNames[22m            [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
-[32mchunk-J75R562E.js[39m  [2m | [22m[2m-[22m                [2m | [22m[36m378.66 kB[39m[2m | [22m               [36m87.60 kB[39m
-[32mstyles-RCBTU77S.css[39m[2m | [22m[2mstyles[22m           [2m | [22m [36m47.18 kB[39m[2m | [22m                [36m7.36 kB[39m
-[32mchunk-7DSRUWVC.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m7.77 kB[39m[2m | [22m                [36m2.76 kB[39m
-[32mchunk-URDMZJZL.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m6.49 kB[39m[2m | [22m                [36m2.48 kB[39m
-[32mmain-TPGYE4XT.js[39m   [2m | [22m[2mmain[22m             [2m | [22m  [36m6.05 kB[39m[2m | [22m                [36m2.23 kB[39m
+[32mchunk-SYOPSEOX.js[39m  [2m | [22m[2m-[22m                [2m | [22m[36m378.72 kB[39m[2m | [22m               [36m87.78 kB[39m
+[32mstyles-EJTIXQXB.css[39m[2m | [22m[2mstyles[22m           [2m | [22m [36m49.23 kB[39m[2m | [22m                [36m7.58 kB[39m
+[32mchunk-TGRMUDQL.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m7.82 kB[39m[2m | [22m                [36m2.78 kB[39m
+[32mchunk-5Y7FGPO2.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m6.49 kB[39m[2m | [22m                [36m2.49 kB[39m
+[32mmain-H5GZFEYW.js[39m   [2m | [22m[2mmain[22m             [2m | [22m  [36m6.43 kB[39m[2m | [22m                [36m2.37 kB[39m
 
-[1m [22m                  [2m | [22m[1mInitial total[22m    [2m | [22m[1m446.15 kB[22m[2m | [22m              [1m102.43 kB[22m
+[1m [22m                  [2m | [22m[1mInitial total[22m    [2m | [22m[1m448.70 kB[22m[2m | [22m              [1m103.00 kB[22m
 
 [1mLazy chunk files[22m   [2m | [22m[1mNames[22m            [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
-[32mchunk-ELBUY7FG.js[39m  [2m | [22m[2m-[22m                [2m | [22m [36m54.69 kB[39m[2m | [22m               [36m12.74 kB[39m
-[32mchunk-XMT33RLO.js[39m  [2m | [22m[2m-[22m                [2m | [22m [36m39.06 kB[39m[2m | [22m                [36m8.74 kB[39m
-[32mchunk-SR5PNSEK.js[39m  [2m | [22m[2mtournament-detail[22m[2m | [22m [36m14.88 kB[39m[2m | [22m                [36m4.68 kB[39m
-[32mchunk-ZT7SDPAV.js[39m  [2m | [22m[2mlobby[22m            [2m | [22m [36m11.06 kB[39m[2m | [22m                [36m3.67 kB[39m
-[32mchunk-7TPZFFVN.js[39m  [2m | [22m[2mplay[22m             [2m | [22m [36m10.94 kB[39m[2m | [22m                [36m3.49 kB[39m
-[32mchunk-YSU2I6GT.js[39m  [2m | [22m[2mtournament-list[22m  [2m | [22m  [36m9.29 kB[39m[2m | [22m                [36m3.34 kB[39m
-[32mchunk-6NIOTIXJ.js[39m  [2m | [22m[2mhistory[22m          [2m | [22m  [36m8.10 kB[39m[2m | [22m                [36m3.00 kB[39m
-[32mchunk-KC2AH5QE.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m4.44 kB[39m[2m | [22m                [36m1.69 kB[39m
-[32mchunk-F5JBLFHG.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m1.32 kB[39m[2m | [22m              [36m663 bytes[39m
-[32mchunk-EAQBNMH7.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m1.15 kB[39m[2m | [22m              [36m562 bytes[39m
+[32mchunk-KFNMQL7A.js[39m  [2m | [22m[2m-[22m                [2m | [22m [36m54.69 kB[39m[2m | [22m               [36m12.76 kB[39m
+[32mchunk-NJU37GLP.js[39m  [2m | [22m[2m-[22m                [2m | [22m [36m39.47 kB[39m[2m | [22m                [36m8.93 kB[39m
+[32mchunk-KI64IPTP.js[39m  [2m | [22m[2mtournament-detail[22m[2m | [22m [36m15.47 kB[39m[2m | [22m                [36m4.77 kB[39m
+[32mchunk-VTXPH4B6.js[39m  [2m | [22m[2mplay[22m             [2m | [22m [36m12.22 kB[39m[2m | [22m                [36m3.77 kB[39m
+[32mchunk-J7IFFSDW.js[39m  [2m | [22m[2mlobby[22m            [2m | [22m [36m11.06 kB[39m[2m | [22m                [36m3.68 kB[39m
+[32mchunk-ZQWXGI63.js[39m  [2m | [22m[2mtournament-list[22m  [2m | [22m  [36m9.42 kB[39m[2m | [22m                [36m3.40 kB[39m
+[32mchunk-WLYXGDL2.js[39m  [2m | [22m[2mhistory[22m          [2m | [22m  [36m8.13 kB[39m[2m | [22m                [36m3.03 kB[39m
+[32mchunk-VWLEZT67.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m4.64 kB[39m[2m | [22m                [36m1.77 kB[39m
+[32mchunk-7HK7JVE7.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m1.32 kB[39m[2m | [22m              [36m663 bytes[39m
+[32mchunk-YFXALBHH.js[39m  [2m | [22m[2m-[22m                [2m | [22m  [36m1.15 kB[39m[2m | [22m              [36m565 bytes[39m
 
-Application bundle generation complete. [5.363 seconds] - 2026-10-20T08:21:23.980Z
+Application bundle generation complete. [4.465 seconds] - 2026-10-21T01:13:59.749Z
 
 Output location: E:\vertex-chess-arena\frontend\dist\vertex-chess-arena
 

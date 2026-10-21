@@ -1,0 +1,1169 @@
+{
+ "id": "vkzx75cov1",
+ "name": "Copa Vertex Primavera 2026",
+ "format": "double-round-robin",
+ "timeControl": {
+  "baseMs": 30000,
+  "incMs": 0
+ },
+ "participants": [
+  {
+   "id": "vertexqwen-v3:pure",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM puro"
+  },
+  {
+   "id": "vertexqwen-v3:arbiter",
+   "kind": "ai",
+   "model": "vertexqwen-v3",
+   "mode": "arbiter",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · V3 · LLM + árbitro"
+  },
+  {
+   "id": "vertexgemma:pure",
+   "kind": "ai",
+   "model": "vertexgemma",
+   "mode": "pure",
+   "family": "gemma",
+   "label": "Gemma 2 · 2B · LLM puro"
+  },
+  {
+   "id": "vertexgemma:arbiter",
+   "kind": "ai",
+   "model": "vertexgemma",
+   "mode": "arbiter",
+   "family": "gemma",
+   "label": "Gemma 2 · 2B · LLM + árbitro"
+  },
+  {
+   "id": "vertexqwen:pure",
+   "kind": "ai",
+   "model": "vertexqwen",
+   "mode": "pure",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · legacy · LLM puro"
+  },
+  {
+   "id": "vertexqwen:arbiter",
+   "kind": "ai",
+   "model": "vertexqwen",
+   "mode": "arbiter",
+   "family": "qwen",
+   "label": "Qwen 2.5 · 3B · legacy · LLM + árbitro"
+  },
+  {
+   "id": "vertex-engine:engine",
+   "kind": "ai",
+   "model": "vertex-engine",
+   "mode": "engine",
+   "family": "engine",
+   "label": "Motor del árbitro"
+  }
+ ],
+ "pairings": [
+  {
+   "id": "bw3wxj5z",
+   "round": 1,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 49,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"1\"]\n[White \"Motor del árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"engine\"]\n[BlackMode \"arbiter\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} Nf6 {[%clk 0:00:26.3] [%emt\n0:00:03.6]} 2. e5 {[%clk 0:00:29.8] [%emt 0:00:00.1]} Ng8 {[%clk 0:00:25.7]\n[%emt 0:00:00.5]} 3. d4 {[%clk 0:00:29.5] [%emt 0:00:00.3]} f5 {[%clk 0:00:25.1]\n[%emt 0:00:00.6]} 4. Qh5+ {[%clk 0:00:28.8] [%emt 0:00:00.6]} g6 {[%clk\n0:00:24.6] [%emt 0:00:00.4]} 5. Qf3 {[%clk 0:00:28.6] [%emt 0:00:00.2]} d5\n{[%clk 0:00:23.8] [%emt 0:00:00.8]} 6. c3 {[%clk 0:00:27.7] [%emt 0:00:00.8]} e6\n{[%clk 0:00:22.9] [%emt 0:00:00.9]} 7. b4 {[%clk 0:00:27.2] [%emt 0:00:00.5]} a5\n{[%clk 0:00:21.6] [%emt 0:00:01.2]} 8. bxa5 {[%clk 0:00:26.6] [%emt 0:00:00.6]}\nRxa5 {[%clk 0:00:18.9] [%emt 0:00:02.6]} 9. h4 {[%clk 0:00:25.9] [%emt\n0:00:00.6]} c6 {[%clk 0:00:17.6] [%emt 0:00:01.3]} 10. Bg5 {[%clk 0:00:25.3]\n[%emt 0:00:00.5]} Ne7 {[%clk 0:00:16.8] [%emt 0:00:00.7]} 11. Bf6 {[%clk\n0:00:24.8] [%emt 0:00:00.4]} Rg8 {[%clk 0:00:16.2] [%emt 0:00:00.6]} 12. g4\n{[%clk 0:00:24.3] [%emt 0:00:00.5]} fxg4 {[%clk 0:00:15.1] [%emt 0:00:01.0]} 13.\nQxg4 {[%clk 0:00:23.6] [%emt 0:00:00.6]} Bg7 {[%clk 0:00:14.2] [%emt 0:00:00.9]}\n14. f4 {[%clk 0:00:23.2] [%emt 0:00:00.3]} Bxf6 {[%clk 0:00:13.0] [%emt\n0:00:01.1]} 15. exf6 {[%clk 0:00:22.2] [%emt 0:00:01.0]} Nf5 {[%clk 0:00:12.1]\n[%emt 0:00:00.9]} 16. Qg5 {[%clk 0:00:21.9] [%emt 0:00:00.2]} h5 {[%clk\n0:00:10.7] [%emt 0:00:01.3]} 17. a4 {[%clk 0:00:21.0] [%emt 0:00:00.8]} Kf8\n{[%clk 0:00:09.4] [%emt 0:00:01.2]} 18. Nf3 {[%clk 0:00:20.3] [%emt 0:00:00.7]}\nb6 {[%clk 0:00:08.3] [%emt 0:00:01.0]} 19. Ne5 {[%clk 0:00:19.5] [%emt\n0:00:00.8]} Qe8 {[%clk 0:00:07.3] [%emt 0:00:01.0]} 20. f7 {[%clk 0:00:18.3]\n[%emt 0:00:01.1]} Qxf7 {[%clk 0:00:05.3] [%emt 0:00:02.0]} 21. Nxf7 {[%clk\n0:00:16.1] [%emt 0:00:02.2]} Kxf7 {[%clk 0:00:03.9] [%emt 0:00:01.3]} 22. Bd3\n{[%clk 0:00:15.6] [%emt 0:00:00.5]} Re8 {[%clk 0:00:02.6] [%emt 0:00:01.2]} 23.\nRg1 {[%clk 0:00:14.8] [%emt 0:00:00.7]} Rg8 {[%clk 0:00:01.6] [%emt 0:00:01.0]}\n24. Rg2 {[%clk 0:00:13.9] [%emt 0:00:00.8]} b5 {[%clk 0:00:00.2] [%emt\n0:00:01.3]} 25. Rb2 {[%clk 0:00:12.9] [%emt 0:00:01.0]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 25,
+     "clean": 25,
+     "fallback": 0,
+     "thinkMs": 17075
+    },
+    "b": {
+     "moves": 24,
+     "clean": 20,
+     "fallback": 4,
+     "thinkMs": 29776
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "8935b7659fbd"
+  },
+  {
+   "id": "1tvq5qpg",
+   "round": 1,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen:arbiter",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 19,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"1\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nc3 {[%clk 0:00:27.3] [%emt 0:00:02.6]} e5 {[%clk 0:00:24.2] [%emt\n0:00:05.7]} 2. Nb5 {[%clk 0:00:26.3] [%emt 0:00:00.9]} a6 {[%clk 0:00:21.2]\n[%emt 0:00:02.9]} 3. Nxc7+ {[%clk 0:00:25.6] [%emt 0:00:00.7]} Qxc7 {[%clk\n0:00:19.7] [%emt 0:00:01.5]} 4. Nh3 {[%clk 0:00:25.0] [%emt 0:00:00.5]} d5\n{[%clk 0:00:16.9] [%emt 0:00:02.8]} 5. Ng5 {[%clk 0:00:24.3] [%emt 0:00:00.6]}\nh6 {[%clk 0:00:13.7] [%emt 0:00:03.1]} 6. Nh7 {[%clk 0:00:23.7] [%emt\n0:00:00.6]} Be7 {[%clk 0:00:11.0] [%emt 0:00:02.7]} 7. Nf6+ {[%clk 0:00:23.0]\n[%emt 0:00:00.7]} Bxf6 {[%clk 0:00:08.4] [%emt 0:00:02.5]} 8. f4 {[%clk\n0:00:22.3] [%emt 0:00:00.6]} a5 {[%clk 0:00:05.5] [%emt 0:00:02.9]} 9. Rb1\n{[%clk 0:00:21.7] [%emt 0:00:00.5]} Be6 {[%clk 0:00:01.7] [%emt 0:00:03.7]} 10.\nRa1 {[%clk 0:00:21.1] [%emt 0:00:00.6]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 10,
+     "clean": 10,
+     "fallback": 0,
+     "thinkMs": 8896
+    },
+    "b": {
+     "moves": 9,
+     "clean": 0,
+     "fallback": 9,
+     "thinkMs": 28258
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "536b64dffa2c"
+  },
+  {
+   "id": "qnym5lts",
+   "round": 1,
+   "white": "vertexqwen:pure",
+   "black": "vertexgemma:arbiter",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 22,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"1\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. c3 {[%clk 0:00:27.1] [%emt 0:00:02.8]} d5 {[%clk 0:00:29.4] [%emt 0:00:00.5]}\n2. c4 {[%clk 0:00:24.4] [%emt 0:00:02.7]} dxc4 {[%clk 0:00:28.4] [%emt\n0:00:00.9]} 3. g3 {[%clk 0:00:21.8] [%emt 0:00:02.5]} Qd5 {[%clk 0:00:27.4]\n[%emt 0:00:01.0]} 4. Bg2 {[%clk 0:00:19.0] [%emt 0:00:02.7]} Qxg2 {[%clk\n0:00:26.3] [%emt 0:00:01.0]} 5. b3 {[%clk 0:00:16.4] [%emt 0:00:02.5]} cxb3\n{[%clk 0:00:24.9] [%emt 0:00:01.3]} 6. a4 {[%clk 0:00:13.7] [%emt 0:00:02.7]}\nNc6 {[%clk 0:00:23.6] [%emt 0:00:01.3]} 7. e4 {[%clk 0:00:11.1] [%emt\n0:00:02.6]} Qxe4+ {[%clk 0:00:22.0] [%emt 0:00:01.5]} 8. Ne2 {[%clk 0:00:08.7]\n[%emt 0:00:02.4]} Qxh1+ {[%clk 0:00:20.6] [%emt 0:00:01.4]} 9. Ng1 {[%clk\n0:00:07.5] [%emt 0:00:01.1]} Qxg1+ {[%clk 0:00:19.0] [%emt 0:00:01.6]} 10. Ke2\n{[%clk 0:00:05.1] [%emt 0:00:02.3]} Nd4+ {[%clk 0:00:18.0] [%emt 0:00:01.0]} 11.\nKd3 {[%clk 0:00:02.5] [%emt 0:00:02.5]} Qxd1 {[%clk 0:00:16.5] [%emt 0:00:01.4]}\n0-1\n",
+   "stats": {
+    "w": {
+     "moves": 11,
+     "clean": 0,
+     "fallback": 11,
+     "thinkMs": 27442
+    },
+    "b": {
+     "moves": 11,
+     "clean": 11,
+     "fallback": 0,
+     "thinkMs": 13403
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "89097c9baba9"
+  },
+  {
+   "id": "43abdocc",
+   "round": 2,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 26,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"2\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"engine\"]\n\n1. Nh3 {[%clk 0:00:28.8] [%emt 0:00:01.1]} e5 {[%clk 0:00:29.9] [%emt\n0:00:00.0]} 2. Ng1 {[%clk 0:00:28.2] [%emt 0:00:00.5]} d5 {[%clk 0:00:29.7]\n[%emt 0:00:00.1]} 3. Nh3 {[%clk 0:00:27.6] [%emt 0:00:00.5]} c5 {[%clk\n0:00:29.3] [%emt 0:00:00.3]} 4. Ng5 {[%clk 0:00:27.0] [%emt 0:00:00.5]} Qxg5\n{[%clk 0:00:28.8] [%emt 0:00:00.5]} 5. Nc3 {[%clk 0:00:26.5] [%emt 0:00:00.5]}\nd4 {[%clk 0:00:28.5] [%emt 0:00:00.2]} 6. Ne4 {[%clk 0:00:25.9] [%emt\n0:00:00.5]} Qf5 {[%clk 0:00:28.3] [%emt 0:00:00.2]} 7. Ng5 {[%clk 0:00:25.3]\n[%emt 0:00:00.5]} Qxg5 {[%clk 0:00:27.7] [%emt 0:00:00.5]} 8. Rg1 {[%clk\n0:00:24.8] [%emt 0:00:00.5]} Qf4 {[%clk 0:00:27.0] [%emt 0:00:00.6]} 9. Rh1\n{[%clk 0:00:24.3] [%emt 0:00:00.5]} f5 {[%clk 0:00:26.5] [%emt 0:00:00.5]} 10.\nRg1 {[%clk 0:00:23.7] [%emt 0:00:00.5]} Qxh2 {[%clk 0:00:25.7] [%emt 0:00:00.7]}\n11. Rh1 {[%clk 0:00:23.3] [%emt 0:00:00.4]} Qxh1 {[%clk 0:00:25.6] [%emt\n0:00:00.0]} 12. g4 {[%clk 0:00:22.8] [%emt 0:00:00.4]} fxg4 {[%clk 0:00:25.1]\n[%emt 0:00:00.5]} 13. f4 {[%clk 0:00:22.3] [%emt 0:00:00.4]} Qh4# {[%clk\n0:00:25.1] [%emt 0:00:00.0]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 13,
+     "clean": 13,
+     "fallback": 0,
+     "thinkMs": 7623
+    },
+    "b": {
+     "moves": 13,
+     "clean": 13,
+     "fallback": 0,
+     "thinkMs": 4825
+    },
+    "timeouts": null
+   },
+   "savedGameId": "bdc7b3c9b0bc"
+  },
+  {
+   "id": "4ukwesi8",
+   "round": 2,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 21,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"2\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.5] [%emt 0:00:00.4]} h5 {[%clk 0:00:27.1] [%emt 0:00:02.8]}\n2. f4 {[%clk 0:00:28.7] [%emt 0:00:00.7]} Rh7 {[%clk 0:00:24.4] [%emt\n0:00:02.6]} 3. Bc4 {[%clk 0:00:27.8] [%emt 0:00:00.8]} g6 {[%clk 0:00:21.7]\n[%emt 0:00:02.7]} 4. d4 {[%clk 0:00:26.8] [%emt 0:00:01.0]} a5 {[%clk 0:00:19.1]\n[%emt 0:00:02.6]} 5. g4 {[%clk 0:00:25.6] [%emt 0:00:01.1]} d5 {[%clk 0:00:16.3]\n[%emt 0:00:02.7]} 6. exd5 {[%clk 0:00:24.4] [%emt 0:00:01.2]} b5 {[%clk\n0:00:13.4] [%emt 0:00:02.8]} 7. Bxb5+ {[%clk 0:00:23.3] [%emt 0:00:01.1]} Qd7\n{[%clk 0:00:10.9] [%emt 0:00:02.5]} 8. Bxd7+ {[%clk 0:00:22.3] [%emt 0:00:00.9]}\nKxd7 {[%clk 0:00:08.3] [%emt 0:00:02.5]} 9. c4 {[%clk 0:00:21.4] [%emt\n0:00:00.8]} c6 {[%clk 0:00:05.4] [%emt 0:00:02.8]} 10. h4 {[%clk 0:00:20.5]\n[%emt 0:00:00.9]} e5 {[%clk 0:00:02.5] [%emt 0:00:02.8]} 11. dxc6+ {[%clk\n0:00:18.3] [%emt 0:00:02.1]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 11,
+     "clean": 9,
+     "fallback": 2,
+     "thinkMs": 11622
+    },
+    "b": {
+     "moves": 10,
+     "clean": 1,
+     "fallback": 9,
+     "thinkMs": 27429
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "e0498d280415"
+  },
+  {
+   "id": "wlgvml88",
+   "round": 2,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexgemma:pure",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 26,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"2\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. d4 {[%clk 0:00:29.0] [%emt 0:00:00.9]} Nc6 {[%clk 0:00:29.4] [%emt\n0:00:00.5]} 2. d5 {[%clk 0:00:28.2] [%emt 0:00:00.7]} Nf6 {[%clk 0:00:28.7]\n[%emt 0:00:00.6]} 3. dxc6 {[%clk 0:00:27.3] [%emt 0:00:00.9]} Nd5 {[%clk\n0:00:28.1] [%emt 0:00:00.6]} 4. Qxd5 {[%clk 0:00:26.6] [%emt 0:00:00.6]} f6\n{[%clk 0:00:27.5] [%emt 0:00:00.5]} 5. cxb7 {[%clk 0:00:25.8] [%emt 0:00:00.7]}\ng6 {[%clk 0:00:26.9] [%emt 0:00:00.6]} 6. bxa8=Q {[%clk 0:00:24.5] [%emt\n0:00:01.2]} Bh6 {[%clk 0:00:26.3] [%emt 0:00:00.5]} 7. Bxh6 {[%clk 0:00:23.4]\n[%emt 0:00:01.1]} e5 {[%clk 0:00:25.7] [%emt 0:00:00.5]} 8. e4 {[%clk 0:00:20.4]\n[%emt 0:00:03.0]} Ke7 {[%clk 0:00:25.1] [%emt 0:00:00.6]} 9. Qxa7 {[%clk\n0:00:15.5] [%emt 0:00:04.8]} c5 {[%clk 0:00:24.5] [%emt 0:00:00.6]} 10. h4\n{[%clk 0:00:11.6] [%emt 0:00:03.9]} Qa5+ {[%clk 0:00:23.9] [%emt 0:00:00.5]} 11.\nQxa5 {[%clk 0:00:10.8] [%emt 0:00:00.7]} d6 {[%clk 0:00:23.4] [%emt 0:00:00.5]}\n12. Qc7+ {[%clk 0:00:04.3] [%emt 0:00:06.5]} Bd7 {[%clk 0:00:22.8] [%emt\n0:00:00.5]} 13. Qcxd6+ {[%clk 0:00:00.4] [%emt 0:00:03.9]} Ke8 {[%clk 0:00:22.3]\n[%emt 0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 13,
+     "clean": 13,
+     "fallback": 0,
+     "thinkMs": 29596
+    },
+    "b": {
+     "moves": 13,
+     "clean": 11,
+     "fallback": 2,
+     "thinkMs": 7665
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "b27755c122aa"
+  },
+  {
+   "id": "dr4cz4yv",
+   "round": 3,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexqwen-v3:pure",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 26,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"3\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. f4 {[%clk 0:00:27.7] [%emt 0:00:02.2]} Nh6 {[%clk 0:00:29.1] [%emt\n0:00:00.8]} 2. c4 {[%clk 0:00:25.7] [%emt 0:00:01.9]} Rg8 {[%clk 0:00:28.5]\n[%emt 0:00:00.5]} 3. e4 {[%clk 0:00:24.1] [%emt 0:00:01.5]} Rh8 {[%clk\n0:00:27.9] [%emt 0:00:00.5]} 4. d4 {[%clk 0:00:22.6] [%emt 0:00:01.4]} Rg8\n{[%clk 0:00:27.4] [%emt 0:00:00.5]} 5. h4 {[%clk 0:00:20.9] [%emt 0:00:01.7]}\nRh8 {[%clk 0:00:26.8] [%emt 0:00:00.5]} 6. g4 {[%clk 0:00:19.0] [%emt\n0:00:01.9]} Ng8 {[%clk 0:00:26.3] [%emt 0:00:00.5]} 7. a4 {[%clk 0:00:17.0]\n[%emt 0:00:01.9]} Nh6 {[%clk 0:00:25.8] [%emt 0:00:00.5]} 8. Bd3 {[%clk\n0:00:14.3] [%emt 0:00:02.7]} Ng8 {[%clk 0:00:25.1] [%emt 0:00:00.6]} 9. Nc3\n{[%clk 0:00:11.4] [%emt 0:00:02.9]} Nh6 {[%clk 0:00:24.5] [%emt 0:00:00.6]} 10.\nNd5 {[%clk 0:00:08.6] [%emt 0:00:02.8]} Rg8 {[%clk 0:00:23.9] [%emt 0:00:00.6]}\n11. h5 {[%clk 0:00:05.6] [%emt 0:00:02.9]} Rh8 {[%clk 0:00:23.2] [%emt\n0:00:00.6]} 12. Be3 {[%clk 0:00:02.8] [%emt 0:00:02.8]} Rg8 {[%clk 0:00:22.6]\n[%emt 0:00:00.6]} 13. b4 {[%clk 0:00:00.6] [%emt 0:00:02.1]} Rh8 {[%clk\n0:00:22.1] [%emt 0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 13,
+     "clean": 0,
+     "fallback": 13,
+     "thinkMs": 29305
+    },
+    "b": {
+     "moves": 13,
+     "clean": 13,
+     "fallback": 0,
+     "thinkMs": 7873
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "8c1dfbe789c0"
+  },
+  {
+   "id": "4z6r79lf",
+   "round": 3,
+   "white": "vertexqwen:pure",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 20,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"3\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"engine\"]\n\n1. d4 {[%clk 0:00:27.3] [%emt 0:00:02.6]} d5 {[%clk 0:00:29.8] [%emt 0:00:00.1]}\n2. g4 {[%clk 0:00:24.5] [%emt 0:00:02.7]} Bxg4 {[%clk 0:00:29.4] [%emt\n0:00:00.4]} 3. c3 {[%clk 0:00:21.7] [%emt 0:00:02.7]} f5 {[%clk 0:00:29.0] [%emt\n0:00:00.3]} 4. a4 {[%clk 0:00:19.0] [%emt 0:00:02.7]} e6 {[%clk 0:00:28.8] [%emt\n0:00:00.2]} 5. Nd2 {[%clk 0:00:16.2] [%emt 0:00:02.7]} c5 {[%clk 0:00:28.4]\n[%emt 0:00:00.3]} 6. Qb3 {[%clk 0:00:13.3] [%emt 0:00:02.8]} cxd4 {[%clk\n0:00:27.8] [%emt 0:00:00.6]} 7. Qd1 {[%clk 0:00:10.4] [%emt 0:00:02.9]} e5\n{[%clk 0:00:27.6] [%emt 0:00:00.2]} 8. c4 {[%clk 0:00:07.6] [%emt 0:00:02.7]} h5\n{[%clk 0:00:26.8] [%emt 0:00:00.7]} 9. Qb3 {[%clk 0:00:04.8] [%emt 0:00:02.8]}\ndxc4 {[%clk 0:00:26.3] [%emt 0:00:00.5]} 10. Ndf3 {[%clk 0:00:01.9] [%emt\n0:00:02.9]} cxb3 {[%clk 0:00:25.1] [%emt 0:00:01.1]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 10,
+     "clean": 0,
+     "fallback": 10,
+     "thinkMs": 28032
+    },
+    "b": {
+     "moves": 10,
+     "clean": 10,
+     "fallback": 0,
+     "thinkMs": 4829
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "07ef302734ab"
+  },
+  {
+   "id": "x6zk5nr6",
+   "round": 3,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 36,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"3\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nc3 {[%clk 0:00:29.0] [%emt 0:00:00.9]} e5 {[%clk 0:00:29.5] [%emt\n0:00:00.4]} 2. Nb5 {[%clk 0:00:28.7] [%emt 0:00:00.3]} d5 {[%clk 0:00:28.8]\n[%emt 0:00:00.7]} 3. Nxc7+ {[%clk 0:00:28.0] [%emt 0:00:00.7]} Qxc7 {[%clk\n0:00:28.3] [%emt 0:00:00.4]} 4. Nh3 {[%clk 0:00:27.4] [%emt 0:00:00.6]} Bf5\n{[%clk 0:00:27.3] [%emt 0:00:01.0]} 5. Ng5 {[%clk 0:00:26.8] [%emt 0:00:00.6]}\nBxc2 {[%clk 0:00:24.9] [%emt 0:00:02.3]} 6. Nxf7 {[%clk 0:00:26.1] [%emt\n0:00:00.6]} Kxf7 {[%clk 0:00:23.5] [%emt 0:00:01.3]} 7. Rg1 {[%clk 0:00:25.5]\n[%emt 0:00:00.6]} Bxd1 {[%clk 0:00:22.4] [%emt 0:00:01.0]} 8. Rh1 {[%clk\n0:00:24.9] [%emt 0:00:00.5]} Bc2 {[%clk 0:00:21.9] [%emt 0:00:00.5]} 9. h4\n{[%clk 0:00:24.3] [%emt 0:00:00.6]} Be4 {[%clk 0:00:21.2] [%emt 0:00:00.6]} 10.\nRh3 {[%clk 0:00:23.7] [%emt 0:00:00.5]} a5 {[%clk 0:00:20.2] [%emt 0:00:01.0]}\n11. Rf3+ {[%clk 0:00:23.0] [%emt 0:00:00.6]} Nf6 {[%clk 0:00:19.7] [%emt\n0:00:00.5]} 12. Rxf6+ {[%clk 0:00:22.3] [%emt 0:00:00.6]} gxf6 {[%clk 0:00:19.2]\n[%emt 0:00:00.5]} 13. f4 {[%clk 0:00:21.7] [%emt 0:00:00.6]} exf4 {[%clk\n0:00:17.7] [%emt 0:00:01.5]} 14. g4 {[%clk 0:00:21.1] [%emt 0:00:00.6]} fxg3\n{[%clk 0:00:16.8] [%emt 0:00:00.8]} 15. b3 {[%clk 0:00:20.5] [%emt 0:00:00.6]}\nQe5 {[%clk 0:00:16.0] [%emt 0:00:00.7]} 16. e3 {[%clk 0:00:19.9] [%emt\n0:00:00.5]} Qxa1 {[%clk 0:00:14.8] [%emt 0:00:01.2]} 17. a4 {[%clk 0:00:19.2]\n[%emt 0:00:00.6]} Bf3 {[%clk 0:00:13.7] [%emt 0:00:01.0]} 18. d4 {[%clk\n0:00:18.6] [%emt 0:00:00.5]} Bb4# {[%clk 0:00:13.3] [%emt 0:00:00.3]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 18,
+     "clean": 16,
+     "fallback": 2,
+     "thinkMs": 11312
+    },
+    "b": {
+     "moves": 18,
+     "clean": 18,
+     "fallback": 0,
+     "thinkMs": 16636
+    },
+    "timeouts": null
+   },
+   "savedGameId": "ed476fbe0ba0"
+  },
+  {
+   "id": "o9nf79cu",
+   "round": 4,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 21,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"4\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. Nh3 {[%clk 0:00:29.3] [%emt 0:00:00.6]} f5 {[%clk 0:00:27.1] [%emt\n0:00:02.8]} 2. Ng5 {[%clk 0:00:28.5] [%emt 0:00:00.7]} g6 {[%clk 0:00:24.3]\n[%emt 0:00:02.7]} 3. Nf7 {[%clk 0:00:27.8] [%emt 0:00:00.7]} Kxf7 {[%clk\n0:00:21.8] [%emt 0:00:02.5]} 4. Nc3 {[%clk 0:00:27.1] [%emt 0:00:00.6]} Bh6\n{[%clk 0:00:19.1] [%emt 0:00:02.6]} 5. Nb5 {[%clk 0:00:26.5] [%emt 0:00:00.6]}\nd5 {[%clk 0:00:16.4] [%emt 0:00:02.7]} 6. Nxc7 {[%clk 0:00:25.7] [%emt\n0:00:00.7]} Be6 {[%clk 0:00:13.7] [%emt 0:00:02.6]} 7. Nxd5 {[%clk 0:00:25.0]\n[%emt 0:00:00.7]} Bxd5 {[%clk 0:00:10.9] [%emt 0:00:02.7]} 8. Rg1 {[%clk\n0:00:24.4] [%emt 0:00:00.5]} Qb6 {[%clk 0:00:08.1] [%emt 0:00:02.8]} 9. Rh1\n{[%clk 0:00:23.8] [%emt 0:00:00.5]} Qd4 {[%clk 0:00:05.1] [%emt 0:00:02.9]} 10.\nRg1 {[%clk 0:00:23.1] [%emt 0:00:00.6]} g5 {[%clk 0:00:02.1] [%emt 0:00:03.0]}\n11. Rh1 {[%clk 0:00:22.5] [%emt 0:00:00.6]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 11,
+     "clean": 11,
+     "fallback": 0,
+     "thinkMs": 7417
+    },
+    "b": {
+     "moves": 10,
+     "clean": 0,
+     "fallback": 10,
+     "thinkMs": 27822
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "979a08394b55"
+  },
+  {
+   "id": "brc4j9lf",
+   "round": 4,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexgemma:arbiter",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 16,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"4\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n1. c4 {[%clk 0:00:28.1] [%emt 0:00:01.8]} d5 {[%clk 0:00:29.2] [%emt 0:00:00.7]}\n2. Qb3 {[%clk 0:00:25.1] [%emt 0:00:02.9]} dxc4 {[%clk 0:00:28.2] [%emt\n0:00:00.9]} 3. Qb5+ {[%clk 0:00:22.2] [%emt 0:00:02.9]} Nc6 {[%clk 0:00:27.6]\n[%emt 0:00:00.6]} 4. e4 {[%clk 0:00:18.6] [%emt 0:00:03.5]} f6 {[%clk 0:00:26.8]\n[%emt 0:00:00.8]} 5. a4 {[%clk 0:00:13.8] [%emt 0:00:04.8]} e5 {[%clk 0:00:25.8]\n[%emt 0:00:00.9]} 6. Qxc4 {[%clk 0:00:09.1] [%emt 0:00:04.6]} h5 {[%clk\n0:00:24.4] [%emt 0:00:01.4]} 7. h4 {[%clk 0:00:06.0] [%emt 0:00:03.1]} Nd4\n{[%clk 0:00:23.0] [%emt 0:00:01.4]} 8. d3 {[%clk 0:00:02.7] [%emt 0:00:03.3]} c6\n{[%clk 0:00:21.3] [%emt 0:00:01.6]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 8,
+     "clean": 0,
+     "fallback": 8,
+     "thinkMs": 27286
+    },
+    "b": {
+     "moves": 8,
+     "clean": 8,
+     "fallback": 0,
+     "thinkMs": 8604
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "b164dae337d8"
+  },
+  {
+   "id": "ac9eqn8u",
+   "round": 4,
+   "white": "vertex-engine:engine",
+   "black": "vertexgemma:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 43,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"4\"]\n[White \"Motor del árbitro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"engine\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} Nc6 {[%clk 0:00:29.3] [%emt\n0:00:00.6]} 2. d4 {[%clk 0:00:29.7] [%emt 0:00:00.1]} Ne5 {[%clk 0:00:28.7]\n[%emt 0:00:00.6]} 3. dxe5 {[%clk 0:00:29.0] [%emt 0:00:00.6]} Nh6 {[%clk\n0:00:28.1] [%emt 0:00:00.5]} 4. f4 {[%clk 0:00:28.7] [%emt 0:00:00.3]} Rg8\n{[%clk 0:00:27.5] [%emt 0:00:00.5]} 5. c4 {[%clk 0:00:28.2] [%emt 0:00:00.4]}\nRh8 {[%clk 0:00:27.0] [%emt 0:00:00.5]} 6. Qd5 {[%clk 0:00:27.9] [%emt\n0:00:00.2]} Rg8 {[%clk 0:00:26.4] [%emt 0:00:00.5]} 7. h3 {[%clk 0:00:27.7]\n[%emt 0:00:00.2]} f5 {[%clk 0:00:25.9] [%emt 0:00:00.5]} 8. exf5 {[%clk\n0:00:27.1] [%emt 0:00:00.5]} Nxf5 {[%clk 0:00:25.3] [%emt 0:00:00.5]} 9. Qxg8\n{[%clk 0:00:26.7] [%emt 0:00:00.4]} Rb8 {[%clk 0:00:24.7] [%emt 0:00:00.6]} 10.\ng4 {[%clk 0:00:26.0] [%emt 0:00:00.6]} Ra8 {[%clk 0:00:24.1] [%emt 0:00:00.6]}\n11. gxf5 {[%clk 0:00:25.2] [%emt 0:00:00.8]} d5 {[%clk 0:00:23.5] [%emt\n0:00:00.5]} 12. Qxh7 {[%clk 0:00:24.7] [%emt 0:00:00.4]} Kf7 {[%clk 0:00:22.9]\n[%emt 0:00:00.6]} 13. e6+ {[%clk 0:00:23.6] [%emt 0:00:01.1]} Bxe6 {[%clk\n0:00:22.4] [%emt 0:00:00.4]} 14. Qg6+ {[%clk 0:00:22.7] [%emt 0:00:00.8]} Kg8\n{[%clk 0:00:21.9] [%emt 0:00:00.4]} 15. Qxe6+ {[%clk 0:00:22.1] [%emt\n0:00:00.6]} Kh7 {[%clk 0:00:21.4] [%emt 0:00:00.4]} 16. cxd5 {[%clk 0:00:21.1]\n[%emt 0:00:00.9]} Qc8 {[%clk 0:00:20.8] [%emt 0:00:00.6]} 17. Qg6+ {[%clk\n0:00:20.6] [%emt 0:00:00.5]} Kh8 {[%clk 0:00:20.3] [%emt 0:00:00.5]} 18. Qh5+\n{[%clk 0:00:19.8] [%emt 0:00:00.7]} Kg8 {[%clk 0:00:19.8] [%emt 0:00:00.4]} 19.\nBc4 {[%clk 0:00:19.3] [%emt 0:00:00.5]} Qxf5 {[%clk 0:00:19.2] [%emt 0:00:00.6]}\n20. Qxf5 {[%clk 0:00:18.8] [%emt 0:00:00.5]} e5 {[%clk 0:00:18.7] [%emt\n0:00:00.5]} 21. d6+ {[%clk 0:00:17.7] [%emt 0:00:01.0]} Kh8 {[%clk 0:00:18.2]\n[%emt 0:00:00.4]} 22. Qh5# {[%clk 0:00:17.7] [%emt 0:00:00.0]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 22,
+     "clean": 22,
+     "fallback": 0,
+     "thinkMs": 12230
+    },
+    "b": {
+     "moves": 21,
+     "clean": 21,
+     "fallback": 0,
+     "thinkMs": 11729
+    },
+    "timeouts": null
+   },
+   "savedGameId": "0edd9e1c3271"
+  },
+  {
+   "id": "sct49ozx",
+   "round": 5,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen-v3:pure",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 44,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"5\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. d4 {[%clk 0:00:29.3] [%emt 0:00:00.6]} Nh6 {[%clk 0:00:29.2] [%emt\n0:00:00.7]} 2. f3 {[%clk 0:00:28.6] [%emt 0:00:00.6]} Rg8 {[%clk 0:00:28.6]\n[%emt 0:00:00.5]} 3. e3 {[%clk 0:00:27.9] [%emt 0:00:00.7]} Rh8 {[%clk\n0:00:28.1] [%emt 0:00:00.5]} 4. c3 {[%clk 0:00:27.2] [%emt 0:00:00.6]} Rg8\n{[%clk 0:00:27.5] [%emt 0:00:00.5]} 5. Bd3 {[%clk 0:00:26.5] [%emt 0:00:00.7]}\nRh8 {[%clk 0:00:27.0] [%emt 0:00:00.5]} 6. e4 {[%clk 0:00:25.6] [%emt\n0:00:00.8]} Rg8 {[%clk 0:00:26.4] [%emt 0:00:00.5]} 7. Qa4 {[%clk 0:00:24.5]\n[%emt 0:00:01.1]} Rh8 {[%clk 0:00:25.9] [%emt 0:00:00.5]} 8. h4 {[%clk\n0:00:23.4] [%emt 0:00:01.0]} Rg8 {[%clk 0:00:25.3] [%emt 0:00:00.5]} 9. Bf4\n{[%clk 0:00:21.9] [%emt 0:00:01.4]} Rh8 {[%clk 0:00:24.8] [%emt 0:00:00.5]} 10.\ng4 {[%clk 0:00:20.6] [%emt 0:00:01.3]} Rg8 {[%clk 0:00:24.2] [%emt 0:00:00.5]}\n11. e5 {[%clk 0:00:18.6] [%emt 0:00:01.9]} Nc6 {[%clk 0:00:23.7] [%emt\n0:00:00.5]} 12. Bxh6 {[%clk 0:00:15.0] [%emt 0:00:03.6]} Rh8 {[%clk 0:00:23.1]\n[%emt 0:00:00.5]} 13. Be3 {[%clk 0:00:13.9] [%emt 0:00:01.0]} Rg8 {[%clk\n0:00:22.5] [%emt 0:00:00.6]} 14. h5 {[%clk 0:00:11.7] [%emt 0:00:02.1]} Rh8\n{[%clk 0:00:21.9] [%emt 0:00:00.5]} 15. Bb5 {[%clk 0:00:10.1] [%emt 0:00:01.6]}\nRg8 {[%clk 0:00:21.4] [%emt 0:00:00.5]} 16. f4 {[%clk 0:00:08.8] [%emt\n0:00:01.2]} Rh8 {[%clk 0:00:20.8] [%emt 0:00:00.5]} 17. d5 {[%clk 0:00:07.6]\n[%emt 0:00:01.2]} Rg8 {[%clk 0:00:20.3] [%emt 0:00:00.5]} 18. dxc6 {[%clk\n0:00:05.5] [%emt 0:00:02.0]} Rh8 {[%clk 0:00:19.8] [%emt 0:00:00.5]} 19. cxd7+\n{[%clk 0:00:04.7] [%emt 0:00:00.7]} Bxd7 {[%clk 0:00:19.3] [%emt 0:00:00.4]} 20.\nBxd7+ {[%clk 0:00:03.4] [%emt 0:00:01.2]} Qxd7 {[%clk 0:00:18.9] [%emt\n0:00:00.4]} 21. Qa5 {[%clk 0:00:02.8] [%emt 0:00:00.6]} Rg8 {[%clk 0:00:18.1]\n[%emt 0:00:00.7]} 22. Rh4 {[%clk 0:00:01.6] [%emt 0:00:01.1]} Rh8 {[%clk\n0:00:17.4] [%emt 0:00:00.7]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 22,
+     "clean": 22,
+     "fallback": 0,
+     "thinkMs": 28368
+    },
+    "b": {
+     "moves": 22,
+     "clean": 21,
+     "fallback": 1,
+     "thinkMs": 12505
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "25c2216fdd1e"
+  },
+  {
+   "id": "0z8j4tc0",
+   "round": 5,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 23,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"5\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. Nc3 {[%clk 0:00:29.2] [%emt 0:00:00.7]} d5 {[%clk 0:00:27.5] [%emt\n0:00:02.4]} 2. Nb5 {[%clk 0:00:28.5] [%emt 0:00:00.7]} e5 {[%clk 0:00:24.9]\n[%emt 0:00:02.6]} 3. Nxc7+ {[%clk 0:00:28.1] [%emt 0:00:00.3]} Kd7 {[%clk\n0:00:22.8] [%emt 0:00:02.1]} 4. Nxd5 {[%clk 0:00:27.5] [%emt 0:00:00.6]} Bc5\n{[%clk 0:00:20.3] [%emt 0:00:02.4]} 5. Nc7 {[%clk 0:00:26.8] [%emt 0:00:00.6]}\nh5 {[%clk 0:00:17.4] [%emt 0:00:02.8]} 6. Nxa8 {[%clk 0:00:26.1] [%emt\n0:00:00.7]} Qe8 {[%clk 0:00:14.5] [%emt 0:00:02.8]} 7. Nb6+ {[%clk 0:00:25.4]\n[%emt 0:00:00.6]} Kd8 {[%clk 0:00:12.2] [%emt 0:00:02.2]} 8. Nxc8 {[%clk\n0:00:24.7] [%emt 0:00:00.6]} Qa4 {[%clk 0:00:09.4] [%emt 0:00:02.8]} 9. Nxa7\n{[%clk 0:00:24.1] [%emt 0:00:00.6]} Ba3 {[%clk 0:00:06.7] [%emt 0:00:02.6]} 10.\nNc6+ {[%clk 0:00:23.4] [%emt 0:00:00.7]} Ke8 {[%clk 0:00:05.0] [%emt 0:00:01.6]}\n11. Nxb8 {[%clk 0:00:22.8] [%emt 0:00:00.6]} Qf4 {[%clk 0:00:02.1] [%emt\n0:00:02.9]} 12. Nd7 {[%clk 0:00:22.1] [%emt 0:00:00.6]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 12,
+     "clean": 12,
+     "fallback": 0,
+     "thinkMs": 7849
+    },
+    "b": {
+     "moves": 11,
+     "clean": 0,
+     "fallback": 11,
+     "thinkMs": 27873
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "e37bb2679395"
+  },
+  {
+   "id": "lobqwhdp",
+   "round": 5,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen:arbiter",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 21,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"5\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n1. e4 {[%clk 0:00:29.1] [%emt 0:00:00.8]} Nf6 {[%clk 0:00:28.1] [%emt\n0:00:01.8]} 2. d3 {[%clk 0:00:28.6] [%emt 0:00:00.4]} e6 {[%clk 0:00:25.8] [%emt\n0:00:02.3]} 3. f4 {[%clk 0:00:27.7] [%emt 0:00:00.9]} b5 {[%clk 0:00:22.8] [%emt\n0:00:03.0]} 4. e5 {[%clk 0:00:26.5] [%emt 0:00:01.1]} Nd5 {[%clk 0:00:19.7]\n[%emt 0:00:03.0]} 5. c4 {[%clk 0:00:25.0] [%emt 0:00:01.4]} Ne7 {[%clk\n0:00:16.5] [%emt 0:00:03.1]} 6. Qf3 {[%clk 0:00:23.7] [%emt 0:00:01.2]} Nbc6\n{[%clk 0:00:13.4] [%emt 0:00:03.1]} 7. cxb5 {[%clk 0:00:21.5] [%emt 0:00:02.2]}\nd5 {[%clk 0:00:10.3] [%emt 0:00:03.0]} 8. exd6 {[%clk 0:00:20.2] [%emt\n0:00:01.2]} Qxd6 {[%clk 0:00:07.0] [%emt 0:00:03.2]} 9. bxc6 {[%clk 0:00:17.2]\n[%emt 0:00:02.9]} Nxc6 {[%clk 0:00:04.1] [%emt 0:00:02.9]} 10. h4 {[%clk\n0:00:15.4] [%emt 0:00:01.8]} f5 {[%clk 0:00:00.4] [%emt 0:00:03.7]} 11. d4\n{[%clk 0:00:13.6] [%emt 0:00:01.8]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 11,
+     "clean": 9,
+     "fallback": 2,
+     "thinkMs": 16394
+    },
+    "b": {
+     "moves": 10,
+     "clean": 1,
+     "fallback": 9,
+     "thinkMs": 29579
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "c1b4da9d8fbf"
+  },
+  {
+   "id": "hngji5sa",
+   "round": 6,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexgemma:pure",
+   "result": "1/2-1/2",
+   "termination": "threefold",
+   "plies": 10,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"6\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"1/2-1/2\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"threefold\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. Nh3 {[%clk 0:00:29.4] [%emt 0:00:00.5]} Nc6 {[%clk 0:00:29.0] [%emt\n0:00:00.9]} 2. Ng1 {[%clk 0:00:28.1] [%emt 0:00:01.2]} Nf6 {[%clk 0:00:28.1]\n[%emt 0:00:00.8]} 3. Nh3 {[%clk 0:00:27.5] [%emt 0:00:00.6]} Ng8 {[%clk\n0:00:27.4] [%emt 0:00:00.6]} 4. Ng1 {[%clk 0:00:27.0] [%emt 0:00:00.5]} Nf6\n{[%clk 0:00:26.7] [%emt 0:00:00.6]} 5. Nh3 {[%clk 0:00:26.5] [%emt 0:00:00.5]}\nNg8 {[%clk 0:00:26.1] [%emt 0:00:00.6]} 1/2-1/2\n",
+   "stats": {
+    "w": {
+     "moves": 5,
+     "clean": 5,
+     "fallback": 0,
+     "thinkMs": 3474
+    },
+    "b": {
+     "moves": 5,
+     "clean": 5,
+     "fallback": 0,
+     "thinkMs": 3876
+    },
+    "timeouts": null
+   },
+   "savedGameId": "4216fe2fb3fc"
+  },
+  {
+   "id": "yv4radsz",
+   "round": 6,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 48,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"6\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n1. d4 {[%clk 0:00:29.2] [%emt 0:00:00.7]} f6 {[%clk 0:00:29.4] [%emt 0:00:00.5]}\n2. f3 {[%clk 0:00:28.5] [%emt 0:00:00.7]} e6 {[%clk 0:00:28.8] [%emt 0:00:00.5]}\n3. e3 {[%clk 0:00:27.8] [%emt 0:00:00.7]} d6 {[%clk 0:00:28.1] [%emt 0:00:00.7]}\n4. c3 {[%clk 0:00:27.0] [%emt 0:00:00.8]} d5 {[%clk 0:00:27.3] [%emt 0:00:00.8]}\n5. e4 {[%clk 0:00:25.9] [%emt 0:00:01.0]} h5 {[%clk 0:00:26.1] [%emt 0:00:01.2]}\n6. Bb5+ {[%clk 0:00:24.4] [%emt 0:00:01.4]} Nc6 {[%clk 0:00:25.5] [%emt\n0:00:00.6]} 7. Qa4 {[%clk 0:00:23.3] [%emt 0:00:01.1]} Kf7 {[%clk 0:00:24.6]\n[%emt 0:00:00.8]} 8. Bxc6 {[%clk 0:00:21.8] [%emt 0:00:01.5]} bxc6 {[%clk\n0:00:23.1] [%emt 0:00:01.5]} 9. Qxc6 {[%clk 0:00:20.5] [%emt 0:00:01.3]} Rb8\n{[%clk 0:00:22.1] [%emt 0:00:00.9]} 10. f4 {[%clk 0:00:18.7] [%emt 0:00:01.7]}\nBb7 {[%clk 0:00:20.4] [%emt 0:00:01.6]} 11. Qa4 {[%clk 0:00:18.0] [%emt\n0:00:00.7]} dxe4 {[%clk 0:00:19.4] [%emt 0:00:01.0]} 12. h4 {[%clk 0:00:16.2]\n[%emt 0:00:01.8]} Ra8 {[%clk 0:00:18.7] [%emt 0:00:00.6]} 13. Be3 {[%clk\n0:00:15.1] [%emt 0:00:01.0]} Qd5 {[%clk 0:00:17.8] [%emt 0:00:00.9]} 14. b3\n{[%clk 0:00:13.9] [%emt 0:00:01.2]} Bc6 {[%clk 0:00:16.8] [%emt 0:00:00.9]} 15.\nQa6 {[%clk 0:00:13.1] [%emt 0:00:00.7]} Bd6 {[%clk 0:00:15.9] [%emt 0:00:00.9]}\n16. c4 {[%clk 0:00:11.9] [%emt 0:00:01.1]} Bb4+ {[%clk 0:00:14.6] [%emt\n0:00:01.3]} 17. Kd1 {[%clk 0:00:11.0] [%emt 0:00:00.9]} Qd7 {[%clk 0:00:13.5]\n[%emt 0:00:01.0]} 18. Ke2 {[%clk 0:00:10.1] [%emt 0:00:00.9]} Bd6 {[%clk\n0:00:12.4] [%emt 0:00:01.1]} 19. Nc3 {[%clk 0:00:09.0] [%emt 0:00:01.0]} Rh7\n{[%clk 0:00:11.2] [%emt 0:00:01.1]} 20. Rf1 {[%clk 0:00:07.5] [%emt 0:00:01.5]}\nNe7 {[%clk 0:00:10.1] [%emt 0:00:01.1]} 21. a3 {[%clk 0:00:05.3] [%emt\n0:00:02.2]} Nf5 {[%clk 0:00:08.4] [%emt 0:00:01.6]} 22. Rh3 {[%clk 0:00:03.6]\n[%emt 0:00:01.6]} Nxe3 {[%clk 0:00:05.3] [%emt 0:00:03.1]} 23. Kxe3 {[%clk\n0:00:01.8] [%emt 0:00:01.7]} Rb8 {[%clk 0:00:04.2] [%emt 0:00:01.0]} 24. Nxe4\n{[%clk 0:00:00.1] [%emt 0:00:01.6]} Rxb3+ {[%clk 0:00:01.4] [%emt 0:00:02.7]}\n0-1\n",
+   "stats": {
+    "w": {
+     "moves": 24,
+     "clean": 24,
+     "fallback": 0,
+     "thinkMs": 29804
+    },
+    "b": {
+     "moves": 24,
+     "clean": 23,
+     "fallback": 1,
+     "thinkMs": 28519
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "d12f7053d21b"
+  },
+  {
+   "id": "zaaxa3ga",
+   "round": 6,
+   "white": "vertexqwen:arbiter",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 22,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"6\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"engine\"]\n\n1. e4 {[%clk 0:00:27.1] [%emt 0:00:02.8]} d5 {[%clk 0:00:29.8] [%emt 0:00:00.1]}\n2. Qf3 {[%clk 0:00:24.2] [%emt 0:00:02.9]} dxe4 {[%clk 0:00:29.4] [%emt\n0:00:00.4]} 3. Qxe4 {[%clk 0:00:20.9] [%emt 0:00:03.2]} f5 {[%clk 0:00:28.4]\n[%emt 0:00:00.9]} 4. Qa4+ {[%clk 0:00:17.9] [%emt 0:00:03.0]} Qd7 {[%clk\n0:00:28.2] [%emt 0:00:00.1]} 5. Qf4 {[%clk 0:00:15.3] [%emt 0:00:02.6]} Qe6+\n{[%clk 0:00:27.5] [%emt 0:00:00.6]} 6. Kd1 {[%clk 0:00:12.7] [%emt 0:00:02.5]}\nc5 {[%clk 0:00:26.9] [%emt 0:00:00.5]} 7. c4 {[%clk 0:00:10.3] [%emt 0:00:02.4]}\nQe4 {[%clk 0:00:26.4] [%emt 0:00:00.5]} 8. Qf3 {[%clk 0:00:07.5] [%emt\n0:00:02.8]} e5 {[%clk 0:00:25.7] [%emt 0:00:00.7]} 9. Bd3 {[%clk 0:00:04.5]\n[%emt 0:00:02.9]} Qxf3+ {[%clk 0:00:25.1] [%emt 0:00:00.5]} 10. gxf3 {[%clk\n0:00:02.3] [%emt 0:00:02.2]} h5 {[%clk 0:00:25.0] [%emt 0:00:00.1]} 11. h3\n{[%clk 0:00:00.0] [%emt 0:00:02.3]} g5 {[%clk 0:00:24.9] [%emt 0:00:00.1]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 11,
+     "clean": 0,
+     "fallback": 11,
+     "thinkMs": 29955
+    },
+    "b": {
+     "moves": 11,
+     "clean": 11,
+     "fallback": 0,
+     "thinkMs": 5058
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "03e9f19a66c5"
+  },
+  {
+   "id": "rkx6c82m",
+   "round": 7,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexqwen-v3:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 35,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"7\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.2] [%emt 0:00:00.7]} Nh6 {[%clk 0:00:29.5] [%emt\n0:00:00.4]} 2. f4 {[%clk 0:00:28.7] [%emt 0:00:00.5]} Rg8 {[%clk 0:00:29.0]\n[%emt 0:00:00.5]} 3. Bc4 {[%clk 0:00:28.0] [%emt 0:00:00.7]} Rh8 {[%clk\n0:00:28.5] [%emt 0:00:00.4]} 4. d4 {[%clk 0:00:27.3] [%emt 0:00:00.6]} Rg8\n{[%clk 0:00:28.0] [%emt 0:00:00.5]} 5. h4 {[%clk 0:00:26.4] [%emt 0:00:00.8]}\nRh8 {[%clk 0:00:27.5] [%emt 0:00:00.4]} 6. g4 {[%clk 0:00:25.7] [%emt\n0:00:00.7]} Ng8 {[%clk 0:00:27.0] [%emt 0:00:00.5]} 7. Bd5 {[%clk 0:00:24.9]\n[%emt 0:00:00.7]} Nh6 {[%clk 0:00:26.5] [%emt 0:00:00.4]} 8. c4 {[%clk\n0:00:24.2] [%emt 0:00:00.7]} Rg8 {[%clk 0:00:26.0] [%emt 0:00:00.5]} 9. Nc3\n{[%clk 0:00:23.3] [%emt 0:00:00.8]} Rh8 {[%clk 0:00:25.5] [%emt 0:00:00.4]} 10.\nb4 {[%clk 0:00:22.5] [%emt 0:00:00.7]} Rg8 {[%clk 0:00:25.0] [%emt 0:00:00.5]}\n11. Qf3 {[%clk 0:00:21.7] [%emt 0:00:00.8]} Rh8 {[%clk 0:00:24.5] [%emt\n0:00:00.4]} 12. e5 {[%clk 0:00:20.8] [%emt 0:00:00.8]} Rg8 {[%clk 0:00:24.0]\n[%emt 0:00:00.5]} 13. Bxb7 {[%clk 0:00:19.8] [%emt 0:00:01.0]} Bxb7 {[%clk\n0:00:23.5] [%emt 0:00:00.5]} 14. Qxb7 {[%clk 0:00:19.2] [%emt 0:00:00.5]} Rh8\n{[%clk 0:00:23.0] [%emt 0:00:00.5]} 15. Qxa8 {[%clk 0:00:18.2] [%emt 0:00:01.0]}\nQc8 {[%clk 0:00:22.4] [%emt 0:00:00.5]} 16. Qg2 {[%clk 0:00:17.6] [%emt\n0:00:00.6]} Qb7 {[%clk 0:00:21.8] [%emt 0:00:00.6]} 17. Qxb7 {[%clk 0:00:16.8]\n[%emt 0:00:00.7]} Rg8 {[%clk 0:00:21.3] [%emt 0:00:00.5]} 18. Qc8# {[%clk\n0:00:16.4] [%emt 0:00:00.4]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 18,
+     "clean": 17,
+     "fallback": 1,
+     "thinkMs": 13527
+    },
+    "b": {
+     "moves": 17,
+     "clean": 17,
+     "fallback": 0,
+     "thinkMs": 8694
+    },
+    "timeouts": null
+   },
+   "savedGameId": "c2f3598227de"
+  },
+  {
+   "id": "uyvcb5t6",
+   "round": 7,
+   "white": "vertex-engine:engine",
+   "black": "vertexgemma:arbiter",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 69,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"7\"]\n[White \"Motor del árbitro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"engine\"]\n[BlackMode \"arbiter\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} d5 {[%clk 0:00:29.3] [%emt 0:00:00.6]}\n2. Qf3 {[%clk 0:00:29.6] [%emt 0:00:00.2]} dxe4 {[%clk 0:00:28.4] [%emt\n0:00:00.8]} 3. Qxe4 {[%clk 0:00:29.0] [%emt 0:00:00.6]} Nc6 {[%clk 0:00:27.1]\n[%emt 0:00:01.2]} 4. f4 {[%clk 0:00:28.3] [%emt 0:00:00.6]} f6 {[%clk 0:00:26.0]\n[%emt 0:00:01.0]} 5. Bb5 {[%clk 0:00:27.4] [%emt 0:00:00.9]} Bd7 {[%clk\n0:00:25.2] [%emt 0:00:00.7]} 6. f5 {[%clk 0:00:25.7] [%emt 0:00:01.7]} Nd4\n{[%clk 0:00:24.2] [%emt 0:00:01.0]} 7. Qxd4 {[%clk 0:00:25.1] [%emt 0:00:00.5]}\nBxb5 {[%clk 0:00:23.4] [%emt 0:00:00.8]} 8. c3 {[%clk 0:00:24.7] [%emt\n0:00:00.4]} Qxd4 {[%clk 0:00:22.5] [%emt 0:00:00.8]} 9. cxd4 {[%clk 0:00:24.2]\n[%emt 0:00:00.5]} Bc6 {[%clk 0:00:21.9] [%emt 0:00:00.5]} 10. Nf3 {[%clk\n0:00:24.1] [%emt 0:00:00.0]} Rd8 {[%clk 0:00:21.2] [%emt 0:00:00.7]} 11. d3\n{[%clk 0:00:24.0] [%emt 0:00:00.1]} Rd5 {[%clk 0:00:20.1] [%emt 0:00:01.0]} 12.\ng4 {[%clk 0:00:23.9] [%emt 0:00:00.1]} Rd7 {[%clk 0:00:19.1] [%emt 0:00:01.0]}\n13. Nbd2 {[%clk 0:00:23.8] [%emt 0:00:00.0]} Rd5 {[%clk 0:00:18.3] [%emt\n0:00:00.7]} 14. Ne4 {[%clk 0:00:23.6] [%emt 0:00:00.1]} g5 {[%clk 0:00:17.1]\n[%emt 0:00:01.2]} 15. h4 {[%clk 0:00:22.6] [%emt 0:00:00.9]} gxh4 {[%clk\n0:00:15.4] [%emt 0:00:01.6]} 16. Rxh4 {[%clk 0:00:20.5] [%emt 0:00:02.1]} Bb5\n{[%clk 0:00:14.2] [%emt 0:00:01.2]} 17. Nc3 {[%clk 0:00:20.0] [%emt 0:00:00.4]}\nRxd4 {[%clk 0:00:13.4] [%emt 0:00:00.7]} 18. Nxd4 {[%clk 0:00:19.6] [%emt\n0:00:00.3]} Bxd3 {[%clk 0:00:12.8] [%emt 0:00:00.6]} 19. Rh3 {[%clk 0:00:19.0]\n[%emt 0:00:00.5]} e5 {[%clk 0:00:12.2] [%emt 0:00:00.5]} 20. Rxd3 {[%clk\n0:00:18.5] [%emt 0:00:00.5]} exd4 {[%clk 0:00:11.2] [%emt 0:00:00.9]} 21. Rxd4\n{[%clk 0:00:18.2] [%emt 0:00:00.2]} Bc5 {[%clk 0:00:10.5] [%emt 0:00:00.6]} 22.\nRe4+ {[%clk 0:00:18.0] [%emt 0:00:00.1]} Kf7 {[%clk 0:00:10.0] [%emt 0:00:00.5]}\n23. b4 {[%clk 0:00:17.8] [%emt 0:00:00.2]} Bd6 {[%clk 0:00:09.4] [%emt\n0:00:00.5]} 24. a4 {[%clk 0:00:17.6] [%emt 0:00:00.2]} Be5 {[%clk 0:00:08.8]\n[%emt 0:00:00.6]} 25. Kd2 {[%clk 0:00:17.4] [%emt 0:00:00.1]} h6 {[%clk\n0:00:08.2] [%emt 0:00:00.6]} 26. a5 {[%clk 0:00:17.3] [%emt 0:00:00.1]} b6\n{[%clk 0:00:07.5] [%emt 0:00:00.6]} 27. b5 {[%clk 0:00:17.1] [%emt 0:00:00.2]}\nbxa5 {[%clk 0:00:06.7] [%emt 0:00:00.8]} 28. Rxa5 {[%clk 0:00:16.8] [%emt\n0:00:00.3]} Bxc3+ {[%clk 0:00:06.1] [%emt 0:00:00.5]} 29. Kxc3 {[%clk 0:00:16.8]\n[%emt 0:00:00.0]} Rh7 {[%clk 0:00:05.6] [%emt 0:00:00.5]} 30. Rxa7 {[%clk\n0:00:16.4] [%emt 0:00:00.3]} Ne7 {[%clk 0:00:05.1] [%emt 0:00:00.5]} 31. Rxc7\n{[%clk 0:00:16.0] [%emt 0:00:00.3]} Kf8 {[%clk 0:00:04.6] [%emt 0:00:00.4]} 32.\nBa3 {[%clk 0:00:15.5] [%emt 0:00:00.4]} h5 {[%clk 0:00:04.1] [%emt 0:00:00.5]}\n33. Rcxe7 {[%clk 0:00:15.1] [%emt 0:00:00.4]} Rh8 {[%clk 0:00:03.5] [%emt\n0:00:00.5]} 34. Rd7+ {[%clk 0:00:14.6] [%emt 0:00:00.4]} Kg8 {[%clk 0:00:03.1]\n[%emt 0:00:00.4]} 35. Re8# {[%clk 0:00:14.6] [%emt 0:00:00.0]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 35,
+     "clean": 35,
+     "fallback": 0,
+     "thinkMs": 15371
+    },
+    "b": {
+     "moves": 34,
+     "clean": 34,
+     "fallback": 0,
+     "thinkMs": 26861
+    },
+    "timeouts": null
+   },
+   "savedGameId": "2236ea8d4b7d"
+  },
+  {
+   "id": "k51tdi05",
+   "round": 7,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 8,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"7\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nh3 {[%clk 0:00:27.2] [%emt 0:00:02.7]} e5 {[%clk 0:00:27.6] [%emt\n0:00:02.3]} 2. f3 {[%clk 0:00:25.0] [%emt 0:00:02.2]} d5 {[%clk 0:00:26.2] [%emt\n0:00:01.3]} 3. Kf2 {[%clk 0:00:22.5] [%emt 0:00:02.5]} Qh4+ {[%clk 0:00:23.1]\n[%emt 0:00:03.1]} 4. Ke3 {[%clk 0:00:20.3] [%emt 0:00:02.1]} Qd4# {[%clk\n0:00:21.1] [%emt 0:00:01.9]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 4,
+     "clean": 0,
+     "fallback": 4,
+     "thinkMs": 9662
+    },
+    "b": {
+     "moves": 4,
+     "clean": 0,
+     "fallback": 4,
+     "thinkMs": 8836
+    },
+    "timeouts": null
+   },
+   "savedGameId": "2fb6a0a29cb9"
+  },
+  {
+   "id": "w2cpz6yt",
+   "round": 8,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 86,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"8\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"engine\"]\n\n1. e4 {[%clk 0:00:29.2] [%emt 0:00:00.7]} d5 {[%clk 0:00:29.8] [%emt 0:00:00.1]}\n2. Bb5+ {[%clk 0:00:28.5] [%emt 0:00:00.7]} c6 {[%clk 0:00:29.8] [%emt\n0:00:00.0]} 3. c4 {[%clk 0:00:27.9] [%emt 0:00:00.5]} cxb5 {[%clk 0:00:28.6]\n[%emt 0:00:01.1]} 4. exd5 {[%clk 0:00:27.2] [%emt 0:00:00.7]} bxc4 {[%clk\n0:00:27.8] [%emt 0:00:00.7]} 5. Qh5 {[%clk 0:00:26.6] [%emt 0:00:00.5]} Nf6\n{[%clk 0:00:27.4] [%emt 0:00:00.3]} 6. Qg5 {[%clk 0:00:26.0] [%emt 0:00:00.6]}\nh6 {[%clk 0:00:26.3] [%emt 0:00:01.1]} 7. Qe3 {[%clk 0:00:25.3] [%emt\n0:00:00.6]} Qxd5 {[%clk 0:00:24.6] [%emt 0:00:01.7]} 8. Nf3 {[%clk 0:00:24.0]\n[%emt 0:00:01.2]} e6 {[%clk 0:00:23.1] [%emt 0:00:01.4]} 9. a4 {[%clk 0:00:22.5]\n[%emt 0:00:01.5]} g5 {[%clk 0:00:21.5] [%emt 0:00:01.6]} 10. Nc3 {[%clk\n0:00:20.8] [%emt 0:00:01.7]} Qd6 {[%clk 0:00:20.6] [%emt 0:00:00.9]} 11. Ne4\n{[%clk 0:00:19.0] [%emt 0:00:01.7]} Nxe4 {[%clk 0:00:19.9] [%emt 0:00:00.6]} 12.\nQxe4 {[%clk 0:00:16.9] [%emt 0:00:02.1]} Qd5 {[%clk 0:00:19.3] [%emt 0:00:00.5]}\n13. Qd4 {[%clk 0:00:16.0] [%emt 0:00:00.9]} Qxd4 {[%clk 0:00:18.9] [%emt\n0:00:00.3]} 14. Nxd4 {[%clk 0:00:15.2] [%emt 0:00:00.7]} e5 {[%clk 0:00:18.7]\n[%emt 0:00:00.2]} 15. Nc2 {[%clk 0:00:14.6] [%emt 0:00:00.5]} f5 {[%clk\n0:00:18.5] [%emt 0:00:00.1]} 16. Ne3 {[%clk 0:00:14.1] [%emt 0:00:00.5]} Be6\n{[%clk 0:00:18.4] [%emt 0:00:00.0]} 17. h3 {[%clk 0:00:13.5] [%emt 0:00:00.5]}\nf4 {[%clk 0:00:18.2] [%emt 0:00:00.2]} 18. Ng4 {[%clk 0:00:12.9] [%emt\n0:00:00.6]} Bd6 {[%clk 0:00:18.0] [%emt 0:00:00.1]} 19. Nf6+ {[%clk 0:00:11.8]\n[%emt 0:00:01.0]} Kf7 {[%clk 0:00:18.0] [%emt 0:00:00.0]} 20. Ng4 {[%clk\n0:00:11.3] [%emt 0:00:00.5]} h5 {[%clk 0:00:17.6] [%emt 0:00:00.3]} 21. Nxe5+\n{[%clk 0:00:10.7] [%emt 0:00:00.5]} Bxe5 {[%clk 0:00:17.4] [%emt 0:00:00.1]} 22.\nRh2 {[%clk 0:00:10.1] [%emt 0:00:00.5]} f3 {[%clk 0:00:17.1] [%emt 0:00:00.3]}\n23. Rh1 {[%clk 0:00:09.6] [%emt 0:00:00.5]} fxg2 {[%clk 0:00:16.9] [%emt\n0:00:00.1]} 24. Rg1 {[%clk 0:00:09.0] [%emt 0:00:00.6]} Bxh3 {[%clk 0:00:16.8]\n[%emt 0:00:00.1]} 25. f3 {[%clk 0:00:08.4] [%emt 0:00:00.6]} Bd4 {[%clk\n0:00:16.2] [%emt 0:00:00.5]} 26. Rxg2 {[%clk 0:00:07.9] [%emt 0:00:00.5]} Bxg2\n{[%clk 0:00:15.9] [%emt 0:00:00.2]} 27. d3 {[%clk 0:00:07.4] [%emt 0:00:00.4]}\ncxd3 {[%clk 0:00:15.5] [%emt 0:00:00.4]} 28. Bxg5 {[%clk 0:00:06.8] [%emt\n0:00:00.6]} Bxf3 {[%clk 0:00:14.7] [%emt 0:00:00.8]} 29. Ra3 {[%clk 0:00:06.2]\n[%emt 0:00:00.5]} Re8+ {[%clk 0:00:14.4] [%emt 0:00:00.2]} 30. Kf1 {[%clk\n0:00:05.7] [%emt 0:00:00.5]} Be2+ {[%clk 0:00:14.2] [%emt 0:00:00.2]} 31. Ke1\n{[%clk 0:00:05.4] [%emt 0:00:00.3]} Bxb2 {[%clk 0:00:12.7] [%emt 0:00:01.4]} 32.\nRb3 {[%clk 0:00:04.8] [%emt 0:00:00.5]} Bf3+ {[%clk 0:00:12.3] [%emt 0:00:00.4]}\n33. Kf2 {[%clk 0:00:04.2] [%emt 0:00:00.5]} Bd4+ {[%clk 0:00:12.0] [%emt\n0:00:00.3]} 34. Kxf3 {[%clk 0:00:03.6] [%emt 0:00:00.6]} Nc6 {[%clk 0:00:11.7]\n[%emt 0:00:00.2]} 35. Rxb7+ {[%clk 0:00:02.7] [%emt 0:00:00.8]} Kg8 {[%clk\n0:00:11.6] [%emt 0:00:00.1]} 36. Rb3 {[%clk 0:00:01.9] [%emt 0:00:00.8]} Ne5+\n{[%clk 0:00:11.3] [%emt 0:00:00.3]} 37. Kf4 {[%clk 0:00:01.4] [%emt 0:00:00.5]}\na5 {[%clk 0:00:10.8] [%emt 0:00:00.4]} 38. Bh6 {[%clk 0:00:00.6] [%emt\n0:00:00.7]} Re6 {[%clk 0:00:10.3] [%emt 0:00:00.5]} 39. Bg5 {[%clk 0:00:00.0]\n[%emt 0:00:00.8]} Rf8+ {[%clk 0:00:09.6] [%emt 0:00:00.6]} 40. Kg3 {[%clk\n0:00:00.0] [%emt 0:00:00.5]} Rg6 {[%clk 0:00:09.0] [%emt 0:00:00.6]} 41. Kh4\n{[%clk 0:00:00.0] [%emt 0:00:00.5]} Nf3+ {[%clk 0:00:08.7] [%emt 0:00:00.2]} 42.\nKxh5 {[%clk 0:00:00.0] [%emt 0:00:00.4]} Rxg5+ {[%clk 0:00:08.4] [%emt\n0:00:00.3]} 43. Kh6 {[%clk 0:00:00.0] [%emt 0:00:00.3]} Rf6# {[%clk 0:00:08.4]\n[%emt 0:00:00.0]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 43,
+     "clean": 39,
+     "fallback": 4,
+     "thinkMs": 32043
+    },
+    "b": {
+     "moves": 43,
+     "clean": 43,
+     "fallback": 0,
+     "thinkMs": 21511
+    },
+    "timeouts": null
+   },
+   "savedGameId": "0992f104abda"
+  },
+  {
+   "id": "a4ij98k0",
+   "round": 8,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexgemma:pure",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 36,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"8\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. c4 {[%clk 0:00:28.5] [%emt 0:00:01.4]} Nc6 {[%clk 0:00:29.3] [%emt\n0:00:00.6]} 2. d4 {[%clk 0:00:26.0] [%emt 0:00:02.4]} Ne5 {[%clk 0:00:28.6]\n[%emt 0:00:00.6]} 3. dxe5 {[%clk 0:00:24.3] [%emt 0:00:01.6]} Nh6 {[%clk\n0:00:28.1] [%emt 0:00:00.5]} 4. Qd4 {[%clk 0:00:22.5] [%emt 0:00:01.7]} Rg8\n{[%clk 0:00:27.6] [%emt 0:00:00.5]} 5. e4 {[%clk 0:00:19.9] [%emt 0:00:02.6]}\nRh8 {[%clk 0:00:27.0] [%emt 0:00:00.6]} 6. f4 {[%clk 0:00:18.1] [%emt\n0:00:01.7]} Rg8 {[%clk 0:00:26.5] [%emt 0:00:00.5]} 7. h4 {[%clk 0:00:15.6]\n[%emt 0:00:02.5]} Rh8 {[%clk 0:00:25.9] [%emt 0:00:00.6]} 8. a4 {[%clk\n0:00:14.0] [%emt 0:00:01.5]} Rg8 {[%clk 0:00:25.3] [%emt 0:00:00.5]} 9. Be3\n{[%clk 0:00:12.3] [%emt 0:00:01.6]} Rh8 {[%clk 0:00:24.8] [%emt 0:00:00.5]} 10.\nb4 {[%clk 0:00:10.6] [%emt 0:00:01.7]} Rg8 {[%clk 0:00:24.2] [%emt 0:00:00.6]}\n11. Bd3 {[%clk 0:00:08.1] [%emt 0:00:02.4]} Rh8 {[%clk 0:00:23.6] [%emt\n0:00:00.5]} 12. Nf3 {[%clk 0:00:06.4] [%emt 0:00:01.7]} Rg8 {[%clk 0:00:23.0]\n[%emt 0:00:00.5]} 13. Nc3 {[%clk 0:00:03.8] [%emt 0:00:02.5]} Rh8 {[%clk\n0:00:22.4] [%emt 0:00:00.5]} 14. h5 {[%clk 0:00:01.9] [%emt 0:00:01.8]} Rg8\n{[%clk 0:00:21.9] [%emt 0:00:00.5]} 15. c5 {[%clk 0:00:00.0] [%emt 0:00:02.6]}\nd5 {[%clk 0:00:21.3] [%emt 0:00:00.5]} 16. cxd6 {[%clk 0:00:00.0] [%emt\n0:00:03.7]} Qxd6 {[%clk 0:00:20.7] [%emt 0:00:00.6]} 17. exd6 {[%clk 0:00:00.0]\n[%emt 0:00:04.8]} Rh8 {[%clk 0:00:20.0] [%emt 0:00:00.6]} 18. f5 {[%clk\n0:00:00.0] [%emt 0:00:02.8]} Bxf5 {[%clk 0:00:19.4] [%emt 0:00:00.6]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 18,
+     "clean": 1,
+     "fallback": 17,
+     "thinkMs": 42088
+    },
+    "b": {
+     "moves": 18,
+     "clean": 18,
+     "fallback": 0,
+     "thinkMs": 10568
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "031b9b8647f6"
+  },
+  {
+   "id": "34qhmtl3",
+   "round": 8,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 17,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"8\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. d4 {[%clk 0:00:26.2] [%emt 0:00:03.7]} f6 {[%clk 0:00:26.6] [%emt 0:00:03.3]}\n2. f3 {[%clk 0:00:25.6] [%emt 0:00:00.6]} g5 {[%clk 0:00:25.6] [%emt 0:00:00.9]}\n3. e4 {[%clk 0:00:24.9] [%emt 0:00:00.6]} c5 {[%clk 0:00:24.7] [%emt 0:00:00.9]}\n4. dxc5 {[%clk 0:00:23.8] [%emt 0:00:01.1]} Na6 {[%clk 0:00:23.7] [%emt\n0:00:00.9]} 5. Be3 {[%clk 0:00:22.9] [%emt 0:00:00.8]} b5 {[%clk 0:00:22.7]\n[%emt 0:00:01.0]} 6. Bxb5 {[%clk 0:00:21.2] [%emt 0:00:01.7]} Qc7 {[%clk\n0:00:21.7] [%emt 0:00:00.9]} 7. Bxa6 {[%clk 0:00:20.0] [%emt 0:00:01.1]} e6\n{[%clk 0:00:20.5] [%emt 0:00:01.1]} 8. Bxc8 {[%clk 0:00:19.0] [%emt 0:00:01.0]}\nQb8 {[%clk 0:00:19.4] [%emt 0:00:01.1]} 9. Qxd7# {[%clk 0:00:18.5] [%emt\n0:00:00.5]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 9,
+     "clean": 9,
+     "fallback": 0,
+     "thinkMs": 11491
+    },
+    "b": {
+     "moves": 8,
+     "clean": 0,
+     "fallback": 8,
+     "thinkMs": 10556
+    },
+    "timeouts": null
+   },
+   "savedGameId": "cac802dadca9"
+  },
+  {
+   "id": "r7ln7oxw",
+   "round": 9,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen-v3:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 31,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"9\"]\n[White \"Motor del árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"engine\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} Nh6 {[%clk 0:00:25.2] [%emt\n0:00:04.7]} 2. d4 {[%clk 0:00:29.7] [%emt 0:00:00.1]} Rg8 {[%clk 0:00:24.5]\n[%emt 0:00:00.6]} 3. c4 {[%clk 0:00:29.1] [%emt 0:00:00.6]} Rh8 {[%clk\n0:00:23.9] [%emt 0:00:00.6]} 4. f4 {[%clk 0:00:28.7] [%emt 0:00:00.3]} Rg8\n{[%clk 0:00:23.2] [%emt 0:00:00.7]} 5. g4 {[%clk 0:00:28.3] [%emt 0:00:00.3]}\nRh8 {[%clk 0:00:22.5] [%emt 0:00:00.6]} 6. h4 {[%clk 0:00:28.0] [%emt\n0:00:00.3]} Ng8 {[%clk 0:00:21.9] [%emt 0:00:00.6]} 7. a4 {[%clk 0:00:27.7]\n[%emt 0:00:00.3]} Nh6 {[%clk 0:00:21.2] [%emt 0:00:00.7]} 8. Bd3 {[%clk\n0:00:27.4] [%emt 0:00:00.2]} Ng8 {[%clk 0:00:20.6] [%emt 0:00:00.6]} 9. Nf3\n{[%clk 0:00:27.1] [%emt 0:00:00.2]} Nh6 {[%clk 0:00:19.9] [%emt 0:00:00.6]} 10.\nNe5 {[%clk 0:00:27.0] [%emt 0:00:00.1]} Rg8 {[%clk 0:00:19.3] [%emt 0:00:00.6]}\n11. b4 {[%clk 0:00:26.3] [%emt 0:00:00.6]} Rh8 {[%clk 0:00:18.6] [%emt\n0:00:00.7]} 12. Qf3 {[%clk 0:00:25.8] [%emt 0:00:00.5]} Rg8 {[%clk 0:00:18.0]\n[%emt 0:00:00.6]} 13. g5 {[%clk 0:00:25.0] [%emt 0:00:00.7]} Rh8 {[%clk\n0:00:17.2] [%emt 0:00:00.7]} 14. gxh6 {[%clk 0:00:24.4] [%emt 0:00:00.5]} Rg8\n{[%clk 0:00:16.6] [%emt 0:00:00.6]} 15. Qh5 {[%clk 0:00:24.1] [%emt 0:00:00.3]}\nRh8 {[%clk 0:00:16.0] [%emt 0:00:00.6]} 16. Qxf7# {[%clk 0:00:24.1] [%emt\n0:00:00.0]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 16,
+     "clean": 16,
+     "fallback": 0,
+     "thinkMs": 5848
+    },
+    "b": {
+     "moves": 15,
+     "clean": 14,
+     "fallback": 1,
+     "thinkMs": 13978
+    },
+    "timeouts": null
+   },
+   "savedGameId": "ee6665278078"
+  },
+  {
+   "id": "q34nixpm",
+   "round": 9,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 42,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"9\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. h4 {[%clk 0:00:27.9] [%emt 0:00:02.0]} e5 {[%clk 0:00:28.5] [%emt 0:00:01.4]}\n2. Na3 {[%clk 0:00:27.0] [%emt 0:00:00.9]} f5 {[%clk 0:00:27.6] [%emt\n0:00:00.9]} 3. d4 {[%clk 0:00:26.0] [%emt 0:00:00.9]} Bb4+ {[%clk 0:00:26.4]\n[%emt 0:00:01.2]} 4. Bd2 {[%clk 0:00:25.2] [%emt 0:00:00.8]} Bxd2+ {[%clk\n0:00:25.4] [%emt 0:00:01.0]} 5. Kxd2 {[%clk 0:00:24.4] [%emt 0:00:00.7]} exd4\n{[%clk 0:00:24.3] [%emt 0:00:01.0]} 6. Rh2 {[%clk 0:00:23.4] [%emt 0:00:01.0]}\nNf6 {[%clk 0:00:23.6] [%emt 0:00:00.7]} 7. Nb1 {[%clk 0:00:22.4] [%emt\n0:00:00.9]} Ng4 {[%clk 0:00:22.6] [%emt 0:00:00.9]} 8. c4 {[%clk 0:00:21.5]\n[%emt 0:00:00.8]} dxc3+ {[%clk 0:00:21.3] [%emt 0:00:01.3]} 9. Kc2 {[%clk\n0:00:20.7] [%emt 0:00:00.7]} cxb2 {[%clk 0:00:18.9] [%emt 0:00:02.3]} 10. a4\n{[%clk 0:00:19.8] [%emt 0:00:00.9]} bxa1=Q {[%clk 0:00:17.2] [%emt 0:00:01.7]}\n11. a5 {[%clk 0:00:18.8] [%emt 0:00:00.9]} Qa2+ {[%clk 0:00:14.6] [%emt\n0:00:02.5]} 12. Kc1 {[%clk 0:00:18.0] [%emt 0:00:00.7]} Nxh2 {[%clk 0:00:11.7]\n[%emt 0:00:02.9]} 13. Nc3 {[%clk 0:00:17.0] [%emt 0:00:00.9]} Qa1+ {[%clk\n0:00:10.3] [%emt 0:00:01.4]} 14. Nb1 {[%clk 0:00:16.2] [%emt 0:00:00.8]} Nxf1\n{[%clk 0:00:07.6] [%emt 0:00:02.7]} 15. Qxd7+ {[%clk 0:00:15.2] [%emt\n0:00:01.0]} Nxd7 {[%clk 0:00:06.8] [%emt 0:00:00.7]} 16. Nf3 {[%clk 0:00:14.3]\n[%emt 0:00:00.8]} h5 {[%clk 0:00:04.4] [%emt 0:00:02.3]} 17. Nh2 {[%clk\n0:00:13.4] [%emt 0:00:00.8]} Nxh2 {[%clk 0:00:03.4] [%emt 0:00:00.9]} 18. f4\n{[%clk 0:00:12.6] [%emt 0:00:00.8]} Ng4 {[%clk 0:00:01.3] [%emt 0:00:02.1]} 19.\nKd1 {[%clk 0:00:11.8] [%emt 0:00:00.7]} Qxb1+ {[%clk 0:00:00.0] [%emt\n0:00:02.2]} 20. Kd2 {[%clk 0:00:11.1] [%emt 0:00:00.7]} Nc5+ {[%clk 0:00:00.0]\n[%emt 0:00:02.9]} 21. Kc3 {[%clk 0:00:10.3] [%emt 0:00:00.7]} Qb3# {[%clk\n0:00:00.0] [%emt 0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 21,
+     "clean": 0,
+     "fallback": 21,
+     "thinkMs": 19670
+    },
+    "b": {
+     "moves": 21,
+     "clean": 17,
+     "fallback": 4,
+     "thinkMs": 34453
+    },
+    "timeouts": null
+   },
+   "savedGameId": "cf6114613054"
+  },
+  {
+   "id": "9x8tesgj",
+   "round": 9,
+   "white": "vertexgemma:pure",
+   "black": "vertexgemma:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 20,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"9\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nc3 {[%clk 0:00:28.9] [%emt 0:00:01.0]} d5 {[%clk 0:00:29.4] [%emt\n0:00:00.5]} 2. Nb5 {[%clk 0:00:28.4] [%emt 0:00:00.5]} f5 {[%clk 0:00:28.7]\n[%emt 0:00:00.7]} 3. Nxc7+ {[%clk 0:00:27.8] [%emt 0:00:00.5]} Qxc7 {[%clk\n0:00:28.3] [%emt 0:00:00.4]} 4. Nh3 {[%clk 0:00:27.2] [%emt 0:00:00.5]} e6\n{[%clk 0:00:27.5] [%emt 0:00:00.7]} 5. Ng5 {[%clk 0:00:26.6] [%emt 0:00:00.5]}\nBb4 {[%clk 0:00:26.3] [%emt 0:00:01.2]} 6. Nh3 {[%clk 0:00:26.0] [%emt\n0:00:00.6]} h5 {[%clk 0:00:25.4] [%emt 0:00:00.8]} 7. Ng5 {[%clk 0:00:25.4]\n[%emt 0:00:00.5]} Nf6 {[%clk 0:00:23.9] [%emt 0:00:01.5]} 8. Nh7 {[%clk\n0:00:24.8] [%emt 0:00:00.6]} Nxh7 {[%clk 0:00:22.9] [%emt 0:00:01.0]} 9. f4\n{[%clk 0:00:24.2] [%emt 0:00:00.5]} Qxf4 {[%clk 0:00:21.3] [%emt 0:00:01.6]} 10.\nh4 {[%clk 0:00:23.7] [%emt 0:00:00.5]} Qg3# {[%clk 0:00:20.7] [%emt 0:00:00.5]}\n0-1\n",
+   "stats": {
+    "w": {
+     "moves": 10,
+     "clean": 10,
+     "fallback": 0,
+     "thinkMs": 6284
+    },
+    "b": {
+     "moves": 10,
+     "clean": 10,
+     "fallback": 0,
+     "thinkMs": 9245
+    },
+    "timeouts": null
+   },
+   "savedGameId": "454521ed1393"
+  },
+  {
+   "id": "08llw105",
+   "round": 10,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexqwen:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 30,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"10\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nh3 {[%clk 0:00:28.7] [%emt 0:00:01.2]} f5 {[%clk 0:00:28.8] [%emt\n0:00:01.1]} 2. Ng1 {[%clk 0:00:27.4] [%emt 0:00:01.2]} e6 {[%clk 0:00:27.9]\n[%emt 0:00:00.9]} 3. Nh3 {[%clk 0:00:26.4] [%emt 0:00:01.0]} e5 {[%clk\n0:00:26.9] [%emt 0:00:00.9]} 4. Ng5 {[%clk 0:00:25.5] [%emt 0:00:00.8]} Qxg5\n{[%clk 0:00:26.0] [%emt 0:00:00.9]} 5. Nc3 {[%clk 0:00:24.6] [%emt 0:00:00.9]}\nQh4 {[%clk 0:00:24.9] [%emt 0:00:01.1]} 6. Nd5 {[%clk 0:00:23.9] [%emt\n0:00:00.6]} c6 {[%clk 0:00:23.8] [%emt 0:00:01.1]} 7. Ne7 {[%clk 0:00:23.1]\n[%emt 0:00:00.7]} Qxe7 {[%clk 0:00:22.7] [%emt 0:00:01.0]} 8. Rg1 {[%clk\n0:00:22.4] [%emt 0:00:00.7]} Qh4 {[%clk 0:00:21.5] [%emt 0:00:01.1]} 9. Rh1\n{[%clk 0:00:21.7] [%emt 0:00:00.7]} d6 {[%clk 0:00:20.2] [%emt 0:00:01.3]} 10.\nRg1 {[%clk 0:00:21.0] [%emt 0:00:00.6]} Qxh2 {[%clk 0:00:18.8] [%emt 0:00:01.3]}\n11. Rh1 {[%clk 0:00:20.4] [%emt 0:00:00.5]} Qxh1 {[%clk 0:00:18.0] [%emt\n0:00:00.7]} 12. Rb1 {[%clk 0:00:19.9] [%emt 0:00:00.5]} Be6 {[%clk 0:00:17.0]\n[%emt 0:00:01.0]} 13. a3 {[%clk 0:00:19.3] [%emt 0:00:00.6]} Bd5 {[%clk\n0:00:15.9] [%emt 0:00:01.0]} 14. d4 {[%clk 0:00:18.7] [%emt 0:00:00.5]} Bxg2\n{[%clk 0:00:14.0] [%emt 0:00:01.9]} 15. Qd2 {[%clk 0:00:18.0] [%emt 0:00:00.6]}\nQxf1# {[%clk 0:00:13.4] [%emt 0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 15,
+     "clean": 15,
+     "fallback": 0,
+     "thinkMs": 11934
+    },
+    "b": {
+     "moves": 15,
+     "clean": 1,
+     "fallback": 14,
+     "thinkMs": 16569
+    },
+    "timeouts": null
+   },
+   "savedGameId": "9de2fa59a717"
+  },
+  {
+   "id": "bldwpiuf",
+   "round": 10,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 45,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"10\"]\n[White \"Motor del árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"engine\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} b5 {[%clk 0:00:28.8] [%emt 0:00:01.1]}\n2. Bxb5 {[%clk 0:00:29.6] [%emt 0:00:00.3]} c6 {[%clk 0:00:27.9] [%emt\n0:00:00.9]} 3. Bc4 {[%clk 0:00:29.5] [%emt 0:00:00.1]} a6 {[%clk 0:00:26.9]\n[%emt 0:00:00.9]} 4. d4 {[%clk 0:00:29.0] [%emt 0:00:00.4]} f6 {[%clk 0:00:26.0]\n[%emt 0:00:00.9]} 5. Bxg8 {[%clk 0:00:27.9] [%emt 0:00:01.1]} c5 {[%clk\n0:00:25.1] [%emt 0:00:00.9]} 6. Qh5+ {[%clk 0:00:27.4] [%emt 0:00:00.4]} g6\n{[%clk 0:00:24.2] [%emt 0:00:00.8]} 7. Bxh7 {[%clk 0:00:26.8] [%emt 0:00:00.6]}\nKf7 {[%clk 0:00:23.1] [%emt 0:00:01.1]} 8. Qd5+ {[%clk 0:00:26.2] [%emt\n0:00:00.6]} Kg7 {[%clk 0:00:22.2] [%emt 0:00:00.8]} 9. Qxa8 {[%clk 0:00:24.1]\n[%emt 0:00:02.0]} Kf7 {[%clk 0:00:20.9] [%emt 0:00:01.2]} 10. Qxb8 {[%clk\n0:00:23.7] [%emt 0:00:00.4]} e5 {[%clk 0:00:19.9] [%emt 0:00:01.0]} 11. Qb3+\n{[%clk 0:00:23.1] [%emt 0:00:00.5]} Ke7 {[%clk 0:00:19.1] [%emt 0:00:00.8]} 12.\nBxg6 {[%clk 0:00:22.5] [%emt 0:00:00.6]} Rh5 {[%clk 0:00:18.1] [%emt 0:00:00.9]}\n13. Qf7+ {[%clk 0:00:19.8] [%emt 0:00:02.7]} Kd6 {[%clk 0:00:17.3] [%emt\n0:00:00.8]} 14. dxc5+ {[%clk 0:00:16.7] [%emt 0:00:03.0]} Kc7 {[%clk 0:00:16.2]\n[%emt 0:00:01.0]} 15. Bxh5 {[%clk 0:00:15.8] [%emt 0:00:00.8]} Bxc5 {[%clk\n0:00:15.3] [%emt 0:00:00.8]} 16. f4 {[%clk 0:00:15.2] [%emt 0:00:00.6]} Bf8\n{[%clk 0:00:14.3] [%emt 0:00:00.9]} 17. c4 {[%clk 0:00:13.9] [%emt 0:00:01.3]}\nQe7 {[%clk 0:00:13.4] [%emt 0:00:00.9]} 18. Nc3 {[%clk 0:00:13.1] [%emt\n0:00:00.7]} a5 {[%clk 0:00:12.4] [%emt 0:00:01.0]} 19. Nd5+ {[%clk 0:00:12.0]\n[%emt 0:00:01.1]} Kb7 {[%clk 0:00:11.5] [%emt 0:00:00.8]} 20. Nxe7 {[%clk\n0:00:11.6] [%emt 0:00:00.4]} Kb6 {[%clk 0:00:10.5] [%emt 0:00:00.9]} 21. Nxc8+\n{[%clk 0:00:10.8] [%emt 0:00:00.7]} Kc5 {[%clk 0:00:09.6] [%emt 0:00:00.9]} 22.\nQd5+ {[%clk 0:00:09.1] [%emt 0:00:01.7]} Kb4 {[%clk 0:00:09.1] [%emt 0:00:00.4]}\n23. Qb5# {[%clk 0:00:09.1] [%emt 0:00:00.0]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 23,
+     "clean": 23,
+     "fallback": 0,
+     "thinkMs": 20843
+    },
+    "b": {
+     "moves": 22,
+     "clean": 0,
+     "fallback": 22,
+     "thinkMs": 20843
+    },
+    "timeouts": null
+   },
+   "savedGameId": "c3ac6647015c"
+  },
+  {
+   "id": "dh0avarq",
+   "round": 10,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexgemma:pure",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 51,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"10\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:29.2] [%emt 0:00:00.7]} Nc6 {[%clk 0:00:29.1] [%emt\n0:00:00.8]} 2. f4 {[%clk 0:00:28.0] [%emt 0:00:01.2]} Nf6 {[%clk 0:00:28.6]\n[%emt 0:00:00.5]} 3. d3 {[%clk 0:00:27.2] [%emt 0:00:00.8]} Nxe4 {[%clk\n0:00:28.0] [%emt 0:00:00.5]} 4. dxe4 {[%clk 0:00:26.0] [%emt 0:00:01.1]} Ne5\n{[%clk 0:00:27.4] [%emt 0:00:00.5]} 5. fxe5 {[%clk 0:00:24.7] [%emt 0:00:01.3]}\nd5 {[%clk 0:00:26.9] [%emt 0:00:00.5]} 6. exd5 {[%clk 0:00:23.4] [%emt\n0:00:01.3]} Qxd5 {[%clk 0:00:26.2] [%emt 0:00:00.6]} 7. Qxd5 {[%clk 0:00:21.2]\n[%emt 0:00:02.1]} Bd7 {[%clk 0:00:25.6] [%emt 0:00:00.6]} 8. Bc4 {[%clk\n0:00:19.4] [%emt 0:00:01.7]} Bc8 {[%clk 0:00:25.0] [%emt 0:00:00.5]} 9. Qxf7+\n{[%clk 0:00:16.9] [%emt 0:00:02.5]} Kd7 {[%clk 0:00:24.6] [%emt 0:00:00.4]} 10.\nQe6+ {[%clk 0:00:12.1] [%emt 0:00:04.8]} Ke8 {[%clk 0:00:24.2] [%emt 0:00:00.4]}\n11. Qf7+ {[%clk 0:00:11.3] [%emt 0:00:00.7]} Kd7 {[%clk 0:00:23.7] [%emt\n0:00:00.4]} 12. Qd5+ {[%clk 0:00:06.7] [%emt 0:00:04.6]} Ke8 {[%clk 0:00:23.3]\n[%emt 0:00:00.4]} 13. h4 {[%clk 0:00:04.2] [%emt 0:00:02.5]} Bd7 {[%clk\n0:00:22.8] [%emt 0:00:00.5]} 14. Qxb7 {[%clk 0:00:02.6] [%emt 0:00:01.5]} Rc8\n{[%clk 0:00:22.2] [%emt 0:00:00.5]} 15. Qxa7 {[%clk 0:00:00.2] [%emt 0:00:02.4]}\nRd8 {[%clk 0:00:21.7] [%emt 0:00:00.5]} 16. Qxc7 {[%clk 0:00:00.0] [%emt\n0:00:01.2]} Rg8 {[%clk 0:00:21.2] [%emt 0:00:00.5]} 17. Bxg8 {[%clk 0:00:00.0]\n[%emt 0:00:01.4]} h5 {[%clk 0:00:20.6] [%emt 0:00:00.5]} 18. Bf7+ {[%clk\n0:00:00.0] [%emt 0:00:01.3]} Kxf7 {[%clk 0:00:20.2] [%emt 0:00:00.4]} 19. Qxd8\n{[%clk 0:00:00.0] [%emt 0:00:01.2]} Be6 {[%clk 0:00:19.7] [%emt 0:00:00.5]} 20.\nQd4 {[%clk 0:00:00.0] [%emt 0:00:01.0]} Kg6 {[%clk 0:00:19.1] [%emt 0:00:00.5]}\n21. Qf4 {[%clk 0:00:00.0] [%emt 0:00:01.0]} Bg8 {[%clk 0:00:18.6] [%emt\n0:00:00.5]} 22. Nf3 {[%clk 0:00:00.0] [%emt 0:00:01.4]} e6 {[%clk 0:00:18.1]\n[%emt 0:00:00.4]} 23. Qxf8 {[%clk 0:00:00.0] [%emt 0:00:01.2]} Kh7 {[%clk\n0:00:17.7] [%emt 0:00:00.4]} 24. Ng5+ {[%clk 0:00:00.0] [%emt 0:00:00.9]} Kh6\n{[%clk 0:00:17.3] [%emt 0:00:00.4]} 25. Qxg8 {[%clk 0:00:00.0] [%emt 0:00:01.0]}\nKg6 {[%clk 0:00:16.9] [%emt 0:00:00.4]} 26. Qh7# {[%clk 0:00:00.0] [%emt\n0:00:00.5]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 26,
+     "clean": 26,
+     "fallback": 0,
+     "thinkMs": 42509
+    },
+    "b": {
+     "moves": 25,
+     "clean": 24,
+     "fallback": 1,
+     "thinkMs": 13093
+    },
+    "timeouts": null
+   },
+   "savedGameId": "e979154e17f5"
+  },
+  {
+   "id": "39ak43qe",
+   "round": 11,
+   "white": "vertexqwen:pure",
+   "black": "vertexqwen-v3:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 89,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"11\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. e4 {[%clk 0:00:28.8] [%emt 0:00:01.1]} Nh6 {[%clk 0:00:28.7] [%emt\n0:00:01.2]} 2. g4 {[%clk 0:00:27.8] [%emt 0:00:00.9]} Ng8 {[%clk 0:00:27.8]\n[%emt 0:00:00.9]} 3. f3 {[%clk 0:00:26.8] [%emt 0:00:00.9]} Nh6 {[%clk\n0:00:26.9] [%emt 0:00:00.9]} 4. Nh3 {[%clk 0:00:25.8] [%emt 0:00:00.9]} Ng8\n{[%clk 0:00:26.0] [%emt 0:00:00.8]} 5. Bb5 {[%clk 0:00:24.8] [%emt 0:00:00.9]}\nNh6 {[%clk 0:00:25.2] [%emt 0:00:00.8]} 6. Ng5 {[%clk 0:00:23.8] [%emt\n0:00:01.0]} Rg8 {[%clk 0:00:24.3] [%emt 0:00:00.9]} 7. Kf2 {[%clk 0:00:22.7]\n[%emt 0:00:01.1]} e5 {[%clk 0:00:23.3] [%emt 0:00:00.9]} 8. Ke2 {[%clk\n0:00:21.6] [%emt 0:00:01.0]} Bb4 {[%clk 0:00:22.1] [%emt 0:00:01.1]} 9. b3\n{[%clk 0:00:20.5] [%emt 0:00:01.1]} Qe7 {[%clk 0:00:21.0] [%emt 0:00:01.1]} 10.\nBb2 {[%clk 0:00:19.4] [%emt 0:00:01.1]} Qxg5 {[%clk 0:00:19.7] [%emt 0:00:01.3]}\n11. Ba4 {[%clk 0:00:18.3] [%emt 0:00:01.1]} Qf4 {[%clk 0:00:18.1] [%emt\n0:00:01.5]} 12. Qf1 {[%clk 0:00:17.3] [%emt 0:00:01.0]} Qxe4+ {[%clk 0:00:16.9]\n[%emt 0:00:01.2]} 13. fxe4 {[%clk 0:00:16.5] [%emt 0:00:00.7]} Nf5 {[%clk\n0:00:15.8] [%emt 0:00:01.0]} 14. g5 {[%clk 0:00:15.4] [%emt 0:00:01.0]} Nh4\n{[%clk 0:00:14.7] [%emt 0:00:01.1]} 15. Qf5 {[%clk 0:00:14.4] [%emt 0:00:01.0]}\nNxf5 {[%clk 0:00:13.6] [%emt 0:00:01.0]} 16. exf5 {[%clk 0:00:13.4] [%emt\n0:00:01.0]} Rh8 {[%clk 0:00:12.5] [%emt 0:00:01.0]} 17. Kf3 {[%clk 0:00:12.3]\n[%emt 0:00:01.0]} Nc6 {[%clk 0:00:11.5] [%emt 0:00:01.0]} 18. Rc1 {[%clk\n0:00:11.3] [%emt 0:00:01.0]} Rg8 {[%clk 0:00:10.3] [%emt 0:00:01.1]} 19. Kg3\n{[%clk 0:00:10.3] [%emt 0:00:00.9]} Bd6 {[%clk 0:00:09.3] [%emt 0:00:01.0]} 20.\nKg4 {[%clk 0:00:09.3] [%emt 0:00:00.9]} Rh8 {[%clk 0:00:08.2] [%emt 0:00:01.0]}\n21. Nc3 {[%clk 0:00:08.3] [%emt 0:00:00.9]} Rg8 {[%clk 0:00:07.5] [%emt\n0:00:00.7]} 22. Kg3 {[%clk 0:00:07.3] [%emt 0:00:00.9]} Bc5 {[%clk 0:00:06.8]\n[%emt 0:00:00.7]} 23. Kf3 {[%clk 0:00:06.3] [%emt 0:00:00.9]} Nd8 {[%clk\n0:00:06.0] [%emt 0:00:00.7]} 24. Nb1 {[%clk 0:00:05.3] [%emt 0:00:00.9]} Rh8\n{[%clk 0:00:05.3] [%emt 0:00:00.7]} 25. g6 {[%clk 0:00:04.3] [%emt 0:00:00.9]}\nRb8 {[%clk 0:00:04.5] [%emt 0:00:00.7]} 26. gxf7+ {[%clk 0:00:03.2] [%emt\n0:00:01.0]} Kxf7 {[%clk 0:00:03.9] [%emt 0:00:00.5]} 27. f6 {[%clk 0:00:02.3]\n[%emt 0:00:00.9]} Bd4 {[%clk 0:00:03.1] [%emt 0:00:00.8]} 28. c3 {[%clk\n0:00:01.3] [%emt 0:00:00.9]} Rg8 {[%clk 0:00:02.3] [%emt 0:00:00.7]} 29. d3\n{[%clk 0:00:00.2] [%emt 0:00:01.0]} Rh8 {[%clk 0:00:01.6] [%emt 0:00:00.7]} 30.\nRh1 {[%clk 0:00:00.0] [%emt 0:00:00.9]} Rg8 {[%clk 0:00:00.8] [%emt 0:00:00.7]}\n31. Ke4 {[%clk 0:00:00.0] [%emt 0:00:00.9]} Rh8 {[%clk 0:00:00.0] [%emt\n0:00:00.7]} 32. Nd2 {[%clk 0:00:00.0] [%emt 0:00:00.8]} Rg8 {[%clk 0:00:00.0]\n[%emt 0:00:00.7]} 33. h4 {[%clk 0:00:00.0] [%emt 0:00:01.0]} Rh8 {[%clk\n0:00:00.0] [%emt 0:00:00.7]} 34. Rhg1 {[%clk 0:00:00.0] [%emt 0:00:01.0]} h6\n{[%clk 0:00:00.0] [%emt 0:00:00.7]} 35. Rg6 {[%clk 0:00:00.0] [%emt 0:00:01.0]}\nRg8 {[%clk 0:00:00.0] [%emt 0:00:00.7]} 36. a3 {[%clk 0:00:00.0] [%emt\n0:00:01.0]} Rh8 {[%clk 0:00:00.0] [%emt 0:00:00.7]} 37. Rc1 {[%clk 0:00:00.0]\n[%emt 0:00:01.1]} Rg8 {[%clk 0:00:00.0] [%emt 0:00:00.7]} 38. Rc2 {[%clk\n0:00:00.0] [%emt 0:00:01.0]} Rh8 {[%clk 0:00:00.0] [%emt 0:00:00.6]} 39. Rc1\n{[%clk 0:00:00.0] [%emt 0:00:00.9]} Rg8 {[%clk 0:00:00.0] [%emt 0:00:00.6]} 40.\nRxh6 {[%clk 0:00:00.0] [%emt 0:00:00.9]} Ra8 {[%clk 0:00:00.0] [%emt 0:00:00.7]}\n41. Rh5 {[%clk 0:00:00.0] [%emt 0:00:01.0]} Rh8 {[%clk 0:00:00.0] [%emt\n0:00:00.7]} 42. fxg7 {[%clk 0:00:00.0] [%emt 0:00:01.1]} Rxh5 {[%clk 0:00:00.0]\n[%emt 0:00:00.9]} 43. Nc4 {[%clk 0:00:00.0] [%emt 0:00:01.0]} Rh8 {[%clk\n0:00:00.0] [%emt 0:00:00.8]} 44. Kd5 {[%clk 0:00:00.0] [%emt 0:00:01.1]} Rxh4\n{[%clk 0:00:00.0] [%emt 0:00:00.8]} 45. Bxd7 {[%clk 0:00:00.0] [%emt 0:00:01.0]}\n1-0\n",
+   "stats": {
+    "w": {
+     "moves": 45,
+     "clean": 1,
+     "fallback": 44,
+     "thinkMs": 45785
+    },
+    "b": {
+     "moves": 44,
+     "clean": 41,
+     "fallback": 3,
+     "thinkMs": 40105
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "5bb9f05f193b"
+  },
+  {
+   "id": "dikvozmp",
+   "round": 11,
+   "white": "vertexgemma:arbiter",
+   "black": "vertexqwen:arbiter",
+   "result": "1-0",
+   "termination": "checkmate",
+   "plies": 95,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"11\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n1. d4 {[%clk 0:00:28.9] [%emt 0:00:01.0]} d5 {[%clk 0:00:29.1] [%emt 0:00:00.8]}\n2. f3 {[%clk 0:00:28.3] [%emt 0:00:00.6]} f5 {[%clk 0:00:28.0] [%emt 0:00:01.0]}\n3. h4 {[%clk 0:00:27.6] [%emt 0:00:00.6]} c6 {[%clk 0:00:27.1] [%emt 0:00:00.9]}\n4. e3 {[%clk 0:00:27.0] [%emt 0:00:00.6]} b5 {[%clk 0:00:26.0] [%emt 0:00:01.1]}\n5. Bd3 {[%clk 0:00:26.1] [%emt 0:00:00.8]} e6 {[%clk 0:00:24.6] [%emt\n0:00:01.3]} 6. Nc3 {[%clk 0:00:24.9] [%emt 0:00:01.2]} a5 {[%clk 0:00:22.7]\n[%emt 0:00:01.9]} 7. f4 {[%clk 0:00:23.7] [%emt 0:00:01.1]} h5 {[%clk 0:00:20.0]\n[%emt 0:00:02.7]} 8. g3 {[%clk 0:00:22.4] [%emt 0:00:01.3]} a4 {[%clk 0:00:18.0]\n[%emt 0:00:02.0]} 9. b3 {[%clk 0:00:20.7] [%emt 0:00:01.6]} Bd6 {[%clk\n0:00:15.5] [%emt 0:00:02.4]} 10. bxa4 {[%clk 0:00:16.9] [%emt 0:00:03.7]} bxa4\n{[%clk 0:00:13.1] [%emt 0:00:02.4]} 11. Rh3 {[%clk 0:00:15.4] [%emt 0:00:01.5]}\nQa5 {[%clk 0:00:11.2] [%emt 0:00:01.8]} 12. Ne2 {[%clk 0:00:14.5] [%emt\n0:00:00.9]} g6 {[%clk 0:00:09.6] [%emt 0:00:01.6]} 13. Bd2 {[%clk 0:00:13.6]\n[%emt 0:00:00.9]} Qd8 {[%clk 0:00:08.0] [%emt 0:00:01.6]} 14. Rh2 {[%clk\n0:00:12.6] [%emt 0:00:00.9]} a3 {[%clk 0:00:06.2] [%emt 0:00:01.7]} 15. Rh3\n{[%clk 0:00:11.6] [%emt 0:00:00.9]} Rh6 {[%clk 0:00:04.8] [%emt 0:00:01.3]} 16.\nRh2 {[%clk 0:00:10.7] [%emt 0:00:00.8]} Nf6 {[%clk 0:00:03.3] [%emt 0:00:01.4]}\n17. Rh3 {[%clk 0:00:09.9] [%emt 0:00:00.8]} Ne4 {[%clk 0:00:01.8] [%emt\n0:00:01.5]} 18. Nxe4 {[%clk 0:00:08.5] [%emt 0:00:01.3]} fxe4 {[%clk 0:00:00.4]\n[%emt 0:00:01.3]} 19. Nc3 {[%clk 0:00:07.7] [%emt 0:00:00.8]} e5 {[%clk\n0:00:00.0] [%emt 0:00:01.5]} 20. Rh2 {[%clk 0:00:06.6] [%emt 0:00:01.0]} Bg4\n{[%clk 0:00:00.0] [%emt 0:00:01.7]} 21. Qc1 {[%clk 0:00:05.1] [%emt 0:00:01.5]}\nexf4 {[%clk 0:00:00.0] [%emt 0:00:01.7]} 22. exf4 {[%clk 0:00:03.9] [%emt\n0:00:01.2]} Kf8 {[%clk 0:00:00.0] [%emt 0:00:02.0]} 23. Nxe4 {[%clk 0:00:02.8]\n[%emt 0:00:01.1]} Kg8 {[%clk 0:00:00.0] [%emt 0:00:01.6]} 24. Nxd6 {[%clk\n0:00:01.6] [%emt 0:00:01.2]} Qxd6 {[%clk 0:00:00.0] [%emt 0:00:02.1]} 25. Bc3\n{[%clk 0:00:00.8] [%emt 0:00:00.8]} Bf3 {[%clk 0:00:00.0] [%emt 0:00:01.4]} 26.\nRd2 {[%clk 0:00:00.0] [%emt 0:00:00.9]} Kh8 {[%clk 0:00:00.0] [%emt 0:00:01.3]}\n27. Kf2 {[%clk 0:00:00.0] [%emt 0:00:00.7]} Be4 {[%clk 0:00:00.0] [%emt\n0:00:01.0]} 28. Bxe4 {[%clk 0:00:00.0] [%emt 0:00:00.9]} dxe4 {[%clk 0:00:00.0]\n[%emt 0:00:01.3]} 29. Ke2 {[%clk 0:00:00.0] [%emt 0:00:00.8]} Qd5 {[%clk\n0:00:00.0] [%emt 0:00:01.0]} 30. Ke1 {[%clk 0:00:00.0] [%emt 0:00:00.6]} Qc4\n{[%clk 0:00:00.0] [%emt 0:00:01.0]} 31. d5+ {[%clk 0:00:00.0] [%emt 0:00:00.6]}\nQxc3 {[%clk 0:00:00.0] [%emt 0:00:00.8]} 32. dxc6 {[%clk 0:00:00.0] [%emt\n0:00:00.7]} e3 {[%clk 0:00:00.0] [%emt 0:00:01.9]} 33. Kf1 {[%clk 0:00:00.0]\n[%emt 0:00:00.6]} Qxd2 {[%clk 0:00:00.0] [%emt 0:00:01.4]} 34. Qxd2 {[%clk\n0:00:00.0] [%emt 0:00:00.5]} exd2 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 35. Ke2\n{[%clk 0:00:00.0] [%emt 0:00:00.5]} d1=B+ {[%clk 0:00:00.0] [%emt 0:00:01.5]}\n36. Rxd1 {[%clk 0:00:00.0] [%emt 0:00:00.4]} Kg8 {[%clk 0:00:00.0] [%emt\n0:00:00.6]} 37. Rd8+ {[%clk 0:00:00.0] [%emt 0:00:00.5]} Kf7 {[%clk 0:00:00.0]\n[%emt 0:00:00.8]} 38. c7 {[%clk 0:00:00.0] [%emt 0:00:00.6]} Nc6 {[%clk\n0:00:00.0] [%emt 0:00:00.9]} 39. Rxa8 {[%clk 0:00:00.0] [%emt 0:00:00.7]} Nd4+\n{[%clk 0:00:00.0] [%emt 0:00:00.8]} 40. Kf2 {[%clk 0:00:00.0] [%emt 0:00:00.6]}\nRh8 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 41. Rxh8 {[%clk 0:00:00.0] [%emt\n0:00:00.7]} Kg7 {[%clk 0:00:00.0] [%emt 0:00:01.0]} 42. Re8 {[%clk 0:00:00.0]\n[%emt 0:00:00.7]} g5 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 43. fxg5 {[%clk\n0:00:00.0] [%emt 0:00:01.0]} Nxc2 {[%clk 0:00:00.0] [%emt 0:00:00.8]} 44. Rb8\n{[%clk 0:00:00.0] [%emt 0:00:00.8]} Nb4 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 45.\nRxb4 {[%clk 0:00:00.0] [%emt 0:00:00.8]} Kh8 {[%clk 0:00:00.0] [%emt 0:00:01.0]}\n46. c8=Q+ {[%clk 0:00:00.0] [%emt 0:00:00.7]} Kg7 {[%clk 0:00:00.0] [%emt\n0:00:00.8]} 47. Qd7+ {[%clk 0:00:00.0] [%emt 0:00:01.5]} Kg8 {[%clk 0:00:00.0]\n[%emt 0:00:01.1]} 48. Rb8# {[%clk 0:00:00.0] [%emt 0:00:00.4]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 48,
+     "clean": 48,
+     "fallback": 0,
+     "thinkMs": 46667
+    },
+    "b": {
+     "moves": 47,
+     "clean": 0,
+     "fallback": 47,
+     "thinkMs": 65410
+    },
+    "timeouts": null
+   },
+   "savedGameId": "00a1ce4f5ab1"
+  },
+  {
+   "id": "w9g17g65",
+   "round": 11,
+   "white": "vertexgemma:pure",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 54,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"11\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"engine\"]\n\n1. Nc3 {[%clk 0:00:29.2] [%emt 0:00:00.7]} e5 {[%clk 0:00:29.9] [%emt\n0:00:00.0]} 2. Nb5 {[%clk 0:00:28.6] [%emt 0:00:00.6]} c6 {[%clk 0:00:29.7]\n[%emt 0:00:00.2]} 3. Nc7+ {[%clk 0:00:28.1] [%emt 0:00:00.5]} Qxc7 {[%clk\n0:00:29.6] [%emt 0:00:00.0]} 4. Nh3 {[%clk 0:00:27.4] [%emt 0:00:00.6]} d5\n{[%clk 0:00:29.5] [%emt 0:00:00.1]} 5. Ng5 {[%clk 0:00:26.8] [%emt 0:00:00.6]}\nf6 {[%clk 0:00:29.1] [%emt 0:00:00.3]} 6. Nf7 {[%clk 0:00:26.2] [%emt\n0:00:00.5]} Qxf7 {[%clk 0:00:29.0] [%emt 0:00:00.1]} 7. h4 {[%clk 0:00:25.7]\n[%emt 0:00:00.5]} Bc5 {[%clk 0:00:28.7] [%emt 0:00:00.3]} 8. Rh2 {[%clk\n0:00:25.1] [%emt 0:00:00.5]} h5 {[%clk 0:00:28.3] [%emt 0:00:00.4]} 9. Rh3\n{[%clk 0:00:24.6] [%emt 0:00:00.5]} Bxh3 {[%clk 0:00:27.8] [%emt 0:00:00.4]} 10.\ngxh3 {[%clk 0:00:24.0] [%emt 0:00:00.5]} g5 {[%clk 0:00:27.5] [%emt 0:00:00.2]}\n11. a3 {[%clk 0:00:23.5] [%emt 0:00:00.5]} gxh4 {[%clk 0:00:26.6] [%emt\n0:00:00.9]} 12. d4 {[%clk 0:00:23.0] [%emt 0:00:00.5]} Bxd4 {[%clk 0:00:26.4]\n[%emt 0:00:00.2]} 13. Qxd4 {[%clk 0:00:22.4] [%emt 0:00:00.5]} exd4 {[%clk\n0:00:26.2] [%emt 0:00:00.1]} 14. Kd2 {[%clk 0:00:21.8] [%emt 0:00:00.5]} b5\n{[%clk 0:00:26.0] [%emt 0:00:00.2]} 15. f4 {[%clk 0:00:21.2] [%emt 0:00:00.5]}\na5 {[%clk 0:00:25.7] [%emt 0:00:00.2]} 16. Kd3 {[%clk 0:00:20.7] [%emt\n0:00:00.5]} c5 {[%clk 0:00:25.6] [%emt 0:00:00.1]} 17. Kd2 {[%clk 0:00:20.2]\n[%emt 0:00:00.5]} Nc6 {[%clk 0:00:25.3] [%emt 0:00:00.2]} 18. Kd3 {[%clk\n0:00:19.5] [%emt 0:00:00.7]} c4+ {[%clk 0:00:24.3] [%emt 0:00:00.9]} 19. Kd2\n{[%clk 0:00:19.0] [%emt 0:00:00.5]} Qe7 {[%clk 0:00:24.1] [%emt 0:00:00.2]} 20.\ne3 {[%clk 0:00:18.4] [%emt 0:00:00.5]} Qxe3+ {[%clk 0:00:23.4] [%emt 0:00:00.6]}\n21. Kd1 {[%clk 0:00:17.9] [%emt 0:00:00.5]} Qf3+ {[%clk 0:00:22.6] [%emt\n0:00:00.7]} 22. Kd2 {[%clk 0:00:17.4] [%emt 0:00:00.4]} Qxf1 {[%clk 0:00:21.4]\n[%emt 0:00:01.2]} 23. f5 {[%clk 0:00:16.9] [%emt 0:00:00.4]} Qf4+ {[%clk\n0:00:20.0] [%emt 0:00:01.4]} 24. Ke1 {[%clk 0:00:16.4] [%emt 0:00:00.5]} Qxf5\n{[%clk 0:00:19.6] [%emt 0:00:00.3]} 25. Ke2 {[%clk 0:00:15.8] [%emt 0:00:00.5]}\nQxc2+ {[%clk 0:00:17.6] [%emt 0:00:02.0]} 26. Kf3 {[%clk 0:00:15.2] [%emt\n0:00:00.6]} Ne5+ {[%clk 0:00:16.2] [%emt 0:00:01.4]} 27. Kf4 {[%clk 0:00:14.6]\n[%emt 0:00:00.5]} Qe4# {[%clk 0:00:16.1] [%emt 0:00:00.0]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 27,
+     "clean": 26,
+     "fallback": 1,
+     "thinkMs": 15324
+    },
+    "b": {
+     "moves": 27,
+     "clean": 27,
+     "fallback": 0,
+     "thinkMs": 13805
+    },
+    "timeouts": null
+   },
+   "savedGameId": "95ba1ffecff6"
+  },
+  {
+   "id": "rbkjoxmm",
+   "round": 12,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexgemma:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 32,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"12\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nh3 {[%clk 0:00:28.4] [%emt 0:00:01.5]} d5 {[%clk 0:00:29.4] [%emt\n0:00:00.5]} 2. Ng5 {[%clk 0:00:27.4] [%emt 0:00:01.0]} f5 {[%clk 0:00:28.6]\n[%emt 0:00:00.7]} 3. Nf7 {[%clk 0:00:26.2] [%emt 0:00:01.2]} Kxf7 {[%clk\n0:00:28.0] [%emt 0:00:00.6]} 4. Nc3 {[%clk 0:00:25.3] [%emt 0:00:00.8]} e6\n{[%clk 0:00:27.2] [%emt 0:00:00.7]} 5. Nb5 {[%clk 0:00:24.6] [%emt 0:00:00.7]}\nc5 {[%clk 0:00:26.4] [%emt 0:00:00.8]} 6. Nc7 {[%clk 0:00:23.7] [%emt\n0:00:00.8]} Qxc7 {[%clk 0:00:25.8] [%emt 0:00:00.5]} 7. Rg1 {[%clk 0:00:22.9]\n[%emt 0:00:00.7]} Qxh2 {[%clk 0:00:24.9] [%emt 0:00:00.9]} 8. Rh1 {[%clk\n0:00:22.2] [%emt 0:00:00.7]} Qxh1 {[%clk 0:00:24.3] [%emt 0:00:00.6]} 9. Rb1\n{[%clk 0:00:21.5] [%emt 0:00:00.6]} Nc6 {[%clk 0:00:23.3] [%emt 0:00:00.9]} 10.\na3 {[%clk 0:00:20.9] [%emt 0:00:00.6]} h5 {[%clk 0:00:22.3] [%emt 0:00:01.0]}\n11. d4 {[%clk 0:00:20.2] [%emt 0:00:00.6]} cxd4 {[%clk 0:00:20.6] [%emt\n0:00:01.6]} 12. Qxd4 {[%clk 0:00:19.5] [%emt 0:00:00.7]} Nxd4 {[%clk 0:00:19.1]\n[%emt 0:00:01.4]} 13. Kd1 {[%clk 0:00:18.7] [%emt 0:00:00.7]} Qxf1+ {[%clk\n0:00:17.8] [%emt 0:00:01.2]} 14. Kd2 {[%clk 0:00:18.2] [%emt 0:00:00.5]} Qxe2+\n{[%clk 0:00:15.3] [%emt 0:00:02.5]} 15. Kc3 {[%clk 0:00:17.7] [%emt 0:00:00.5]}\nNb5+ {[%clk 0:00:13.2] [%emt 0:00:02.1]} 16. Kb3 {[%clk 0:00:17.2] [%emt\n0:00:00.5]} Qc4# {[%clk 0:00:12.7] [%emt 0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 16,
+     "clean": 15,
+     "fallback": 1,
+     "thinkMs": 12800
+    },
+    "b": {
+     "moves": 16,
+     "clean": 16,
+     "fallback": 0,
+     "thinkMs": 17294
+    },
+    "timeouts": null
+   },
+   "savedGameId": "916e02dc2f64"
+  },
+  {
+   "id": "gwqj7sj4",
+   "round": 12,
+   "white": "vertexqwen:pure",
+   "black": "vertexgemma:pure",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 2,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"12\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Black \"Gemma 2 · 2B · LLM puro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. b4 {[%clk 0:00:28.5] [%emt 0:00:01.4]} Nc6 {[%clk 0:00:29.4] [%emt\n0:00:00.5]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 1,
+     "clean": 0,
+     "fallback": 1,
+     "thinkMs": 1449
+    },
+    "b": {
+     "moves": 1,
+     "clean": 1,
+     "fallback": 0,
+     "thinkMs": 580
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "0847f2a9dc5b"
+  },
+  {
+   "id": "s7x27bff",
+   "round": 12,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 0,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"12\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n0-1\n",
+   "stats": {
+    "w": {
+     "moves": 0,
+     "clean": 0,
+     "fallback": 0,
+     "thinkMs": 0
+    },
+    "b": {
+     "moves": 0,
+     "clean": 0,
+     "fallback": 0,
+     "thinkMs": 0
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "10c9b1a7d544"
+  },
+  {
+   "id": "ew5us5wm",
+   "round": 13,
+   "white": "vertexgemma:pure",
+   "black": "vertexqwen-v3:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 1,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"13\"]\n[White \"Gemma 2 · 2B · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"pure\"]\n[BlackMode \"pure\"]\n\n1. Nc3 {[%clk 0:00:28.4] [%emt 0:00:01.5]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 1,
+     "clean": 1,
+     "fallback": 0,
+     "thinkMs": 1516
+    },
+    "b": {
+     "moves": 0,
+     "clean": 0,
+     "fallback": 0,
+     "thinkMs": 0
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "8f55c5db9460"
+  },
+  {
+   "id": "1804myxa",
+   "round": 13,
+   "white": "vertexqwen-v3:arbiter",
+   "black": "vertexgemma:arbiter",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 4,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"13\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Black \"Gemma 2 · 2B · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"arbiter\"]\n\n1. e4 {[%clk 0:00:00.9] [%emt 0:00:29.0]} d5 {[%clk 0:00:29.1] [%emt 0:00:00.8]}\n2. Nc3 {[%clk 0:00:00.0] [%emt 0:00:00.9]} dxe4 {[%clk 0:00:28.4] [%emt\n0:00:00.7]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 2,
+     "clean": 2,
+     "fallback": 0,
+     "thinkMs": 30006
+    },
+    "b": {
+     "moves": 2,
+     "clean": 2,
+     "fallback": 0,
+     "thinkMs": 1595
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "75dde2e5fe5d"
+  },
+  {
+   "id": "vahkysbb",
+   "round": 13,
+   "white": "vertex-engine:engine",
+   "black": "vertexqwen:arbiter",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 95,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.20\"]\n[Round \"13\"]\n[White \"Motor del árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"engine\"]\n[BlackMode \"arbiter\"]\n\n1. e4 {[%clk 0:00:29.9] [%emt 0:00:00.0]} d5 {[%clk 0:00:28.6] [%emt 0:00:01.3]}\n2. Qf3 {[%clk 0:00:29.6] [%emt 0:00:00.2]} c6 {[%clk 0:00:27.4] [%emt\n0:00:01.1]} 3. d4 {[%clk 0:00:29.1] [%emt 0:00:00.5]} Nf6 {[%clk 0:00:25.9]\n[%emt 0:00:01.4]} 4. e5 {[%clk 0:00:28.6] [%emt 0:00:00.4]} Qa5+ {[%clk\n0:00:24.5] [%emt 0:00:01.4]} 5. Bd2 {[%clk 0:00:28.4] [%emt 0:00:00.2]} Qc7\n{[%clk 0:00:23.3] [%emt 0:00:01.2]} 6. exf6 {[%clk 0:00:27.0] [%emt 0:00:01.3]}\nexf6 {[%clk 0:00:20.9] [%emt 0:00:02.3]} 7. c4 {[%clk 0:00:26.0] [%emt\n0:00:00.9]} dxc4 {[%clk 0:00:18.9] [%emt 0:00:01.9]} 8. Qe4+ {[%clk 0:00:24.4]\n[%emt 0:00:01.6]} Qe7 {[%clk 0:00:18.1] [%emt 0:00:00.8]} 9. Qxe7+ {[%clk\n0:00:23.9] [%emt 0:00:00.4]} Kxe7 {[%clk 0:00:17.3] [%emt 0:00:00.7]} 10. Bxc4\n{[%clk 0:00:23.6] [%emt 0:00:00.2]} b5 {[%clk 0:00:16.4] [%emt 0:00:00.9]} 11.\nBb4+ {[%clk 0:00:23.5] [%emt 0:00:00.1]} Kd7 {[%clk 0:00:15.5] [%emt 0:00:00.8]}\n12. Bxf8 {[%clk 0:00:23.3] [%emt 0:00:00.1]} Rxf8 {[%clk 0:00:14.4] [%emt\n0:00:01.0]} 13. Bd3 {[%clk 0:00:23.2] [%emt 0:00:00.1]} g6 {[%clk 0:00:13.5]\n[%emt 0:00:00.9]} 14. f4 {[%clk 0:00:23.0] [%emt 0:00:00.1]} Re8+ {[%clk\n0:00:12.6] [%emt 0:00:00.9]} 15. Kf2 {[%clk 0:00:22.9] [%emt 0:00:00.0]} h6\n{[%clk 0:00:11.5] [%emt 0:00:01.0]} 16. a4 {[%clk 0:00:22.7] [%emt 0:00:00.2]}\nbxa4 {[%clk 0:00:10.5] [%emt 0:00:01.0]} 17. Rxa4 {[%clk 0:00:22.0] [%emt\n0:00:00.7]} Re6 {[%clk 0:00:09.5] [%emt 0:00:00.9]} 18. b4 {[%clk 0:00:21.6]\n[%emt 0:00:00.3]} Rd6 {[%clk 0:00:08.4] [%emt 0:00:01.0]} 19. Nf3 {[%clk\n0:00:21.5] [%emt 0:00:00.1]} h5 {[%clk 0:00:07.3] [%emt 0:00:01.1]} 20. h4\n{[%clk 0:00:20.9] [%emt 0:00:00.6]} Re6 {[%clk 0:00:06.3] [%emt 0:00:01.0]} 21.\nNc3 {[%clk 0:00:20.4] [%emt 0:00:00.4]} a6 {[%clk 0:00:05.0] [%emt 0:00:01.2]}\n22. Ne4 {[%clk 0:00:19.5] [%emt 0:00:00.8]} Kc7 {[%clk 0:00:03.7] [%emt\n0:00:01.2]} 23. g3 {[%clk 0:00:19.0] [%emt 0:00:00.5]} Nd7 {[%clk 0:00:02.5]\n[%emt 0:00:01.2]} 24. Ra5 {[%clk 0:00:18.3] [%emt 0:00:00.6]} Ra7 {[%clk\n0:00:00.8] [%emt 0:00:01.6]} 25. d5 {[%clk 0:00:17.4] [%emt 0:00:00.9]} cxd5\n{[%clk 0:00:00.0] [%emt 0:00:01.4]} 26. Rxd5 {[%clk 0:00:16.7] [%emt 0:00:00.6]}\nKd8 {[%clk 0:00:00.0] [%emt 0:00:01.7]} 27. Nd4 {[%clk 0:00:15.7] [%emt\n0:00:01.0]} Rb6 {[%clk 0:00:00.0] [%emt 0:00:01.3]} 28. Rb1 {[%clk 0:00:15.0]\n[%emt 0:00:00.6]} Ra8 {[%clk 0:00:00.0] [%emt 0:00:01.6]} 29. Nd6 {[%clk\n0:00:14.1] [%emt 0:00:00.9]} Nf8 {[%clk 0:00:00.0] [%emt 0:00:01.6]} 30. Nc4+\n{[%clk 0:00:11.5] [%emt 0:00:02.5]} Kc7 {[%clk 0:00:00.0] [%emt 0:00:01.2]} 31.\nNxb6 {[%clk 0:00:10.1] [%emt 0:00:01.4]} Kxb6 {[%clk 0:00:00.0] [%emt\n0:00:01.4]} 32. Rd6+ {[%clk 0:00:09.3] [%emt 0:00:00.7]} Kb7 {[%clk 0:00:00.0]\n[%emt 0:00:00.8]} 33. Rxf6 {[%clk 0:00:07.5] [%emt 0:00:01.8]} Kb8 {[%clk\n0:00:00.0] [%emt 0:00:01.3]} 34. Rxf7 {[%clk 0:00:06.7] [%emt 0:00:00.8]} Nd7\n{[%clk 0:00:00.0] [%emt 0:00:00.5]} 35. Bxg6 {[%clk 0:00:06.0] [%emt 0:00:00.6]}\nKb7 {[%clk 0:00:00.0] [%emt 0:00:00.8]} 36. Be4+ {[%clk 0:00:05.5] [%emt\n0:00:00.4]} Kb8 {[%clk 0:00:00.0] [%emt 0:00:00.6]} 37. Bxa8 {[%clk 0:00:04.8]\n[%emt 0:00:00.7]} Kxa8 {[%clk 0:00:00.0] [%emt 0:00:00.8]} 38. Rf5 {[%clk\n0:00:04.7] [%emt 0:00:00.1]} Bb7 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 39. Re1\n{[%clk 0:00:04.4] [%emt 0:00:00.2]} Nb6 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 40.\nRe8+ {[%clk 0:00:03.9] [%emt 0:00:00.4]} Ka7 {[%clk 0:00:00.0] [%emt 0:00:00.8]}\n41. Rxh5 {[%clk 0:00:03.3] [%emt 0:00:00.6]} Nc4 {[%clk 0:00:00.0] [%emt\n0:00:01.1]} 42. Re6 {[%clk 0:00:02.8] [%emt 0:00:00.4]} Nb2 {[%clk 0:00:00.0]\n[%emt 0:00:01.1]} 43. Ke3 {[%clk 0:00:02.5] [%emt 0:00:00.2]} Bc8 {[%clk\n0:00:00.0] [%emt 0:00:01.0]} 44. Re4 {[%clk 0:00:02.2] [%emt 0:00:00.2]} Nd1+\n{[%clk 0:00:00.0] [%emt 0:00:01.0]} 45. Kd2 {[%clk 0:00:02.2] [%emt 0:00:00.0]}\nNf2 {[%clk 0:00:00.0] [%emt 0:00:01.0]} 46. Rh7+ {[%clk 0:00:02.0] [%emt\n0:00:00.1]} Bb7 {[%clk 0:00:00.0] [%emt 0:00:00.8]} 47. Ree7 {[%clk 0:00:01.8]\n[%emt 0:00:00.1]} Ka8 {[%clk 0:00:00.0] [%emt 0:00:00.9]} 48. Rxb7 {[%clk\n0:00:01.6] [%emt 0:00:00.2]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 48,
+     "clean": 48,
+     "fallback": 0,
+     "thinkMs": 28356
+    },
+    "b": {
+     "moves": 47,
+     "clean": 0,
+     "fallback": 47,
+     "thinkMs": 54740
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "2fd61b6acfe5"
+  },
+  {
+   "id": "k1ei6udl",
+   "round": 14,
+   "white": "vertexqwen-v3:pure",
+   "black": "vertexqwen-v3:arbiter",
+   "result": "0-1",
+   "termination": "checkmate",
+   "plies": 16,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.21\"]\n[Round \"14\"]\n[White \"Qwen 2.5 · 3B · V3 · LLM puro\"]\n[Black \"Qwen 2.5 · 3B · V3 · LLM + árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"checkmate\"]\n[WhiteMode \"pure\"]\n[BlackMode \"arbiter\"]\n\n1. Nh3 {[%clk 0:00:29.1] [%emt 0:00:00.8]} e5 {[%clk 0:00:29.2] [%emt\n0:00:00.7]} 2. Ng1 {[%clk 0:00:27.2] [%emt 0:00:01.9]} Qh4 {[%clk 0:00:28.3]\n[%emt 0:00:00.9]} 3. Nh3 {[%clk 0:00:26.2] [%emt 0:00:00.9]} Qe4 {[%clk\n0:00:27.2] [%emt 0:00:01.1]} 4. Ng5 {[%clk 0:00:25.2] [%emt 0:00:00.9]} Qf4\n{[%clk 0:00:26.0] [%emt 0:00:01.1]} 5. Nxf7 {[%clk 0:00:24.2] [%emt 0:00:01.0]}\nKxf7 {[%clk 0:00:25.0] [%emt 0:00:01.0]} 6. Nc3 {[%clk 0:00:23.2] [%emt\n0:00:01.0]} Nf6 {[%clk 0:00:23.8] [%emt 0:00:01.2]} 7. Ne4 {[%clk 0:00:22.1]\n[%emt 0:00:01.0]} Nxe4 {[%clk 0:00:22.0] [%emt 0:00:01.7]} 8. Rg1 {[%clk\n0:00:21.2] [%emt 0:00:00.9]} Qxf2# {[%clk 0:00:21.3] [%emt 0:00:00.6]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 8,
+     "clean": 8,
+     "fallback": 0,
+     "thinkMs": 8786
+    },
+    "b": {
+     "moves": 8,
+     "clean": 8,
+     "fallback": 0,
+     "thinkMs": 8617
+    },
+    "timeouts": null
+   },
+   "savedGameId": "477eeb4876fb"
+  },
+  {
+   "id": "uea9kr2k",
+   "round": 14,
+   "white": "vertexgemma:arbiter",
+   "black": "vertex-engine:engine",
+   "result": "0-1",
+   "termination": "timeout",
+   "plies": 52,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.21\"]\n[Round \"14\"]\n[White \"Gemma 2 · 2B · LLM + árbitro\"]\n[Black \"Motor del árbitro\"]\n[Result \"0-1\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"engine\"]\n\n1. d4 {[%clk 0:00:28.9] [%emt 0:00:01.0]} d5 {[%clk 0:00:29.8] [%emt 0:00:00.1]}\n2. f3 {[%clk 0:00:28.2] [%emt 0:00:00.6]} f5 {[%clk 0:00:29.6] [%emt 0:00:00.2]}\n3. h4 {[%clk 0:00:27.8] [%emt 0:00:00.4]} e6 {[%clk 0:00:29.5] [%emt 0:00:00.1]}\n4. e3 {[%clk 0:00:26.8] [%emt 0:00:00.9]} Be7 {[%clk 0:00:28.9] [%emt\n0:00:00.5]} 5. Bb5+ {[%clk 0:00:26.1] [%emt 0:00:00.7]} c6 {[%clk 0:00:28.7]\n[%emt 0:00:00.2]} 6. Ba4 {[%clk 0:00:24.7] [%emt 0:00:01.3]} b5 {[%clk\n0:00:27.2] [%emt 0:00:01.4]} 7. Bxb5 {[%clk 0:00:23.4] [%emt 0:00:01.3]} cxb5\n{[%clk 0:00:26.2] [%emt 0:00:01.0]} 8. g4 {[%clk 0:00:22.4] [%emt 0:00:00.9]}\nBxh4+ {[%clk 0:00:25.3] [%emt 0:00:00.8]} 9. Kd2 {[%clk 0:00:21.9] [%emt\n0:00:00.5]} fxg4 {[%clk 0:00:24.0] [%emt 0:00:01.3]} 10. fxg4 {[%clk 0:00:20.3]\n[%emt 0:00:01.5]} g5 {[%clk 0:00:23.5] [%emt 0:00:00.5]} 11. Nc3 {[%clk\n0:00:18.5] [%emt 0:00:01.8]} b4 {[%clk 0:00:23.0] [%emt 0:00:00.5]} 12. Nb5\n{[%clk 0:00:17.6] [%emt 0:00:00.9]} a6 {[%clk 0:00:22.3] [%emt 0:00:00.6]} 13.\nRxh4 {[%clk 0:00:16.7] [%emt 0:00:00.9]} gxh4 {[%clk 0:00:21.2] [%emt\n0:00:01.0]} 14. Nc3 {[%clk 0:00:15.8] [%emt 0:00:00.9]} bxc3+ {[%clk 0:00:20.2]\n[%emt 0:00:01.0]} 15. bxc3 {[%clk 0:00:14.8] [%emt 0:00:01.0]} Nf6 {[%clk\n0:00:20.1] [%emt 0:00:00.1]} 16. Ke1 {[%clk 0:00:13.9] [%emt 0:00:00.9]} Rg8\n{[%clk 0:00:19.1] [%emt 0:00:01.0]} 17. Nf3 {[%clk 0:00:12.6] [%emt 0:00:01.2]}\nNe4 {[%clk 0:00:18.6] [%emt 0:00:00.5]} 18. Ne5 {[%clk 0:00:11.7] [%emt\n0:00:00.9]} Qc7 {[%clk 0:00:17.2] [%emt 0:00:01.3]} 19. Bd2 {[%clk 0:00:10.8]\n[%emt 0:00:00.8]} Nxc3 {[%clk 0:00:15.0] [%emt 0:00:02.2]} 20. Bxc3 {[%clk\n0:00:09.7] [%emt 0:00:01.0]} Qxc3+ {[%clk 0:00:13.7] [%emt 0:00:01.2]} 21. Kf2\n{[%clk 0:00:09.1] [%emt 0:00:00.6]} Rf8+ {[%clk 0:00:11.4] [%emt 0:00:02.3]} 22.\nKg2 {[%clk 0:00:08.1] [%emt 0:00:01.0]} Qxe3 {[%clk 0:00:09.7] [%emt 0:00:01.7]}\n23. Kh2 {[%clk 0:00:06.1] [%emt 0:00:01.9]} Rf4 {[%clk 0:00:07.1] [%emt\n0:00:02.6]} 24. c4 {[%clk 0:00:04.4] [%emt 0:00:01.7]} Qxd4 {[%clk 0:00:05.4]\n[%emt 0:00:01.6]} 25. Qa4+ {[%clk 0:00:02.4] [%emt 0:00:01.9]} Nd7 {[%clk\n0:00:04.9] [%emt 0:00:00.4]} 26. Nxd7 {[%clk 0:00:00.4] [%emt 0:00:01.9]} Bxd7\n{[%clk 0:00:01.2] [%emt 0:00:03.7]} 0-1\n",
+   "stats": {
+    "w": {
+     "moves": 26,
+     "clean": 26,
+     "fallback": 0,
+     "thinkMs": 29559
+    },
+    "b": {
+     "moves": 26,
+     "clean": 26,
+     "fallback": 0,
+     "thinkMs": 28738
+    },
+    "timeouts": "w"
+   },
+   "savedGameId": "74704400b58e"
+  },
+  {
+   "id": "y7zxnnoo",
+   "round": 14,
+   "white": "vertexqwen:arbiter",
+   "black": "vertexqwen:pure",
+   "result": "1-0",
+   "termination": "timeout",
+   "plies": 1,
+   "pgn": "[Event \"Copa Vertex Primavera 2026\"]\n[Site \"Vertex Coders Lab, Miami FL\"]\n[Date \"2026.10.21\"]\n[Round \"14\"]\n[White \"Qwen 2.5 · 3B · legacy · LLM + árbitro\"]\n[Black \"Qwen 2.5 · 3B · legacy · LLM puro\"]\n[Result \"1-0\"]\n[TimeControl \"30+0\"]\n[ClockMode \"Bronstein\"]\n[Termination \"timeout\"]\n[WhiteMode \"arbiter\"]\n[BlackMode \"pure\"]\n\n1. d4 {[%clk 0:00:27.1] [%emt 0:00:02.8]} 1-0\n",
+   "stats": {
+    "w": {
+     "moves": 1,
+     "clean": 0,
+     "fallback": 1,
+     "thinkMs": 2832
+    },
+    "b": {
+     "moves": 0,
+     "clean": 0,
+     "fallback": 0,
+     "thinkMs": 0
+    },
+    "timeouts": "b"
+   },
+   "savedGameId": "eabc1ba92f1e"
+  }
+ ],
+ "status": "finished",
+ "createdAt": "2026-10-21T02:20:40.691Z",
+ "settings": {
+  "maxPlies": 300,
+  "moveDelayMs": 0,
+  "matchGames": 4
+ },
+ "finishedAt": "2026-10-21T04:02:01.696Z"
+}
