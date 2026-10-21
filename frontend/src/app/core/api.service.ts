@@ -66,7 +66,11 @@ export class ApiService {
     } catch (e) {
       if (e instanceof ApiError) throw e;
       const msg = String((e as { message?: string })?.message ?? e);
-      if (/quota|zerogpu|gpu task aborted|exceeded/i.test(msg)) throw new ApiError('GPU_QUOTA', QUOTA_MESSAGE, 429);
+      console.warn('[space]', endpoint, msg);
+      if (/quota|exceeded/i.test(msg)) throw new ApiError('GPU_QUOTA', `${QUOTA_MESSAGE} (Detalle del servidor: ${msg.slice(0, 160)})`, 429);
+      if (/zerogpu|gpu task aborted|cuda/i.test(msg)) {
+        throw new ApiError('GPU_BUSY', `La GPU de Hugging Face no respondió esta vez. Pulsa Reintentar. (Detalle: ${msg.slice(0, 160)})`, 503);
+      }
       const m = /^([A-Z_]{3,}):\s*(.*)$/s.exec(msg);
       if (m) throw new ApiError(m[1], m[2], 400);
       throw new ApiError('NETWORK', 'No hay conexión con el servidor de la arena en Hugging Face. Puede estar arrancando: prueba en un minuto.');

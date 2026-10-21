@@ -5,6 +5,9 @@ Sirve las jugadas de los modelos afinados del libro "Jaque al modelo" a la app A
 publicada en Netlify. Mismo árbitro que la arena local (engine_arbiter.py); lo único que
 cambia es quién genera el texto: aquí transformers + peft en la GPU de ZeroGPU, en casa Ollama.
 
+Si la GPU no está disponible para un visitante (su cuota diaria de ZeroGPU se agotó), la jugada se
+genera en CPU con los mismos GGUF q4_k_m del libro (llama.cpp): más lenta, pero sin cuota.
+
 Endpoints (Gradio API, se llaman con @gradio/client):
   /health    -> estado y modelos cargados (sin GPU)
   /players   -> lista de jugadores (sin GPU)
@@ -20,6 +23,7 @@ import gradio as gr
 import spaces
 import torch
 from peft import PeftModel
+from huggingface_hub import hf_hub_download
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from engine_arbiter import ChessArbiter
@@ -80,6 +84,79 @@ def generate(model_name: str, messages: list[dict]) -> str:
             out = model.generate(**ids, max_new_tokens=48, do_sample=False, repetition_penalty=1.15,
                                  pad_token_id=tok.eos_token_id)
     return tok.decode(out[0, ids["input_ids"].shape[1]:], skip_special_tokens=True)
+
+
+# ---------------------------------------------------------------------------
+# Respaldo en CPU: los mismos GGUF q4_k_m del libro con llama.cpp. Se usa cuando la GPU no está
+# disponible para el visitante (cuota diaria de ZeroGPU agotada, cola llena...). Más lento, sin cuota.
+# ---------------------------------------------------------------------------
+GGUF = {
+    "vertexqwen-v3": (QWEN_REPO, "vertex-chess-qwen-v3-q4_k_m.gguf", "chatml"),
+    "vertexqwen": (QWEN_REPO, "vertex-chess-qwen-q4_k_m.gguf", "chatml"),
+    "vertexgemma": (GEMMA_REPO, "vertex-chess-gemma-q4_k_m.gguf", "gemma"),
+}
+STOPS = {"chatml": ["<|im_end|>", "<|endoftext|>"], "gemma": ["<end_of_turn>", "<start_of_turn>"]}
+_CPU: dict = {}
+_CPU_LOCK = threading.Lock()
+
+
+def render_prompt(fmt: str, messages: list[dict]) -> str:
+    """La misma plantilla que los Modelfiles de Ollama (deploy de ajedrez, capítulo 6)."""
+    if fmt == "gemma":  # Gemma no tiene rol de sistema: build_messages ya lo puso dentro del usuario
+        turns = "".join(f"<start_of_turn>{'model' if m['role'] == 'assistant' else 'user'}\n{m['content']}<end_of_turn>\n"
+                        for m in messages)
+        return turns + "<start_of_turn>model\n"
+    return "".join(f"<|im_start|>{m['role']}\n{m['content']}<|im_end|>\n" for m in messages) + "<|im_start|>assistant\n"
+
+
+def cpu_model(model_name: str):
+    from llama_cpp import Llama  # import tardío: solo hace falta si se usa el respaldo
+    with _CPU_LOCK:
+        if model_name not in _CPU:
+            repo, fname, _ = GGUF[model_name]
+            path = hf_hub_download(repo, fname)
+            _CPU[model_name] = Llama(model_path=path, n_ctx=1024, n_threads=max(2, os.cpu_count() or 2),
+                                     verbose=False)
+        return _CPU[model_name]
+
+
+def generate_cpu(model_name: str, messages: list[dict]) -> str:
+    fmt = GGUF[model_name][2]
+    llm = cpu_model(model_name)
+    with _CPU_LOCK:
+        out = llm(render_prompt(fmt, messages), max_tokens=48, temperature=0.0, repeat_penalty=1.15,
+                  stop=STOPS[fmt])
+    return out["choices"][0]["text"]
+
+
+def _warm_cpu():
+    """Descarga y abre los GGUF en segundo plano al arrancar, para que el respaldo no espere."""
+    for name in GGUF:
+        try:
+            cpu_model(name)
+        except Exception as e:  # noqa: BLE001
+            print("Respaldo CPU no disponible para", name, "->", e)
+
+
+threading.Thread(target=_warm_cpu, daemon=True).start()
+
+FORCE_CPU = os.getenv("FORCE_CPU") == "1"
+
+
+def chat(model_name: str, messages: list[dict]) -> str:
+    """GPU si se puede; si ZeroGPU la niega (cuota del visitante, cola), los GGUF en CPU."""
+    if not FORCE_CPU:
+        try:
+            text = generate(model_name, messages)
+            _LAST_DEVICE.value = "gpu"
+            return text
+        except Exception as e:  # noqa: BLE001
+            print(f"GPU no disponible para {model_name}: {str(e)[:200]} -> respaldo CPU")
+    _LAST_DEVICE.value = "cpu"
+    return generate_cpu(model_name, messages)
+
+
+_LAST_DEVICE = threading.local()
 
 
 # ---------------------------------------------------------------------------
@@ -146,7 +223,8 @@ def ai_move(fen: str, model_name: str = "vertexqwen-v3", mode: str = "pure", gam
         res = {"move_obj": move, "move_san": san, "move_uci": move.uci(), "clean_hit": True,
                "raw_output": "motor", "mode": "engine", "options": [san]}
     else:
-        res = arbiter.request_model_move(model_name, board, mode=mode, chat_fn=generate)
+        _LAST_DEVICE.value = "gpu"
+        res = arbiter.request_model_move(model_name, board, mode=mode, chat_fn=chat)
     think_ms = int((time.perf_counter() - t0) * 1000)
 
     board.push(res["move_obj"])
@@ -159,6 +237,7 @@ def ai_move(fen: str, model_name: str = "vertexqwen-v3", mode: str = "pure", gam
         "raw_output": res["raw_output"][:300],
         "options_count": len(res.get("options", [])),
         "think_ms": think_ms,
+        "device": "cpu" if engine_only else getattr(_LAST_DEVICE, "value", "gpu"),
         "new_fen": board.fen(),
         "game_over": board.is_game_over(),
         "result": board.result() if board.is_game_over() else None,
