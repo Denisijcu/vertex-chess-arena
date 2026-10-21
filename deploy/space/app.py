@@ -42,8 +42,6 @@ ROSTER = [
      "description": "Entrenamiento espejo de Gemma: 5,000 posiciones, pérdida solo en la respuesta, 625 pasos."},
     {"model": "vertexgemma", "name": "Gemma 2 · 2B", "family": "gemma",
      "description": "QLoRA r=8 sobre 5,000 posiciones, 625 pasos."},
-    {"model": "vertexqwen", "name": "Qwen 2.5 · 3B · legacy", "family": "qwen",
-     "description": "Adaptador viejo de 80 pasos. Se conserva para comparar."},
 ]
 ROSTER_IDS = {p["model"] for p in ROSTER}
 
@@ -55,7 +53,6 @@ qwen = AutoModelForCausalLM.from_pretrained(QWEN_BASE, torch_dtype=torch.bfloat1
 # torch_device="cpu": PEFT cargaría los pesos directamente en "cuda" y en ZeroGPU no hay GPU real
 # fuera de @spaces.GPU (RuntimeError: No CUDA GPUs are available). Se pasa todo a cuda después.
 qwen = PeftModel.from_pretrained(qwen, QWEN_REPO, subfolder="adapter-v3", adapter_name="v3", torch_device="cpu")
-qwen.load_adapter(QWEN_REPO, adapter_name="legacy", subfolder="adapter-legacy", torch_device="cpu")
 qwen.to("cuda").eval()
 
 gemma_tok = AutoTokenizer.from_pretrained(GEMMA_BASE, token=HF_TOKEN)
@@ -64,7 +61,7 @@ gemma = AutoModelForCausalLM.from_pretrained(GEMMA_BASE, torch_dtype=torch.bfloa
 gemma = PeftModel.from_pretrained(gemma, GEMMA_REPO, subfolder="adapter", torch_device="cpu")
 gemma.to("cuda").eval()
 
-_GEN_LOCK = threading.Lock()  # el adaptador activo de Qwen es estado global del modelo
+_GEN_LOCK = threading.Lock()  # una generación en GPU a la vez por proceso
 
 
 @spaces.GPU(duration=10)  # una jugada tarda 1-3 s; pedir menos = menos cuota reservada y mejor prioridad
@@ -75,8 +72,6 @@ def generate(model_name: str, messages: list[dict]) -> str:
     else:
         tok, model = qwen_tok, qwen
     with _GEN_LOCK:
-        if model is qwen:
-            model.set_adapter("v3" if model_name == "vertexqwen-v3" else "legacy")
         text = tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         ids = tok(text, return_tensors="pt", add_special_tokens=False).to("cuda")
         with torch.no_grad():
@@ -96,20 +91,30 @@ _CPU_LOCK = threading.Lock()
 
 
 def cpu_model(model_name: str):
-    """Copia en CPU, cargada la primera vez que hace falta (Qwen con sus dos adaptadores, o Gemma)."""
+    """Copia en CPU, cargada la primera vez que hace falta.
+
+    Para que una jugada en CPU entre en el reloj: el adaptador se fusiona con la base
+    (merge_and_unload) y las capas lineales pasan a int8 dinámico (quantize_dynamic, fbgemm).
+    Es varias veces más rápido que bf16 en CPU y ocupa ~3-4 GB por modelo.
+    """
     family = "gemma" if model_name == "vertexgemma" else "qwen"
     if family not in _CPU:
         t0 = time.perf_counter()
         if family == "qwen":
-            m = AutoModelForCausalLM.from_pretrained(QWEN_BASE, torch_dtype=torch.bfloat16)
-            m = PeftModel.from_pretrained(m, QWEN_REPO, subfolder="adapter-v3", adapter_name="v3", torch_device="cpu")
-            m.load_adapter(QWEN_REPO, adapter_name="legacy", subfolder="adapter-legacy", torch_device="cpu")
+            m = AutoModelForCausalLM.from_pretrained(QWEN_BASE, torch_dtype=torch.float32)
+            m = PeftModel.from_pretrained(m, QWEN_REPO, subfolder="adapter-v3", torch_device="cpu")
         else:
-            m = AutoModelForCausalLM.from_pretrained(GEMMA_BASE, torch_dtype=torch.bfloat16,
+            m = AutoModelForCausalLM.from_pretrained(GEMMA_BASE, torch_dtype=torch.float32,
                                                      attn_implementation="eager", token=HF_TOKEN)
             m = PeftModel.from_pretrained(m, GEMMA_REPO, subfolder="adapter", torch_device="cpu")
-        _CPU[family] = m.eval()
-        print(f"Respaldo CPU listo para {family} en {time.perf_counter() - t0:.1f} s")
+        m = m.merge_and_unload().eval()
+        try:
+            m = torch.ao.quantization.quantize_dynamic(m, {torch.nn.Linear}, dtype=torch.qint8)
+        except Exception as e:  # noqa: BLE001  si int8 falla, queda en float32 (más lento, pero juega)
+            print("int8 no disponible, respaldo CPU en float32 ->", e)
+        _CPU[family] = m
+        print(f"Respaldo CPU listo para {family} (int8) en {time.perf_counter() - t0:.1f} s, "
+              f"{os.cpu_count()} núcleos")
     return _CPU[family]
 
 
@@ -117,8 +122,6 @@ def generate_cpu(model_name: str, messages: list[dict]) -> str:
     tok = gemma_tok if model_name == "vertexgemma" else qwen_tok
     with _CPU_LOCK:  # una sola generación en CPU a la vez: comparten los núcleos y el adaptador activo
         model = cpu_model(model_name)
-        if model_name != "vertexgemma":
-            model.set_adapter("v3" if model_name == "vertexqwen-v3" else "legacy")
         text = tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         ids = tok(text, return_tensors="pt", add_special_tokens=False)
         t0 = time.perf_counter()
