@@ -5,6 +5,7 @@
 
 ## Modelos, video y libro
 
+- **Juega en línea:** [vertex-ai-chess.netlify.app](https://vertex-ai-chess.netlify.app) (backend: [Space de Hugging Face con ZeroGPU](https://huggingface.co/spaces/Denisijcu/vertex-chess-arena))
 - **Modelos (GGUF para Ollama):** [Denisijcu/vertexqwen](https://huggingface.co/Denisijcu/vertexqwen) · [Denisijcu/vertexgemma](https://huggingface.co/Denisijcu/vertexgemma)
 - **Video:** [Afiné dos IAs para jugar ajedrez… y el árbitro jugaba por ellas](https://youtu.be/2_t0ijTg1_M)
 - **Libro:** *Jaque al modelo: afiné dos IAs para jugar ajedrez y descubrí que el árbitro jugaba por ellas* — próximamente en Amazon <!-- AMAZON -->

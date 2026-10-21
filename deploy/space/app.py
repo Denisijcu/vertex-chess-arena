@@ -49,20 +49,22 @@ ROSTER_IDS = {p["model"] for p in ROSTER}
 # ---------------------------------------------------------------------------
 qwen_tok = AutoTokenizer.from_pretrained(QWEN_BASE)
 qwen = AutoModelForCausalLM.from_pretrained(QWEN_BASE, torch_dtype=torch.bfloat16)
-qwen = PeftModel.from_pretrained(qwen, QWEN_REPO, subfolder="adapter-v3", adapter_name="v3")
-qwen.load_adapter(QWEN_REPO, adapter_name="legacy", subfolder="adapter-legacy")
+# torch_device="cpu": PEFT cargaría los pesos directamente en "cuda" y en ZeroGPU no hay GPU real
+# fuera de @spaces.GPU (RuntimeError: No CUDA GPUs are available). Se pasa todo a cuda después.
+qwen = PeftModel.from_pretrained(qwen, QWEN_REPO, subfolder="adapter-v3", adapter_name="v3", torch_device="cpu")
+qwen.load_adapter(QWEN_REPO, adapter_name="legacy", subfolder="adapter-legacy", torch_device="cpu")
 qwen.to("cuda").eval()
 
 gemma_tok = AutoTokenizer.from_pretrained(GEMMA_BASE, token=HF_TOKEN)
 gemma = AutoModelForCausalLM.from_pretrained(GEMMA_BASE, torch_dtype=torch.bfloat16,
                                              attn_implementation="eager", token=HF_TOKEN)
-gemma = PeftModel.from_pretrained(gemma, GEMMA_REPO, subfolder="adapter")
+gemma = PeftModel.from_pretrained(gemma, GEMMA_REPO, subfolder="adapter", torch_device="cpu")
 gemma.to("cuda").eval()
 
 _GEN_LOCK = threading.Lock()  # el adaptador activo de Qwen es estado global del modelo
 
 
-@spaces.GPU(duration=20)
+@spaces.GPU(duration=10)  # una jugada tarda 1-3 s; pedir menos = menos cuota reservada y mejor prioridad
 def generate(model_name: str, messages: list[dict]) -> str:
     """Respuesta del modelo con los mismos límites que en Ollama (48 tokens, casi determinista)."""
     if model_name == "vertexgemma":

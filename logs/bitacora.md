@@ -247,3 +247,10 @@ El fine-tune de Qwen ahora sí funciona (formato correcto). Aun así, Gemma acie
 - `deploy/space/`: app Gradio 6.27 con `@spaces.GPU(duration=20)`; Qwen2.5-3B-Instruct + adaptadores v3 y legacy (PEFT, uno activo por jugada), unsloth/gemma-2-2b-it + adaptador; bf16, greedy, 48 tokens, repetition_penalty 1.15. Endpoints `/health`, `/players`, `/ai_move` (el motor no usa GPU). Probado en el contenedor con modelos simulados: endpoints, errores `CODIGO: mensaje` y partida completa desde la app.
 - `deploy/publicar_space.py`: sube los adaptadores (`adapter-v3`, `adapter-legacy`, `adapter`), las fichas y el Space, y pide ZeroGPU.
 - Frontend: configuración `netlify` (`npm run build:netlify`) que usa `@gradio/client` 2.7.1 contra el Space y guarda partidas y torneos en el navegador; la Copa Vertex Verano 2026 viene incluida (`public/showcase.json`, solo lectura). Avisos de cuota de GPU. `netlify.toml` en la raíz. 19 tests del frontend pasan; builds local y netlify OK.
+
+## 2026-10-21 — Deploy público en vivo
+
+- App: https://vertex-ai-chess.netlify.app (Netlify, build `netlify` desde GitHub).
+- API: https://huggingface.co/spaces/Denisijcu/vertex-chess-arena (Gradio + ZeroGPU, `zero-a10g`, RUNNING).
+- Error del primer arranque: `RuntimeError: No CUDA GPUs are available` al cargar los adaptadores. PEFT los cargaba directamente en "cuda" y en ZeroGPU no hay GPU real fuera de `@spaces.GPU`. Arreglo: `torch_device="cpu"` en `PeftModel.from_pretrained` y `load_adapter`, y luego `.to("cuda")` del modelo entero (ZeroGPU lo emula al arrancar).
+- Denis jugando desde la app pública a las 08:25.

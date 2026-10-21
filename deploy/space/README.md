@@ -6,6 +6,7 @@ colorTo: purple
 sdk: gradio
 sdk_version: 6.27.0
 app_file: app.py
+python_version: "3.10"
 pinned: false
 license: other
 short_description: Backend de la app de torneos Qwen vs Gemma (Jaque al modelo)
@@ -28,4 +29,5 @@ GGUF `q4_k_m` en Ollama, así que alguna jugada puede salir distinta.
 **Licencias:** Qwen 2.5 3B se usa bajo la Qwen Research License (uso no comercial). Gemma is
 provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms.
 
-La cuota de GPU de ZeroGPU la gasta quien juega (2 min/día sin cuenta de Hugging Face).
+La cuota de GPU de ZeroGPU la gasta quien juega (2 min/día sin cuenta de Hugging Face). Cuando se acaba,
+las jugadas se generan en CPU con los GGUF `q4_k_m` (llama.cpp): más lentas, pero sin límite.
