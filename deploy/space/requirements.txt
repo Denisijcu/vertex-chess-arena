@@ -4,4 +4,4 @@ transformers==5.18.0
 peft==0.21.0
 accelerate==1.13.0
 chess==1.11.2
-llama-cpp-python==0.3.19
+llama-cpp-python==0.3.2
