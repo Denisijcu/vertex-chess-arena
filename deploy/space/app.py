@@ -6,7 +6,7 @@ publicada en Netlify. Mismo árbitro que la arena local (engine_arbiter.py); lo 
 cambia es quién genera el texto: aquí transformers + peft en la GPU de ZeroGPU, en casa Ollama.
 
 Si la GPU no está disponible para un visitante (su cuota diaria de ZeroGPU se agotó), la jugada se
-genera en CPU con los mismos GGUF q4_k_m del libro (llama.cpp): más lenta, pero sin cuota.
+genera en CPU con los mismos modelos y adaptadores (una copia en RAM): más lenta, pero sin cuota.
 
 Endpoints (Gradio API, se llaman con @gradio/client):
   /health    -> estado y modelos cargados (sin GPU)
@@ -23,7 +23,6 @@ import gradio as gr
 import spaces
 import torch
 from peft import PeftModel
-from huggingface_hub import hf_hub_download
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from engine_arbiter import ChessArbiter
@@ -87,53 +86,55 @@ def generate(model_name: str, messages: list[dict]) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Respaldo en CPU: los mismos GGUF q4_k_m del libro con llama.cpp. Se usa cuando la GPU no está
-# disponible para el visitante (cuota diaria de ZeroGPU agotada, cola llena...). Más lento, sin cuota.
+# Respaldo en CPU: los MISMOS modelos (base + adaptadores) en una copia en RAM con transformers.
+# Se usa cuando ZeroGPU niega la GPU al visitante (cuota diaria agotada, cola llena). Más lento, sin cuota.
+# (llama.cpp quedó descartado: sus ruedas precompiladas son musl y compilarlo colgaba el build del Space.)
 # ---------------------------------------------------------------------------
-GGUF = {
-    "vertexqwen-v3": (QWEN_REPO, "vertex-chess-qwen-v3-q4_k_m.gguf", "chatml"),
-    "vertexqwen": (QWEN_REPO, "vertex-chess-qwen-q4_k_m.gguf", "chatml"),
-    "vertexgemma": (GEMMA_REPO, "vertex-chess-gemma-q4_k_m.gguf", "gemma"),
-}
-STOPS = {"chatml": ["<|im_end|>", "<|endoftext|>"], "gemma": ["<end_of_turn>", "<start_of_turn>"]}
+torch.set_num_threads(max(1, os.cpu_count() or 1))
 _CPU: dict = {}
 _CPU_LOCK = threading.Lock()
 
 
-def render_prompt(fmt: str, messages: list[dict]) -> str:
-    """La misma plantilla que los Modelfiles de Ollama (deploy de ajedrez, capítulo 6)."""
-    if fmt == "gemma":  # Gemma no tiene rol de sistema: build_messages ya lo puso dentro del usuario
-        turns = "".join(f"<start_of_turn>{'model' if m['role'] == 'assistant' else 'user'}\n{m['content']}<end_of_turn>\n"
-                        for m in messages)
-        return turns + "<start_of_turn>model\n"
-    return "".join(f"<|im_start|>{m['role']}\n{m['content']}<|im_end|>\n" for m in messages) + "<|im_start|>assistant\n"
-
-
 def cpu_model(model_name: str):
-    from llama_cpp import Llama  # import tardío: solo hace falta si se usa el respaldo
-    with _CPU_LOCK:
-        if model_name not in _CPU:
-            repo, fname, _ = GGUF[model_name]
-            path = hf_hub_download(repo, fname)
-            _CPU[model_name] = Llama(model_path=path, n_ctx=1024, n_threads=max(2, os.cpu_count() or 2),
-                                     verbose=False)
-        return _CPU[model_name]
+    """Copia en CPU, cargada la primera vez que hace falta (Qwen con sus dos adaptadores, o Gemma)."""
+    family = "gemma" if model_name == "vertexgemma" else "qwen"
+    if family not in _CPU:
+        t0 = time.perf_counter()
+        if family == "qwen":
+            m = AutoModelForCausalLM.from_pretrained(QWEN_BASE, torch_dtype=torch.bfloat16)
+            m = PeftModel.from_pretrained(m, QWEN_REPO, subfolder="adapter-v3", adapter_name="v3", torch_device="cpu")
+            m.load_adapter(QWEN_REPO, adapter_name="legacy", subfolder="adapter-legacy", torch_device="cpu")
+        else:
+            m = AutoModelForCausalLM.from_pretrained(GEMMA_BASE, torch_dtype=torch.bfloat16,
+                                                     attn_implementation="eager", token=HF_TOKEN)
+            m = PeftModel.from_pretrained(m, GEMMA_REPO, subfolder="adapter", torch_device="cpu")
+        _CPU[family] = m.eval()
+        print(f"Respaldo CPU listo para {family} en {time.perf_counter() - t0:.1f} s")
+    return _CPU[family]
 
 
 def generate_cpu(model_name: str, messages: list[dict]) -> str:
-    fmt = GGUF[model_name][2]
-    llm = cpu_model(model_name)
-    with _CPU_LOCK:
-        out = llm(render_prompt(fmt, messages), max_tokens=48, temperature=0.0, repeat_penalty=1.15,
-                  stop=STOPS[fmt])
-    return out["choices"][0]["text"]
+    tok = gemma_tok if model_name == "vertexgemma" else qwen_tok
+    with _CPU_LOCK:  # una sola generación en CPU a la vez: comparten los núcleos y el adaptador activo
+        model = cpu_model(model_name)
+        if model_name != "vertexgemma":
+            model.set_adapter("v3" if model_name == "vertexqwen-v3" else "legacy")
+        text = tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        ids = tok(text, return_tensors="pt", add_special_tokens=False)
+        t0 = time.perf_counter()
+        with torch.no_grad():
+            out = model.generate(**ids, max_new_tokens=48, do_sample=False, repetition_penalty=1.15,
+                                 pad_token_id=tok.eos_token_id)
+        print(f"CPU {model_name}: {time.perf_counter() - t0:.1f} s")
+    return tok.decode(out[0, ids["input_ids"].shape[1]:], skip_special_tokens=True)
 
 
 def _warm_cpu():
-    """Descarga y abre los GGUF en segundo plano al arrancar, para que el respaldo no espere."""
-    for name in GGUF:
+    """Prepara las copias en CPU en segundo plano al arrancar, para que el primer respaldo no espere."""
+    for name in ("vertexqwen-v3", "vertexgemma"):
         try:
-            cpu_model(name)
+            with _CPU_LOCK:
+                cpu_model(name)
         except Exception as e:  # noqa: BLE001
             print("Respaldo CPU no disponible para", name, "->", e)
 
@@ -144,7 +145,7 @@ FORCE_CPU = os.getenv("FORCE_CPU") == "1"
 
 
 def chat(model_name: str, messages: list[dict]) -> str:
-    """GPU si se puede; si ZeroGPU la niega (cuota del visitante, cola), los GGUF en CPU."""
+    """GPU si se puede; si ZeroGPU la niega (cuota del visitante, cola), la copia en CPU."""
     if not FORCE_CPU:
         try:
             text = generate(model_name, messages)

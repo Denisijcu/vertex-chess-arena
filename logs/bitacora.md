@@ -254,3 +254,14 @@ El fine-tune de Qwen ahora sí funciona (formato correcto). Aun así, Gemma acie
 - API: https://huggingface.co/spaces/Denisijcu/vertex-chess-arena (Gradio + ZeroGPU, `zero-a10g`, RUNNING).
 - Error del primer arranque: `RuntimeError: No CUDA GPUs are available` al cargar los adaptadores. PEFT los cargaba directamente en "cuda" y en ZeroGPU no hay GPU real fuera de `@spaces.GPU`. Arreglo: `torch_device="cpu"` en `PeftModel.from_pretrained` y `load_adapter`, y luego `.to("cuda")` del modelo entero (ZeroGPU lo emula al arrancar).
 - Denis jugando desde la app pública a las 08:25.
+
+## 2026-10-21 — Cuota de ZeroGPU y respaldo en CPU (proyecto cerrado)
+
+- **Problema:** los visitantes anónimos de Netlify gastan su cuota diaria de ZeroGPU en pocas jugadas ("You have exceeded your ZeroGPU runs limit"). Logueado en HF funcionaba (h3 en 4,9 s).
+- **Paso 1:** `@spaces.GPU(duration=10)` en vez de 20, para reservar menos cuota por jugada.
+- **Intento 1 (falló):** respaldo con los GGUF q4_k_m del libro usando llama-cpp-python.
+  - Las ruedas precompiladas del índice `abetlen.github.io/.../whl/cpu`, tanto la 0.3.19 como la 0.3.2, están enlazadas contra musl (`libc.musl-x86_64.so.1`) y no cargan en la imagen Debian/glibc del Space.
+  - Compilarlo desde el código (0.3.16, `GGML_NATIVE=OFF`, cmake + build-essential) dejó el build colgado en `Building wheel for llama-cpp-python` durante más de 2 horas, también tras un Factory rebuild.
+- **Solución:** respaldo con transformers. Una copia en RAM de los mismos modelos base y adaptadores (bf16, CPU) se carga en segundo plano al arrancar. `chat()` intenta primero la GPU y, si ZeroGPU la niega, genera en CPU. La respuesta de `/ai_move` trae `device: gpu|cpu`. Sin dependencias nuevas: se quitó llama-cpp-python de requirements y packages.txt quedó solo con libgomp1.
+- **Resultado:** a las 11:23, Denis juega desde el celular contra el Space en Netlify. Con la cuota agotada las jugadas salen por CPU: más lentas, pero la app no se corta.
+- Pendiente opcional: medir el tiempo por jugada en CPU (línea `CPU <modelo>: X s` del log del Space) y, si pasa de 60 s, subir el límite de espera del frontend.

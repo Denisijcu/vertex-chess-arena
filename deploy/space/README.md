@@ -30,4 +30,4 @@ GGUF `q4_k_m` en Ollama, así que alguna jugada puede salir distinta.
 provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms.
 
 La cuota de GPU de ZeroGPU la gasta quien juega (2 min/día sin cuenta de Hugging Face). Cuando se acaba,
-las jugadas se generan en CPU con los GGUF `q4_k_m` (llama.cpp): más lentas, pero sin límite.
+las jugadas se generan en CPU con los mismos modelos y adaptadores: más lentas, pero sin límite.
